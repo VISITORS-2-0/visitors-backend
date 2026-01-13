@@ -1,19 +1,26 @@
 import random
 from datetime import datetime, timedelta
 from typing import List
+from functools import lru_cache
 from app.models.schemas import GenerationRequest, PatientEvent
 
 class DataGeneratorService:
     @staticmethod
+    @staticmethod
     def generate_data(request: GenerationRequest) -> List[PatientEvent]:
+        # Unpack params and convert list to tuple for hashing
+        return DataGeneratorService._generate_cached(
+            request.num_patients,
+            request.start_year,
+            request.end_year,
+            tuple(request.values),
+            request.concept_name
+        )
+
+    @staticmethod
+    @lru_cache(maxsize=32)
+    def _generate_cached(num_patients: int, start_year: int, end_year: int, values: tuple, concept_name: str) -> List[PatientEvent]:
         new_data = []
-        
-        # Determine strict types for iteration to prevent validation errors
-        num_patients: int = request.num_patients
-        start_year: int = request.start_year
-        end_year: int = request.end_year
-        values: List[str] = request.values
-        concept_name: str = request.concept_name
 
         for i in range(num_patients):
             patient_id = 1000 + i
