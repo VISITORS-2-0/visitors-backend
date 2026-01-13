@@ -43,9 +43,8 @@ def run_verification():
         "num_patients": 5,
         "concept_name": "TestConceptNumeric",
         "start_date": "2020-01-01T00:00:00",
-        "end_date": "2021-12-31T23:59:59",
-        "min_value": 10.0,
-        "max_value": 20.0
+        "end_date": "2021-12-31T23:59:59"
+        # min_value and max_value removed, defaults to 0-100
     }
     try:
         resp = requests.post(f"{BASE_URL}/raw-data", json=raw_payload)
@@ -53,14 +52,14 @@ def run_verification():
         raw_events = resp.json()
         print(f"Raw Data success! Generated {len(raw_events)} events.")
         
-        # Verify values are numeric and within range
+        # Verify values are numeric and within default range [0, 100]
         if raw_events:
             val = float(raw_events[0]['Value'])
             print(f"Sample value: {val}")
-            if 10.0 <= val <= 20.0:
-                print("Value within range [10, 20].")
+            if 0.0 <= val <= 100.0:
+                print("Value within default range [0, 100].")
             else:
-                print(f"ERROR: Value {val} out of range!")
+                print(f"ERROR: Value {val} out of default range!")
                 sys.exit(1)
         else:
             print("Warning: No events generated (could be chance or short duration).")

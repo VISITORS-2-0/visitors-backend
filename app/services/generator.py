@@ -20,8 +20,9 @@ class DataGeneratorService:
             request.end_date,
             tuple(values),
             request.concept_name,
-            request.min_value,
-            request.max_value,
+            # Using defaults for min/max since they are removed from request schema
+            0.0, 
+            100.0,
             allow_numeric=False # Strict: only use values
         )
 
@@ -34,8 +35,9 @@ class DataGeneratorService:
             request.end_date,
             (), # empty values
             request.concept_name,
-            request.min_value,
-            request.max_value,
+            # Using defaults for min/max since they are removed from request schema
+            0.0,
+            100.0,
             allow_numeric=True # Allow numeric generation
         )
 

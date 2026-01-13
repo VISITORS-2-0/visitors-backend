@@ -15,9 +15,7 @@ class VisitorsQueriesService:
             # values removed
             concept_name=request.concept_name,
             start_date=request.start_date,
-            end_date=request.end_date,
-            min_value=request.min_value,
-            max_value=request.max_value
+            end_date=request.end_date
         )
         # Pass DB session
         patient_events = DataGeneratorService.generate_data(gen_request)
@@ -42,8 +40,6 @@ class VisitorsQueriesService:
             num_patients=request.num_patients,
             concept_name=request.concept_name,
             start_date=request.start_date,
-            end_date=request.end_date,
-            min_value=request.min_value,
-            max_value=request.max_value
+            end_date=request.end_date
         )
         return DataGeneratorService.generate_numeric_data(gen_request)
