@@ -4,14 +4,13 @@ from typing import List
 from functools import lru_cache
 from app.models.schemas import GenerationRequest, PatientEvent
 
-from sqlalchemy.orm import Session
 from app.services.concept_manager import ConceptManager
 
 class DataGeneratorService:
     @staticmethod
-    def generate_data(request: GenerationRequest, db: Session) -> List[PatientEvent]:
-        # Fetch allowed values from DB
-        concept_schema = ConceptManager.get_or_create_concept(db, request.concept_name)
+    def generate_data(request: GenerationRequest) -> List[PatientEvent]:
+        # Fetch allowed values from DB (using internal session)
+        concept_schema = ConceptManager.get_or_create_concept(request.concept_name)
         values = concept_schema.allowed_values.get("values", [])
         
         # Unpack params and convert list to tuple for hashing
