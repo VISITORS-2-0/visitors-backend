@@ -33,8 +33,8 @@ class IntervalRecord(BaseModel):
 class GenerationRequest(BaseModel):
     num_patients: int = Field(20, ge=1)
     concept_name: str = "WBC_STATE_BMT"
-    start_year: int = 1991
-    end_year: int = 1994
+    start_date: datetime = datetime(1991, 1, 1)
+    end_date: datetime = datetime(1994, 12, 31)
 
 class TransformationRequest(BaseModel):
     data: List[PatientEvent]
@@ -58,8 +58,8 @@ class MultiplePatientsAbstractionRequest(BaseModel):
     # Generation Params
     num_patients: int = Field(20, ge=1)
     concept_name: str = "WBC_STATE_BMT"
-    start_year: int = 1991
-    end_year: int = 1994
+    start_date: datetime = datetime(1991, 1, 1)
+    end_date: datetime = datetime(1994, 12, 31)
     
     # Transformation Params
     interval_str: Literal['W-MON', 'M', 'MS', 'D'] = "W-MON"

@@ -16,38 +16,46 @@ class DataGeneratorService:
         # Unpack params and convert list to tuple for hashing
         return DataGeneratorService._generate_cached(
             request.num_patients,
-            request.start_year,
-            request.end_year,
+            request.start_date,
+            request.end_date,
             tuple(values),
             request.concept_name
         )
 
     @staticmethod
     @lru_cache(maxsize=32)
-    def _generate_cached(num_patients: int, start_year: int, end_year: int, values: tuple, concept_name: str) -> List[PatientEvent]:
+    def _generate_cached(num_patients: int, start_date: datetime, end_date: datetime, values: tuple, concept_name: str) -> List[PatientEvent]:
         new_data = []
+
+        total_seconds = int((end_date - start_date).total_seconds())
+        if total_seconds <= 0:
+            return []
 
         for i in range(num_patients):
             patient_id = 1000 + i
             
-            # Random start time in the first half of the start year
-            current_time = datetime(start_year, 1, 1) + timedelta(days=random.randint(0, 180))
+            # Start somewhere in the first 10% of the range or first 6 months
+            offset_seconds = random.randint(0, min(total_seconds // 10, 180 * 24 * 3600))
+            current_time = start_date + timedelta(seconds=offset_seconds)
             
-            # Generate events until the end of the end_year
-            while current_time.year <= end_year:
+            # Generate events until the end_date
+            while current_time <= end_date:
                 # 20% chance of a "point event" (0 duration)
                 if random.random() < 0.2:
                     duration_minutes = 0
                 else:
-                    duration_minutes = random.randint(1, 5 * 24 * 60)
+                    duration_minutes = random.randint(1, 5 * 24 * 60) # up to 5 days
                 
                 end_time = current_time + timedelta(minutes=duration_minutes)
+                if end_time > end_date:
+                    end_time = end_date
+                
                 val = random.choice(values)
                 
                 new_data.append(PatientEvent(
                     StartTime=current_time,
                     EndTime=end_time,
-                    Value=val,
+                    Value=str(val),
                     PatientID=patient_id,
                     ConceptName=concept_name
                 ))

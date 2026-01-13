@@ -9,8 +9,8 @@ def run_verification():
     gen_payload = {
         "num_patients": 5,
         "concept_name": "TestConcept",
-        "start_year": 2020,
-        "end_year": 2021
+        "start_date": "2020-01-01T00:00:00",
+        "end_date": "2021-12-31T23:59:59"
     }
     try:
         resp = requests.post(f"{BASE_URL}/generate/", json=gen_payload)
@@ -44,8 +44,8 @@ def run_verification():
     orch_payload = {
         "num_patients": 5,
         "concept_name": "TestConcept",
-        "start_year": 2020,
-        "end_year": 2021,
+        "start_date": "2020-01-01T00:00:00",
+        "end_date": "2021-12-31T23:59:59",
         "interval_str": "M",     # Valid Literal
         "method": "most_time_spent" # Valid Literal
     }

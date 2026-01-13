@@ -13,8 +13,8 @@ class MultiplePatientsAbstractionService:
             num_patients=request.num_patients,
             # values removed
             concept_name=request.concept_name,
-            start_year=request.start_year,
-            end_year=request.end_year
+            start_date=request.start_date,
+            end_date=request.end_date
         )
         # Pass DB session
         patient_events = DataGeneratorService.generate_data(gen_request)
