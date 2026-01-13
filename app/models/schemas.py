@@ -54,3 +54,18 @@ class IntervalSummary(BaseModel):
 
 class SummaryResponse(BaseModel):
     summary: List[IntervalSummary]
+
+from typing import List, Dict, Optional, Any, Literal
+# ...
+
+class MultiplePatientsAbstractionRequest(BaseModel):
+    # Generation Params
+    num_patients: int = Field(20, ge=1)
+    values: List[str] = ["Normal", "High", "Moderately_low"]
+    concept_name: str = "WBC_STATE_BMT"
+    start_year: int = 1991
+    end_year: int = 1994
+    
+    # Transformation Params
+    interval_str: Literal['W-MON', 'M', 'MS', 'D'] = "W-MON"
+    method: Literal['most_time_spent'] = "most_time_spent"
