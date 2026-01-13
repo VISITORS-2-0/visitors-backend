@@ -18,3 +18,6 @@ def get_db():
         yield db
     finally:
         db.close()
+
+# Import models here to ensure they are registered with Base metadata
+from app.models.function_cache import FunctionCache

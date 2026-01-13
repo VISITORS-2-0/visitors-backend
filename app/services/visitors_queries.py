@@ -3,11 +3,13 @@ from app.models.schemas import MultiplePatientsAbstractionRequest, SummaryRespon
 from app.services.generator import DataGeneratorService
 from app.services.transformer import IntervalTransformationService
 from app.services.summer import SummaryService
+from app.core.cache_utils import db_cache
 
 # ... (imports)
 
 class VisitorsQueriesService:
     @staticmethod
+    @db_cache
     def run_flow(request: MultiplePatientsAbstractionRequest) -> SummaryResponse:
         # 1. Generate Data
         gen_request = GenerationRequest(

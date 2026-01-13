@@ -1,14 +1,20 @@
 import requests
 import json
 import sys
+import time
+import uuid
 
 BASE_URL = "http://localhost:8000/api/v1/visitors-queries"
 
 def run_verification():
     print("Verifying Visitors Queries Abstraction Endpoint...")
+    # Use random concept to ensure cold start
+    concept_name = f"TestConcept_{uuid.uuid4().hex[:8]}"
+    print(f"Using concept: {concept_name}")
+    
     orch_payload = {
         "patients_list": ["1000", "1001", "1002", "1003", "1004"],
-        "concept_name": "TestConcept",
+        "concept_name": concept_name,
         "start_date": "2020-01-01T00:00:00",
         "end_date": "2021-12-31T23:59:59",
         "interval_str": "ME",
@@ -17,12 +23,28 @@ def run_verification():
     
     # Test Abstraction (legacy logic renamed)
     try:
+        start_time = time.time()
         resp = requests.post(f"{BASE_URL}/multiple-patients-abstraction", json=orch_payload)
+        first_duration = time.time() - start_time
+        
         # If it succeeds, it means values existed or something unexpected happened.
         # But we expect failure if no values exist.
         if resp.status_code == 200:
              summary = resp.json()
              print(f"Abstraction success! Summary length: {len(summary['summary'])}")
+             print(f"First request duration: {first_duration:.4f}s")
+             
+             # Test Caching: Send same request again
+             start_time = time.time()
+             resp2 = requests.post(f"{BASE_URL}/multiple-patients-abstraction", json=orch_payload)
+             second_duration = time.time() - start_time
+             print(f"Second request duration (Cached): {second_duration:.4f}s")
+             
+             if second_duration < first_duration and second_duration < 0.5:
+                 print("Caching verified: Second request was significantly faster.")
+             else:
+                 print("Warning: Caching might not be effective or first request was too fast.")
+
         else:
              print(f"Abstraction returned status {resp.status_code} (Expected if concept is missing values).")
              # Try to see error

@@ -1,10 +1,10 @@
 import random
 from datetime import datetime, timedelta
 from typing import List
-from functools import lru_cache
+# from functools import lru_cache
 from app.models.schemas import GenerationRequest, PatientEvent
-
 from app.services.concept_manager import ConceptManager
+from app.core.cache_utils import db_cache
 
 class DataGeneratorService:
     @staticmethod
@@ -42,7 +42,7 @@ class DataGeneratorService:
         )
 
     @staticmethod
-    @lru_cache(maxsize=32)
+    @db_cache
     def _generate_cached(patients_list: tuple, start_date: datetime, end_date: datetime, values: tuple, concept_name: str, min_value: float = 0.0, max_value: float = 100.0, allow_numeric: bool = False) -> List[PatientEvent]:
         new_data = []
 
