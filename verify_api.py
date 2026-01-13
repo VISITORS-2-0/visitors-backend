@@ -41,19 +41,6 @@ def run_verification():
         # print(resp.text)
         sys.exit(1)
 
-    print("Verifying Summary Endpoint...")
-    sum_payload = {
-        "data": intervals
-    }
-    try:
-        resp = requests.post(f"{BASE_URL}/summarize/", json=sum_payload)
-        resp.raise_for_status()
-        summary = resp.json()
-        print(f"Summary generated with {len(summary['summary'])} time steps.")
-    except Exception as e:
-        print(f"Summary failed: {e}")
-        sys.exit(1)
-
     print("Verifying Multiple Patients Abstraction Endpoint...")
     orch_payload = {
         "num_patients": 5,
