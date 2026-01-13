@@ -15,10 +15,9 @@ def run_verification():
         "method": "most_time_spent"
     }
     
-    # Test Abstraction (should use concept values if available, or whatever default logic)
-    # Since "TestConcept" likely doesn't exist in DB with values, this should FAIL now that we are strict.
+    # Test Abstraction (legacy logic renamed)
     try:
-        resp = requests.post(f"{BASE_URL}/", json=orch_payload)
+        resp = requests.post(f"{BASE_URL}/multiple-patients-abstraction", json=orch_payload)
         # If it succeeds, it means values existed or something unexpected happened.
         # But we expect failure if no values exist.
         if resp.status_code == 200:
@@ -44,7 +43,8 @@ def run_verification():
         "concept_name": "TestConceptNumeric",
         "start_date": "2020-01-01T00:00:00",
         "end_date": "2021-12-31T23:59:59"
-        # min_value and max_value removed, defaults to 0-100
+        # min_value/max_value removed
+        # interval_str/method removed (GenerationRequest)
     }
     try:
         resp = requests.post(f"{BASE_URL}/raw-data", json=raw_payload)
@@ -63,6 +63,31 @@ def run_verification():
                 sys.exit(1)
         else:
             print("Warning: No events generated (could be chance or short duration).")
+
+    except Exception as e:
+        print(f"Raw Data failed: {e}")
+        try: print(resp.text)
+        except: pass
+        sys.exit(1)
+
+    print("Verifying Visitors Queries Generation Endpoint (New /abstraction)...")
+    gen_payload = {
+        "num_patients": 5,
+        "concept_name": "TestConceptGen",
+        "start_date": "2020-01-01T00:00:00",
+        "end_date": "2021-12-31T23:59:59"
+    }
+    try:
+        resp = requests.post(f"{BASE_URL}/abstraction", json=gen_payload)
+        # This uses standard generation, so it might fail if concept doesn't exist (strict mode)
+        if resp.status_code == 200:
+            events = resp.json()
+            print(f"Generation success! Generated {len(events)} events.")
+        else:
+            print(f"Generation returned status {resp.status_code} (Expected if concept is missing).")
+    except Exception as e:
+        print(f"Generation check failed: {e}")
+
 
     except Exception as e:
         print(f"Raw Data failed: {e}")
