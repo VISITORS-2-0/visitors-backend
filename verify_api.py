@@ -8,7 +8,6 @@ def run_verification():
     print("Verifying Generation Endpoint...")
     gen_payload = {
         "num_patients": 5,
-        "values": ["Normal", "High"],
         "concept_name": "TestConcept",
         "start_year": 2020,
         "end_year": 2021
@@ -44,7 +43,6 @@ def run_verification():
     print("Verifying Multiple Patients Abstraction Endpoint...")
     orch_payload = {
         "num_patients": 5,
-        "values": ["Normal", "High"],
         "concept_name": "TestConcept",
         "start_year": 2020,
         "end_year": 2021,

@@ -1,6 +1,5 @@
-fastapi
-uvicorn
 pandas
 pydantic
 numpy
 python-multipart
+sqlalchemy
