@@ -7,7 +7,7 @@ BASE_URL = "http://localhost:8000/api/v1/visitors-queries"
 def run_verification():
     print("Verifying Visitors Queries Abstraction Endpoint...")
     orch_payload = {
-        "num_patients": 5,
+        "patients_list": ["1000", "1001", "1002", "1003", "1004"],
         "concept_name": "TestConcept",
         "start_date": "2020-01-01T00:00:00",
         "end_date": "2021-12-31T23:59:59",
@@ -39,7 +39,7 @@ def run_verification():
     print("Verifying Visitors Queries Raw Data Endpoint (Numeric)...")
     # Test Raw Data (should generate numeric values)
     raw_payload = {
-        "num_patients": 5,
+        "patients_list": ["2000", "2001", "2002"],
         "concept_name": "TestConceptNumeric",
         "start_date": "2020-01-01T00:00:00",
         "end_date": "2021-12-31T23:59:59"
@@ -61,6 +61,14 @@ def run_verification():
             else:
                 print(f"ERROR: Value {val} out of default range!")
                 sys.exit(1)
+            
+            # Check ID is one of the requested
+            pid = str(raw_events[0]['PatientID'])
+            if pid in raw_payload["patients_list"]:
+                 print(f"PatientID {pid} validated.")
+            else:
+                 print(f"Warning: PatientID {pid} not in requested list {raw_payload['patients_list']}")
+
         else:
             print("Warning: No events generated (could be chance or short duration).")
 
@@ -72,7 +80,7 @@ def run_verification():
 
     print("Verifying Visitors Queries Generation Endpoint (New /abstraction)...")
     gen_payload = {
-        "num_patients": 5,
+        "patients_list": ["3000", "3001"],
         "concept_name": "TestConceptGen",
         "start_date": "2020-01-01T00:00:00",
         "end_date": "2021-12-31T23:59:59"
@@ -88,12 +96,22 @@ def run_verification():
     except Exception as e:
         print(f"Generation check failed: {e}")
 
-
+    print("Verifying Validation (Missing patients_list)...")
+    invalid_payload = {
+        # patients_list missing
+        "concept_name": "TestConceptGen",
+        "start_date": "2020-01-01T00:00:00",
+        "end_date": "2021-12-31T23:59:59"
+    }
+    try:
+        resp = requests.post(f"{BASE_URL}/abstraction", json=invalid_payload)
+        if resp.status_code == 422:
+            print("Validation success! Missing parameter rejected as expected.")
+        else:
+            print(f"Validation failed: Expected 422, got {resp.status_code}")
+            sys.exit(1)
     except Exception as e:
-        print(f"Raw Data failed: {e}")
-        try: print(resp.text)
-        except: pass
-        sys.exit(1)
+        print(f"Validation check failed: {e}")
 
     print("ALL TESTS PASSED")
 

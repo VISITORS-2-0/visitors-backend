@@ -15,7 +15,7 @@ class DataGeneratorService:
         
         # Unpack params and convert list to tuple for hashing
         return DataGeneratorService._generate_cached(
-            request.num_patients,
+            tuple(request.patients_list),
             request.start_date,
             request.end_date,
             tuple(values),
@@ -30,7 +30,7 @@ class DataGeneratorService:
     def generate_numeric_data(request: GenerationRequest) -> List[PatientEvent]:
         # Skip DB lookup, pass empty values tuple to enforce numeric generation
         return DataGeneratorService._generate_cached(
-            request.num_patients,
+            tuple(request.patients_list),
             request.start_date,
             request.end_date,
             (), # empty values
@@ -43,15 +43,23 @@ class DataGeneratorService:
 
     @staticmethod
     @lru_cache(maxsize=32)
-    def _generate_cached(num_patients: int, start_date: datetime, end_date: datetime, values: tuple, concept_name: str, min_value: float = 0.0, max_value: float = 100.0, allow_numeric: bool = False) -> List[PatientEvent]:
+    def _generate_cached(patients_list: tuple, start_date: datetime, end_date: datetime, values: tuple, concept_name: str, min_value: float = 0.0, max_value: float = 100.0, allow_numeric: bool = False) -> List[PatientEvent]:
         new_data = []
 
         total_seconds = int((end_date - start_date).total_seconds())
         if total_seconds <= 0:
             return []
 
-        for i in range(num_patients):
-            patient_id = 1000 + i
+        for patient_id_str in patients_list:
+            try:
+                patient_id = int(patient_id_str)
+            except ValueError:
+                # If ID is not an int, we might need a workaround if PatientEvent requires int. 
+                # Schema says PatientID is int. 
+                # User said "list of id str of numbers", so we assume they are convertible.
+                patient_id = hash(patient_id_str) % 100000 # Fallback or just assume int conversion per schema requirements. 
+                # But let's try strict conversion as per user "id str of numbers"
+                patient_id = int(patient_id_str)
             
             # Start somewhere in the first 10% of the range or first 6 months
             offset_seconds = random.randint(0, min(total_seconds // 10, 180 * 24 * 3600))

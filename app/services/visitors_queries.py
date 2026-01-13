@@ -11,7 +11,7 @@ class VisitorsQueriesService:
     def run_flow(request: MultiplePatientsAbstractionRequest) -> SummaryResponse:
         # 1. Generate Data
         gen_request = GenerationRequest(
-            num_patients=request.num_patients,
+            patients_list=request.patients_list,
             # values removed
             concept_name=request.concept_name,
             start_date=request.start_date,
@@ -37,7 +37,7 @@ class VisitorsQueriesService:
     def generate_raw_data(request: MultiplePatientsAbstractionRequest) -> List[PatientEvent]:
         # 1. Generate Data
         gen_request = GenerationRequest(
-            num_patients=request.num_patients,
+            patients_list=request.patients_list,
             concept_name=request.concept_name,
             start_date=request.start_date,
             end_date=request.end_date
