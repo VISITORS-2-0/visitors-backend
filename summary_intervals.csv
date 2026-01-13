@@ -1,0 +1,49 @@
+StartTime,EndTime,ConceptName,Value_Dict,TotalPatientsWithData
+1991-02-01 00:00:00+00:00,1991-03-01 00:00:00+00:00,WBC_STATE_BMT,"{""No Value"": 13, ""Normal"": 3, ""Moderately_low"": 2, ""High"": 2}",20
+1991-03-01 00:00:00+00:00,1991-04-01 00:00:00+00:00,WBC_STATE_BMT,"{""No Value"": 11, ""Normal"": 4, ""Moderately_low"": 3, ""High"": 2}",20
+1991-04-01 00:00:00+00:00,1991-05-01 00:00:00+00:00,WBC_STATE_BMT,"{""No Value"": 7, ""High"": 5, ""Moderately_low"": 4, ""Normal"": 4}",20
+1991-05-01 00:00:00+00:00,1991-06-01 00:00:00+00:00,WBC_STATE_BMT,"{""Moderately_low"": 8, ""High"": 4, ""Normal"": 4, ""No Value"": 4}",20
+1991-06-01 00:00:00+00:00,1991-07-01 00:00:00+00:00,WBC_STATE_BMT,"{""Normal"": 11, ""Moderately_low"": 4, ""High"": 4, ""No Value"": 1}",20
+1991-07-01 00:00:00+00:00,1991-08-01 00:00:00+00:00,WBC_STATE_BMT,"{""Moderately_low"": 7, ""Normal"": 7, ""High"": 6}",20
+1991-08-01 00:00:00+00:00,1991-09-01 00:00:00+00:00,WBC_STATE_BMT,"{""High"": 7, ""Normal"": 6, ""Moderately_low"": 6, ""No Value"": 1}",20
+1991-09-01 00:00:00+00:00,1991-10-01 00:00:00+00:00,WBC_STATE_BMT,"{""Moderately_low"": 9, ""High"": 6, ""Normal"": 3, ""No Value"": 2}",20
+1991-10-01 00:00:00+00:00,1991-11-01 00:00:00+00:00,WBC_STATE_BMT,"{""Normal"": 8, ""High"": 6, ""Moderately_low"": 5, ""No Value"": 1}",20
+1991-11-01 00:00:00+00:00,1991-12-01 00:00:00+00:00,WBC_STATE_BMT,"{""Moderately_low"": 6, ""Normal"": 6, ""High"": 6, ""No Value"": 2}",20
+1991-12-01 00:00:00+00:00,1992-01-01 00:00:00+00:00,WBC_STATE_BMT,"{""Normal"": 8, ""Moderately_low"": 7, ""High"": 5}",20
+1992-01-01 00:00:00+00:00,1992-02-01 00:00:00+00:00,WBC_STATE_BMT,"{""High"": 6, ""Normal"": 6, ""Moderately_low"": 5, ""No Value"": 3}",20
+1992-02-01 00:00:00+00:00,1992-03-01 00:00:00+00:00,WBC_STATE_BMT,"{""High"": 9, ""Normal"": 6, ""Moderately_low"": 5}",20
+1992-03-01 00:00:00+00:00,1992-04-01 00:00:00+00:00,WBC_STATE_BMT,"{""High"": 7, ""Moderately_low"": 6, ""Normal"": 5, ""No Value"": 2}",20
+1992-04-01 00:00:00+00:00,1992-05-01 00:00:00+00:00,WBC_STATE_BMT,"{""Normal"": 8, ""High"": 7, ""No Value"": 3, ""Moderately_low"": 2}",20
+1992-05-01 00:00:00+00:00,1992-06-01 00:00:00+00:00,WBC_STATE_BMT,"{""High"": 7, ""Moderately_low"": 5, ""No Value"": 4, ""Normal"": 4}",20
+1992-06-01 00:00:00+00:00,1992-07-01 00:00:00+00:00,WBC_STATE_BMT,"{""Moderately_low"": 8, ""Normal"": 5, ""High"": 4, ""No Value"": 3}",20
+1992-07-01 00:00:00+00:00,1992-08-01 00:00:00+00:00,WBC_STATE_BMT,"{""Normal"": 7, ""High"": 7, ""Moderately_low"": 4, ""No Value"": 2}",20
+1992-08-01 00:00:00+00:00,1992-09-01 00:00:00+00:00,WBC_STATE_BMT,"{""High"": 8, ""Moderately_low"": 6, ""Normal"": 4, ""No Value"": 2}",20
+1992-09-01 00:00:00+00:00,1992-10-01 00:00:00+00:00,WBC_STATE_BMT,"{""Normal"": 7, ""Moderately_low"": 6, ""High"": 4, ""No Value"": 3}",20
+1992-10-01 00:00:00+00:00,1992-11-01 00:00:00+00:00,WBC_STATE_BMT,"{""Moderately_low"": 8, ""Normal"": 7, ""High"": 5}",20
+1992-11-01 00:00:00+00:00,1992-12-01 00:00:00+00:00,WBC_STATE_BMT,"{""Normal"": 8, ""Moderately_low"": 7, ""High"": 3, ""No Value"": 2}",20
+1992-12-01 00:00:00+00:00,1993-01-01 00:00:00+00:00,WBC_STATE_BMT,"{""High"": 9, ""Normal"": 7, ""Moderately_low"": 4}",20
+1993-01-01 00:00:00+00:00,1993-02-01 00:00:00+00:00,WBC_STATE_BMT,"{""Normal"": 10, ""High"": 6, ""No Value"": 3, ""Moderately_low"": 1}",20
+1993-02-01 00:00:00+00:00,1993-03-01 00:00:00+00:00,WBC_STATE_BMT,"{""Normal"": 7, ""High"": 6, ""Moderately_low"": 5, ""No Value"": 2}",20
+1993-03-01 00:00:00+00:00,1993-04-01 00:00:00+00:00,WBC_STATE_BMT,"{""Normal"": 10, ""Moderately_low"": 4, ""High"": 4, ""No Value"": 2}",20
+1993-04-01 00:00:00+00:00,1993-05-01 00:00:00+00:00,WBC_STATE_BMT,"{""Normal"": 9, ""High"": 8, ""Moderately_low"": 2, ""No Value"": 1}",20
+1993-05-01 00:00:00+00:00,1993-06-01 00:00:00+00:00,WBC_STATE_BMT,"{""Moderately_low"": 8, ""High"": 5, ""Normal"": 4, ""No Value"": 3}",20
+1993-06-01 00:00:00+00:00,1993-07-01 00:00:00+00:00,WBC_STATE_BMT,"{""Moderately_low"": 11, ""Normal"": 6, ""High"": 3}",20
+1993-07-01 00:00:00+00:00,1993-08-01 00:00:00+00:00,WBC_STATE_BMT,"{""Normal"": 7, ""High"": 6, ""Moderately_low"": 4, ""No Value"": 3}",20
+1993-08-01 00:00:00+00:00,1993-09-01 00:00:00+00:00,WBC_STATE_BMT,"{""Moderately_low"": 10, ""Normal"": 6, ""High"": 3, ""No Value"": 1}",20
+1993-09-01 00:00:00+00:00,1993-10-01 00:00:00+00:00,WBC_STATE_BMT,"{""Moderately_low"": 7, ""Normal"": 7, ""High"": 6}",20
+1993-10-01 00:00:00+00:00,1993-11-01 00:00:00+00:00,WBC_STATE_BMT,"{""Moderately_low"": 8, ""High"": 8, ""Normal"": 4}",20
+1993-11-01 00:00:00+00:00,1993-12-01 00:00:00+00:00,WBC_STATE_BMT,"{""High"": 9, ""Normal"": 6, ""Moderately_low"": 5}",20
+1993-12-01 00:00:00+00:00,1994-01-01 00:00:00+00:00,WBC_STATE_BMT,"{""High"": 8, ""Moderately_low"": 8, ""Normal"": 3, ""No Value"": 1}",20
+1994-01-01 00:00:00+00:00,1994-02-01 00:00:00+00:00,WBC_STATE_BMT,"{""Moderately_low"": 8, ""High"": 6, ""Normal"": 6}",20
+1994-02-01 00:00:00+00:00,1994-03-01 00:00:00+00:00,WBC_STATE_BMT,"{""Moderately_low"": 8, ""High"": 6, ""Normal"": 5, ""No Value"": 1}",20
+1994-03-01 00:00:00+00:00,1994-04-01 00:00:00+00:00,WBC_STATE_BMT,"{""Moderately_low"": 9, ""Normal"": 6, ""No Value"": 3, ""High"": 2}",20
+1994-04-01 00:00:00+00:00,1994-05-01 00:00:00+00:00,WBC_STATE_BMT,"{""Moderately_low"": 7, ""High"": 6, ""Normal"": 6, ""No Value"": 1}",20
+1994-05-01 00:00:00+00:00,1994-06-01 00:00:00+00:00,WBC_STATE_BMT,"{""Normal"": 10, ""Moderately_low"": 6, ""High"": 3, ""No Value"": 1}",20
+1994-06-01 00:00:00+00:00,1994-07-01 00:00:00+00:00,WBC_STATE_BMT,"{""High"": 7, ""Moderately_low"": 6, ""Normal"": 5, ""No Value"": 2}",20
+1994-07-01 00:00:00+00:00,1994-08-01 00:00:00+00:00,WBC_STATE_BMT,"{""Moderately_low"": 9, ""High"": 6, ""Normal"": 3, ""No Value"": 2}",20
+1994-08-01 00:00:00+00:00,1994-09-01 00:00:00+00:00,WBC_STATE_BMT,"{""Normal"": 9, ""Moderately_low"": 6, ""High"": 4, ""No Value"": 1}",20
+1994-09-01 00:00:00+00:00,1994-10-01 00:00:00+00:00,WBC_STATE_BMT,"{""Moderately_low"": 8, ""Normal"": 7, ""High"": 4, ""No Value"": 1}",20
+1994-10-01 00:00:00+00:00,1994-11-01 00:00:00+00:00,WBC_STATE_BMT,"{""Normal"": 9, ""High"": 8, ""Moderately_low"": 2, ""No Value"": 1}",20
+1994-11-01 00:00:00+00:00,1994-12-01 00:00:00+00:00,WBC_STATE_BMT,"{""Normal"": 7, ""High"": 6, ""Moderately_low"": 5, ""No Value"": 2}",20
+1994-12-01 00:00:00+00:00,1995-01-01 00:00:00+00:00,WBC_STATE_BMT,"{""High"": 7, ""Normal"": 6, ""Moderately_low"": 5, ""No Value"": 2}",20
+1995-01-01 00:00:00+00:00,1995-02-01 00:00:00+00:00,WBC_STATE_BMT,"{""No Value"": 19, ""Moderately_low"": 1}",20

@@ -1,0 +1,578 @@
+[
+    {
+        "StartTime": "1991-02-01 00:00:00+00:00",
+        "EndTime": "1991-03-01 00:00:00+00:00",
+        "ConceptName": "WBC_STATE_BMT",
+        "Value_Dict": {
+            "High": 2,
+            "Moderately_low": 2,
+            "No Value": 13,
+            "Normal": 3
+        },
+        "TotalPatientsWithData": 20
+    },
+    {
+        "StartTime": "1991-03-01 00:00:00+00:00",
+        "EndTime": "1991-04-01 00:00:00+00:00",
+        "ConceptName": "WBC_STATE_BMT",
+        "Value_Dict": {
+            "High": 2,
+            "Moderately_low": 3,
+            "No Value": 11,
+            "Normal": 4
+        },
+        "TotalPatientsWithData": 20
+    },
+    {
+        "StartTime": "1991-04-01 00:00:00+00:00",
+        "EndTime": "1991-05-01 00:00:00+00:00",
+        "ConceptName": "WBC_STATE_BMT",
+        "Value_Dict": {
+            "High": 5,
+            "Moderately_low": 4,
+            "No Value": 7,
+            "Normal": 4
+        },
+        "TotalPatientsWithData": 20
+    },
+    {
+        "StartTime": "1991-05-01 00:00:00+00:00",
+        "EndTime": "1991-06-01 00:00:00+00:00",
+        "ConceptName": "WBC_STATE_BMT",
+        "Value_Dict": {
+            "High": 4,
+            "Moderately_low": 8,
+            "No Value": 4,
+            "Normal": 4
+        },
+        "TotalPatientsWithData": 20
+    },
+    {
+        "StartTime": "1991-06-01 00:00:00+00:00",
+        "EndTime": "1991-07-01 00:00:00+00:00",
+        "ConceptName": "WBC_STATE_BMT",
+        "Value_Dict": {
+            "High": 4,
+            "Moderately_low": 4,
+            "No Value": 1,
+            "Normal": 11
+        },
+        "TotalPatientsWithData": 20
+    },
+    {
+        "StartTime": "1991-07-01 00:00:00+00:00",
+        "EndTime": "1991-08-01 00:00:00+00:00",
+        "ConceptName": "WBC_STATE_BMT",
+        "Value_Dict": {
+            "High": 6,
+            "Moderately_low": 7,
+            "No Value": 0,
+            "Normal": 7
+        },
+        "TotalPatientsWithData": 20
+    },
+    {
+        "StartTime": "1991-08-01 00:00:00+00:00",
+        "EndTime": "1991-09-01 00:00:00+00:00",
+        "ConceptName": "WBC_STATE_BMT",
+        "Value_Dict": {
+            "High": 7,
+            "Moderately_low": 6,
+            "No Value": 1,
+            "Normal": 6
+        },
+        "TotalPatientsWithData": 20
+    },
+    {
+        "StartTime": "1991-09-01 00:00:00+00:00",
+        "EndTime": "1991-10-01 00:00:00+00:00",
+        "ConceptName": "WBC_STATE_BMT",
+        "Value_Dict": {
+            "High": 6,
+            "Moderately_low": 9,
+            "No Value": 2,
+            "Normal": 3
+        },
+        "TotalPatientsWithData": 20
+    },
+    {
+        "StartTime": "1991-10-01 00:00:00+00:00",
+        "EndTime": "1991-11-01 00:00:00+00:00",
+        "ConceptName": "WBC_STATE_BMT",
+        "Value_Dict": {
+            "High": 6,
+            "Moderately_low": 5,
+            "No Value": 1,
+            "Normal": 8
+        },
+        "TotalPatientsWithData": 20
+    },
+    {
+        "StartTime": "1991-11-01 00:00:00+00:00",
+        "EndTime": "1991-12-01 00:00:00+00:00",
+        "ConceptName": "WBC_STATE_BMT",
+        "Value_Dict": {
+            "High": 6,
+            "Moderately_low": 6,
+            "No Value": 2,
+            "Normal": 6
+        },
+        "TotalPatientsWithData": 20
+    },
+    {
+        "StartTime": "1991-12-01 00:00:00+00:00",
+        "EndTime": "1992-01-01 00:00:00+00:00",
+        "ConceptName": "WBC_STATE_BMT",
+        "Value_Dict": {
+            "High": 5,
+            "Moderately_low": 7,
+            "No Value": 0,
+            "Normal": 8
+        },
+        "TotalPatientsWithData": 20
+    },
+    {
+        "StartTime": "1992-01-01 00:00:00+00:00",
+        "EndTime": "1992-02-01 00:00:00+00:00",
+        "ConceptName": "WBC_STATE_BMT",
+        "Value_Dict": {
+            "High": 6,
+            "Moderately_low": 5,
+            "No Value": 3,
+            "Normal": 6
+        },
+        "TotalPatientsWithData": 20
+    },
+    {
+        "StartTime": "1992-02-01 00:00:00+00:00",
+        "EndTime": "1992-03-01 00:00:00+00:00",
+        "ConceptName": "WBC_STATE_BMT",
+        "Value_Dict": {
+            "High": 9,
+            "Moderately_low": 5,
+            "No Value": 0,
+            "Normal": 6
+        },
+        "TotalPatientsWithData": 20
+    },
+    {
+        "StartTime": "1992-03-01 00:00:00+00:00",
+        "EndTime": "1992-04-01 00:00:00+00:00",
+        "ConceptName": "WBC_STATE_BMT",
+        "Value_Dict": {
+            "High": 7,
+            "Moderately_low": 6,
+            "No Value": 2,
+            "Normal": 5
+        },
+        "TotalPatientsWithData": 20
+    },
+    {
+        "StartTime": "1992-04-01 00:00:00+00:00",
+        "EndTime": "1992-05-01 00:00:00+00:00",
+        "ConceptName": "WBC_STATE_BMT",
+        "Value_Dict": {
+            "High": 7,
+            "Moderately_low": 2,
+            "No Value": 3,
+            "Normal": 8
+        },
+        "TotalPatientsWithData": 20
+    },
+    {
+        "StartTime": "1992-05-01 00:00:00+00:00",
+        "EndTime": "1992-06-01 00:00:00+00:00",
+        "ConceptName": "WBC_STATE_BMT",
+        "Value_Dict": {
+            "High": 7,
+            "Moderately_low": 5,
+            "No Value": 4,
+            "Normal": 4
+        },
+        "TotalPatientsWithData": 20
+    },
+    {
+        "StartTime": "1992-06-01 00:00:00+00:00",
+        "EndTime": "1992-07-01 00:00:00+00:00",
+        "ConceptName": "WBC_STATE_BMT",
+        "Value_Dict": {
+            "High": 4,
+            "Moderately_low": 8,
+            "No Value": 3,
+            "Normal": 5
+        },
+        "TotalPatientsWithData": 20
+    },
+    {
+        "StartTime": "1992-07-01 00:00:00+00:00",
+        "EndTime": "1992-08-01 00:00:00+00:00",
+        "ConceptName": "WBC_STATE_BMT",
+        "Value_Dict": {
+            "High": 7,
+            "Moderately_low": 4,
+            "No Value": 2,
+            "Normal": 7
+        },
+        "TotalPatientsWithData": 20
+    },
+    {
+        "StartTime": "1992-08-01 00:00:00+00:00",
+        "EndTime": "1992-09-01 00:00:00+00:00",
+        "ConceptName": "WBC_STATE_BMT",
+        "Value_Dict": {
+            "High": 8,
+            "Moderately_low": 6,
+            "No Value": 2,
+            "Normal": 4
+        },
+        "TotalPatientsWithData": 20
+    },
+    {
+        "StartTime": "1992-09-01 00:00:00+00:00",
+        "EndTime": "1992-10-01 00:00:00+00:00",
+        "ConceptName": "WBC_STATE_BMT",
+        "Value_Dict": {
+            "High": 4,
+            "Moderately_low": 6,
+            "No Value": 3,
+            "Normal": 7
+        },
+        "TotalPatientsWithData": 20
+    },
+    {
+        "StartTime": "1992-10-01 00:00:00+00:00",
+        "EndTime": "1992-11-01 00:00:00+00:00",
+        "ConceptName": "WBC_STATE_BMT",
+        "Value_Dict": {
+            "High": 5,
+            "Moderately_low": 8,
+            "No Value": 0,
+            "Normal": 7
+        },
+        "TotalPatientsWithData": 20
+    },
+    {
+        "StartTime": "1992-11-01 00:00:00+00:00",
+        "EndTime": "1992-12-01 00:00:00+00:00",
+        "ConceptName": "WBC_STATE_BMT",
+        "Value_Dict": {
+            "High": 3,
+            "Moderately_low": 7,
+            "No Value": 2,
+            "Normal": 8
+        },
+        "TotalPatientsWithData": 20
+    },
+    {
+        "StartTime": "1992-12-01 00:00:00+00:00",
+        "EndTime": "1993-01-01 00:00:00+00:00",
+        "ConceptName": "WBC_STATE_BMT",
+        "Value_Dict": {
+            "High": 9,
+            "Moderately_low": 4,
+            "No Value": 0,
+            "Normal": 7
+        },
+        "TotalPatientsWithData": 20
+    },
+    {
+        "StartTime": "1993-01-01 00:00:00+00:00",
+        "EndTime": "1993-02-01 00:00:00+00:00",
+        "ConceptName": "WBC_STATE_BMT",
+        "Value_Dict": {
+            "High": 6,
+            "Moderately_low": 1,
+            "No Value": 3,
+            "Normal": 10
+        },
+        "TotalPatientsWithData": 20
+    },
+    {
+        "StartTime": "1993-02-01 00:00:00+00:00",
+        "EndTime": "1993-03-01 00:00:00+00:00",
+        "ConceptName": "WBC_STATE_BMT",
+        "Value_Dict": {
+            "High": 6,
+            "Moderately_low": 5,
+            "No Value": 2,
+            "Normal": 7
+        },
+        "TotalPatientsWithData": 20
+    },
+    {
+        "StartTime": "1993-03-01 00:00:00+00:00",
+        "EndTime": "1993-04-01 00:00:00+00:00",
+        "ConceptName": "WBC_STATE_BMT",
+        "Value_Dict": {
+            "High": 4,
+            "Moderately_low": 4,
+            "No Value": 2,
+            "Normal": 10
+        },
+        "TotalPatientsWithData": 20
+    },
+    {
+        "StartTime": "1993-04-01 00:00:00+00:00",
+        "EndTime": "1993-05-01 00:00:00+00:00",
+        "ConceptName": "WBC_STATE_BMT",
+        "Value_Dict": {
+            "High": 8,
+            "Moderately_low": 2,
+            "No Value": 1,
+            "Normal": 9
+        },
+        "TotalPatientsWithData": 20
+    },
+    {
+        "StartTime": "1993-05-01 00:00:00+00:00",
+        "EndTime": "1993-06-01 00:00:00+00:00",
+        "ConceptName": "WBC_STATE_BMT",
+        "Value_Dict": {
+            "High": 5,
+            "Moderately_low": 8,
+            "No Value": 3,
+            "Normal": 4
+        },
+        "TotalPatientsWithData": 20
+    },
+    {
+        "StartTime": "1993-06-01 00:00:00+00:00",
+        "EndTime": "1993-07-01 00:00:00+00:00",
+        "ConceptName": "WBC_STATE_BMT",
+        "Value_Dict": {
+            "High": 3,
+            "Moderately_low": 11,
+            "No Value": 0,
+            "Normal": 6
+        },
+        "TotalPatientsWithData": 20
+    },
+    {
+        "StartTime": "1993-07-01 00:00:00+00:00",
+        "EndTime": "1993-08-01 00:00:00+00:00",
+        "ConceptName": "WBC_STATE_BMT",
+        "Value_Dict": {
+            "High": 6,
+            "Moderately_low": 4,
+            "No Value": 3,
+            "Normal": 7
+        },
+        "TotalPatientsWithData": 20
+    },
+    {
+        "StartTime": "1993-08-01 00:00:00+00:00",
+        "EndTime": "1993-09-01 00:00:00+00:00",
+        "ConceptName": "WBC_STATE_BMT",
+        "Value_Dict": {
+            "High": 3,
+            "Moderately_low": 10,
+            "No Value": 1,
+            "Normal": 6
+        },
+        "TotalPatientsWithData": 20
+    },
+    {
+        "StartTime": "1993-09-01 00:00:00+00:00",
+        "EndTime": "1993-10-01 00:00:00+00:00",
+        "ConceptName": "WBC_STATE_BMT",
+        "Value_Dict": {
+            "High": 6,
+            "Moderately_low": 7,
+            "No Value": 0,
+            "Normal": 7
+        },
+        "TotalPatientsWithData": 20
+    },
+    {
+        "StartTime": "1993-10-01 00:00:00+00:00",
+        "EndTime": "1993-11-01 00:00:00+00:00",
+        "ConceptName": "WBC_STATE_BMT",
+        "Value_Dict": {
+            "High": 8,
+            "Moderately_low": 8,
+            "No Value": 0,
+            "Normal": 4
+        },
+        "TotalPatientsWithData": 20
+    },
+    {
+        "StartTime": "1993-11-01 00:00:00+00:00",
+        "EndTime": "1993-12-01 00:00:00+00:00",
+        "ConceptName": "WBC_STATE_BMT",
+        "Value_Dict": {
+            "High": 9,
+            "Moderately_low": 5,
+            "No Value": 0,
+            "Normal": 6
+        },
+        "TotalPatientsWithData": 20
+    },
+    {
+        "StartTime": "1993-12-01 00:00:00+00:00",
+        "EndTime": "1994-01-01 00:00:00+00:00",
+        "ConceptName": "WBC_STATE_BMT",
+        "Value_Dict": {
+            "High": 8,
+            "Moderately_low": 8,
+            "No Value": 1,
+            "Normal": 3
+        },
+        "TotalPatientsWithData": 20
+    },
+    {
+        "StartTime": "1994-01-01 00:00:00+00:00",
+        "EndTime": "1994-02-01 00:00:00+00:00",
+        "ConceptName": "WBC_STATE_BMT",
+        "Value_Dict": {
+            "High": 6,
+            "Moderately_low": 8,
+            "No Value": 0,
+            "Normal": 6
+        },
+        "TotalPatientsWithData": 20
+    },
+    {
+        "StartTime": "1994-02-01 00:00:00+00:00",
+        "EndTime": "1994-03-01 00:00:00+00:00",
+        "ConceptName": "WBC_STATE_BMT",
+        "Value_Dict": {
+            "High": 6,
+            "Moderately_low": 8,
+            "No Value": 1,
+            "Normal": 5
+        },
+        "TotalPatientsWithData": 20
+    },
+    {
+        "StartTime": "1994-03-01 00:00:00+00:00",
+        "EndTime": "1994-04-01 00:00:00+00:00",
+        "ConceptName": "WBC_STATE_BMT",
+        "Value_Dict": {
+            "High": 2,
+            "Moderately_low": 9,
+            "No Value": 3,
+            "Normal": 6
+        },
+        "TotalPatientsWithData": 20
+    },
+    {
+        "StartTime": "1994-04-01 00:00:00+00:00",
+        "EndTime": "1994-05-01 00:00:00+00:00",
+        "ConceptName": "WBC_STATE_BMT",
+        "Value_Dict": {
+            "High": 6,
+            "Moderately_low": 7,
+            "No Value": 1,
+            "Normal": 6
+        },
+        "TotalPatientsWithData": 20
+    },
+    {
+        "StartTime": "1994-05-01 00:00:00+00:00",
+        "EndTime": "1994-06-01 00:00:00+00:00",
+        "ConceptName": "WBC_STATE_BMT",
+        "Value_Dict": {
+            "High": 3,
+            "Moderately_low": 6,
+            "No Value": 1,
+            "Normal": 10
+        },
+        "TotalPatientsWithData": 20
+    },
+    {
+        "StartTime": "1994-06-01 00:00:00+00:00",
+        "EndTime": "1994-07-01 00:00:00+00:00",
+        "ConceptName": "WBC_STATE_BMT",
+        "Value_Dict": {
+            "High": 7,
+            "Moderately_low": 6,
+            "No Value": 2,
+            "Normal": 5
+        },
+        "TotalPatientsWithData": 20
+    },
+    {
+        "StartTime": "1994-07-01 00:00:00+00:00",
+        "EndTime": "1994-08-01 00:00:00+00:00",
+        "ConceptName": "WBC_STATE_BMT",
+        "Value_Dict": {
+            "High": 6,
+            "Moderately_low": 9,
+            "No Value": 2,
+            "Normal": 3
+        },
+        "TotalPatientsWithData": 20
+    },
+    {
+        "StartTime": "1994-08-01 00:00:00+00:00",
+        "EndTime": "1994-09-01 00:00:00+00:00",
+        "ConceptName": "WBC_STATE_BMT",
+        "Value_Dict": {
+            "High": 4,
+            "Moderately_low": 6,
+            "No Value": 1,
+            "Normal": 9
+        },
+        "TotalPatientsWithData": 20
+    },
+    {
+        "StartTime": "1994-09-01 00:00:00+00:00",
+        "EndTime": "1994-10-01 00:00:00+00:00",
+        "ConceptName": "WBC_STATE_BMT",
+        "Value_Dict": {
+            "High": 4,
+            "Moderately_low": 8,
+            "No Value": 1,
+            "Normal": 7
+        },
+        "TotalPatientsWithData": 20
+    },
+    {
+        "StartTime": "1994-10-01 00:00:00+00:00",
+        "EndTime": "1994-11-01 00:00:00+00:00",
+        "ConceptName": "WBC_STATE_BMT",
+        "Value_Dict": {
+            "High": 8,
+            "Moderately_low": 2,
+            "No Value": 1,
+            "Normal": 9
+        },
+        "TotalPatientsWithData": 20
+    },
+    {
+        "StartTime": "1994-11-01 00:00:00+00:00",
+        "EndTime": "1994-12-01 00:00:00+00:00",
+        "ConceptName": "WBC_STATE_BMT",
+        "Value_Dict": {
+            "High": 6,
+            "Moderately_low": 5,
+            "No Value": 2,
+            "Normal": 7
+        },
+        "TotalPatientsWithData": 20
+    },
+    {
+        "StartTime": "1994-12-01 00:00:00+00:00",
+        "EndTime": "1995-01-01 00:00:00+00:00",
+        "ConceptName": "WBC_STATE_BMT",
+        "Value_Dict": {
+            "High": 7,
+            "Moderately_low": 5,
+            "No Value": 2,
+            "Normal": 6
+        },
+        "TotalPatientsWithData": 20
+    },
+    {
+        "StartTime": "1995-01-01 00:00:00+00:00",
+        "EndTime": "1995-02-01 00:00:00+00:00",
+        "ConceptName": "WBC_STATE_BMT",
+        "Value_Dict": {
+            "High": 0,
+            "Moderately_low": 1,
+            "No Value": 19,
+            "Normal": 0
+        },
+        "TotalPatientsWithData": 20
+    }
+]
