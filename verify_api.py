@@ -27,7 +27,7 @@ def run_verification():
     print("Verifying Transformation Endpoint...")
     trans_payload = {
         "data": generated_data,
-        "interval_str": "M",
+        "interval_str": "ME",
         "method": "most_time_spent"
     }
     try:
@@ -46,7 +46,7 @@ def run_verification():
         "concept_name": "TestConcept",
         "start_date": "2020-01-01T00:00:00",
         "end_date": "2021-12-31T23:59:59",
-        "interval_str": "M",     # Valid Literal
+        "interval_str": "ME",     # Valid Literal
         "method": "most_time_spent" # Valid Literal
     }
     try:

@@ -5,7 +5,7 @@ from app.models.schemas import PatientEvent, IntervalRecord, TransformationReque
 
 class IntervalTransformationService:
     @staticmethod
-    def transform_to_intervals(events: List[PatientEvent], interval_str: str = 'W-MON', method: str = 'most_time_spent') -> List[IntervalRecord]:
+    def transform_to_intervals(events: List[PatientEvent], interval_str: str = 'ME', method: str = 'most_time_spent') -> List[IntervalRecord]:
         
         if not events:
             return []

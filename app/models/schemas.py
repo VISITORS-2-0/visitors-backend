@@ -38,7 +38,7 @@ class GenerationRequest(BaseModel):
 
 class TransformationRequest(BaseModel):
     data: List[PatientEvent]
-    interval_str: Literal['W-MON', 'M', 'MS', 'D'] = "W-MON"
+    interval_str: Literal['D', 'W-SUN', 'ME', 'YE'] = "ME"
     method: Literal['most_time_spent'] = "most_time_spent"
 
 class SummaryRequest(BaseModel):
@@ -62,5 +62,5 @@ class MultiplePatientsAbstractionRequest(BaseModel):
     end_date: datetime = datetime(1994, 12, 31)
     
     # Transformation Params
-    interval_str: Literal['W-MON', 'M', 'MS', 'D'] = "W-MON"
+    interval_str: Literal['D', 'W-SUN', 'ME', 'YE'] = "ME"
     method: Literal['most_time_spent'] = "most_time_spent"
