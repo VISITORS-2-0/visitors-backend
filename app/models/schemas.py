@@ -35,6 +35,8 @@ class GenerationRequest(BaseModel):
     concept_name: str = "WBC_STATE_BMT"
     start_date: datetime = datetime(1991, 1, 1)
     end_date: datetime = datetime(1994, 12, 31)
+    min_value: Optional[float] = 0.0
+    max_value: Optional[float] = 100.0
 
 class TransformationRequest(BaseModel):
     data: List[PatientEvent]
@@ -60,6 +62,8 @@ class MultiplePatientsAbstractionRequest(BaseModel):
     concept_name: str = "WBC_STATE_BMT"
     start_date: datetime = datetime(1991, 1, 1)
     end_date: datetime = datetime(1994, 12, 31)
+    min_value: Optional[float] = 0.0
+    max_value: Optional[float] = 100.0
     
     # Transformation Params
     interval_str: Literal['D', 'W-SUN', 'ME', 'YE'] = "ME"

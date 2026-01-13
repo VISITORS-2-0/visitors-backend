@@ -19,12 +19,29 @@ class DataGeneratorService:
             request.start_date,
             request.end_date,
             tuple(values),
-            request.concept_name
+            request.concept_name,
+            request.min_value,
+            request.max_value,
+            allow_numeric=False # Strict: only use values
+        )
+
+    @staticmethod
+    def generate_numeric_data(request: GenerationRequest) -> List[PatientEvent]:
+        # Skip DB lookup, pass empty values tuple to enforce numeric generation
+        return DataGeneratorService._generate_cached(
+            request.num_patients,
+            request.start_date,
+            request.end_date,
+            (), # empty values
+            request.concept_name,
+            request.min_value,
+            request.max_value,
+            allow_numeric=True # Allow numeric generation
         )
 
     @staticmethod
     @lru_cache(maxsize=32)
-    def _generate_cached(num_patients: int, start_date: datetime, end_date: datetime, values: tuple, concept_name: str) -> List[PatientEvent]:
+    def _generate_cached(num_patients: int, start_date: datetime, end_date: datetime, values: tuple, concept_name: str, min_value: float = 0.0, max_value: float = 100.0, allow_numeric: bool = False) -> List[PatientEvent]:
         new_data = []
 
         total_seconds = int((end_date - start_date).total_seconds())
@@ -50,7 +67,15 @@ class DataGeneratorService:
                 if end_time > end_date:
                     end_time = end_date
                 
-                val = random.choice(values)
+                if values:
+                    val = random.choice(values)
+                elif allow_numeric:
+                    # Generate numeric value
+                    val = round(random.uniform(min_value, max_value), 2)
+                else:
+                    # Original behavior: crash/error if no values available and not allowed to generate numeric
+                    # We'll raise a clear error to break out
+                    raise ValueError(f"No allowed values found for concept '{concept_name}' and numeric generation is disabled.")
                 
                 new_data.append(PatientEvent(
                     StartTime=current_time,

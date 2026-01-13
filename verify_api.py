@@ -62,6 +62,20 @@ def run_verification():
             pass
         sys.exit(1)
 
+    print("Verifying Multiple Patients Raw Data Endpoint...")
+    try:
+        resp = requests.post(f"{BASE_URL}/mult-patients-abstraction/raw", json=orch_payload)
+        resp.raise_for_status()
+        raw_events = resp.json()
+        print(f"Raw Data Generation success! Generated {len(raw_events)} raw events.")
+    except Exception as e:
+        print(f"Raw Data Generation failed: {e}")
+        try: 
+            print(resp.text)
+        except: 
+            pass
+        sys.exit(1)
+
     print("ALL TESTS PASSED")
 
 if __name__ == "__main__":
