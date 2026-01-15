@@ -1,25 +1,17 @@
 from pydantic import BaseModel, Field
-from typing import List, Dict, Optional, Any, Literal
+from typing import List, Dict, Optional, Any, Literal, TypeVar, Generic
+
+T = TypeVar("T")
 from datetime import datetime
 
 # --- Shared Models ---
 
-class PatientEvent(BaseModel):
+# --- Shared Models ---
+
+class Record(BaseModel):
     StartTime: datetime
     EndTime: datetime
     Value: str
-    PatientID: int
-    ConceptName: str
-
-    class Config:
-         json_encoders = {
-            datetime: lambda v: v.isoformat()
-        }
-
-class IntervalRecord(BaseModel):
-    StartTime: datetime
-    EndTime: datetime
-    Value: str  # Can be 'No Value'
     PatientID: int
     ConceptName: str
 
@@ -35,18 +27,14 @@ class GenerationRequest(BaseModel):
     concept_name: str = "WBC_STATE_BMT2"
     start_date: datetime = datetime(1991, 1, 1)
     end_date: datetime = datetime(1994, 12, 31)
-    
-    # Defaults for optional summarization
-    interval_str: Literal['D', 'W-SUN', 'ME', 'YE'] = "ME"
-    method: Literal['most_time_spent'] = "most_time_spent"
 
 class TransformationRequest(BaseModel):
-    data: List[PatientEvent]
+    data: List[Record]
     interval_str: Literal['D', 'W-SUN', 'ME', 'YE'] = "ME"
     method: Literal['most_time_spent'] = "most_time_spent"
 
 class SummaryRequest(BaseModel):
-    data: List[IntervalRecord]
+    data: List[Record]
 
 class IntervalSummary(BaseModel):
     StartTime: datetime
@@ -60,10 +48,9 @@ class ConceptSchema(BaseModel):
     type: str
     allowed_values: Dict[str, Any]
 
-class SummaryResponse(BaseModel):
-    summary: List[IntervalSummary]
-    events: List[PatientEvent] = []
+class VisitorResponse(BaseModel, Generic[T]):
     concept_data: Optional[ConceptSchema] = None
+    result: T
 
 class MultiplePatientsAbstractionRequest(BaseModel):
     # Generation Params

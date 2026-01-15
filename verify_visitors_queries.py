@@ -27,15 +27,15 @@ def run_verification():
         resp = requests.post(f"{BASE_URL}/multiple-patients-abstraction", json=orch_payload)
         first_duration = time.time() - start_time
         
-        # If it succeeds, it means values existed or something unexpected happened.
-        # But we expect failure if no values exist.
         if resp.status_code == 200:
-             summary = resp.json()
-             print(f"Abstraction success! Summary length: {len(summary['summary'])}")
+             data = resp.json()
+             # Result should be List[IntervalSummary]
+             summary = data.get("result", [])
+             print(f"Abstraction success! Summary length: {len(summary)}")
              
              # Check for Concept Data
-             if 'concept_data' in summary and summary['concept_data']:
-                 c_data = summary['concept_data']
+             if 'concept_data' in data and data['concept_data']:
+                 c_data = data['concept_data']
                  print(f"Concept Data verified: Name={c_data.get('name')}, Type={c_data.get('type')}")
              else:
                  print("ERROR: concept_data missing from response!")
@@ -55,7 +55,6 @@ def run_verification():
 
         else:
              print(f"Abstraction returned status {resp.status_code} (Expected if concept is missing values).")
-             # Try to see error
              try: print(resp.json())
              except: print(resp.text)
 
@@ -63,7 +62,6 @@ def run_verification():
         print(f"Abstraction failed as expected (or due to error): {e}")
         try: print(resp.text)
         except: pass
-        # Do not exit, continue to test raw data
 
 
     print("Verifying Visitors Queries Raw Data Endpoint (Numeric)...")
@@ -78,17 +76,20 @@ def run_verification():
         resp = requests.post(f"{BASE_URL}/raw-data", json=raw_payload)
         resp.raise_for_status()
         
-        # New structure: SummaryResponse
+        # New structure: VisitorResponse[List[Record]]
         data = resp.json()
-        raw_events = data.get("events", [])
+        raw_events = data.get("result", [])
         
         print(f"Raw Data success! Generated {len(raw_events)} events.")
         
-        # Verify Summary and Concept Data existence
-        if "summary" in data and "concept_data" in data:
-            print("Raw Data: Summary and Concept Data verified.")
+        # Verify Concept Data existence (but NO Summary)
+        if "concept_data" in data:
+            print("Raw Data: Concept Data verified.")
         else:
-            print("ERROR: Raw Data missing summary or concept_data.")
+            print("ERROR: Raw Data missing concept_data.")
+            
+        if "summary" in data:
+             print("WARNING: 'summary' field found in raw-data response, expected only result/concept_data.")
         
         # Verify values are numeric and within default range [0, 100]
         if raw_events:
@@ -127,12 +128,12 @@ def run_verification():
         resp = requests.post(f"{BASE_URL}/abstraction", json=gen_payload)
         if resp.status_code == 200:
             data = resp.json()
-            events = data.get("events", [])
+            events = data.get("result", [])
             print(f"Generation success! Generated {len(events)} events.")
-            if "summary" in data and "concept_data" in data:
-                 print("Generation: Summary and Concept Data verified.")
+            if "concept_data" in data:
+                 print("Generation: Concept Data verified.")
             else:
-                 print("ERROR: Generation missing summary or concept_data.")
+                 print("ERROR: Generation missing concept_data.")
         else:
             print(f"Generation returned status {resp.status_code} (Expected if concept is missing).")
     except Exception as e:

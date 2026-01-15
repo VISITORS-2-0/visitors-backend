@@ -2,13 +2,13 @@ import random
 from datetime import datetime, timedelta
 from typing import List
 # from functools import lru_cache
-from app.models.schemas import GenerationRequest, PatientEvent
+from app.models.schemas import GenerationRequest, Record
 from app.services.concept_manager import ConceptManager
 from app.core.cache_utils import db_cache
 
 class DataGeneratorService:
     @staticmethod
-    def generate_data(request: GenerationRequest) -> List[PatientEvent]:
+    def generate_data(request: GenerationRequest) -> List[Record]:
         # Fetch allowed values from DB (using internal session)
         concept_schema = ConceptManager.get_or_create_concept(request.concept_name)
         values = concept_schema.allowed_values.get("values", [])
@@ -27,7 +27,7 @@ class DataGeneratorService:
         )
 
     @staticmethod
-    def generate_numeric_data(request: GenerationRequest) -> List[PatientEvent]:
+    def generate_numeric_data(request: GenerationRequest) -> List[Record]:
         # Skip DB lookup, pass empty values tuple to enforce numeric generation
         return DataGeneratorService._generate_cached(
             tuple(request.patients_list),
@@ -43,7 +43,7 @@ class DataGeneratorService:
 
     @staticmethod
     @db_cache
-    def _generate_cached(patients_list: tuple, start_date: datetime, end_date: datetime, values: tuple, concept_name: str, min_value: float = 0.0, max_value: float = 100.0, allow_numeric: bool = False) -> List[PatientEvent]:
+    def _generate_cached(patients_list: tuple, start_date: datetime, end_date: datetime, values: tuple, concept_name: str, min_value: float = 0.0, max_value: float = 100.0, allow_numeric: bool = False) -> List[Record]:
         new_data = []
 
         total_seconds = int((end_date - start_date).total_seconds())
@@ -54,7 +54,7 @@ class DataGeneratorService:
             try:
                 patient_id = int(patient_id_str)
             except ValueError:
-                # If ID is not an int, we might need a workaround if PatientEvent requires int. 
+                # If ID is not an int, we might need a workaround if Record requires int. 
                 # Schema says PatientID is int. 
                 # User said "list of id str of numbers", so we assume they are convertible.
                 patient_id = hash(patient_id_str) % 100000 # Fallback or just assume int conversion per schema requirements. 
@@ -87,7 +87,7 @@ class DataGeneratorService:
                     # We'll raise a clear error to break out
                     raise ValueError(f"No allowed values found for concept '{concept_name}' and numeric generation is disabled.")
                 
-                new_data.append(PatientEvent(
+                new_data.append(Record(
                     StartTime=current_time,
                     EndTime=end_time,
                     Value=str(val),

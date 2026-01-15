@@ -1,11 +1,11 @@
 import pandas as pd
 import numpy as np
 from typing import List, Dict
-from app.models.schemas import PatientEvent, IntervalRecord, TransformationRequest
+from app.models.schemas import Record, TransformationRequest
 
 class IntervalTransformationService:
     @staticmethod
-    def transform_to_intervals(events: List[PatientEvent], interval_str: str = 'ME', method: str = 'most_time_spent') -> List[IntervalRecord]:
+    def transform_to_intervals(events: List[Record], interval_str: str = 'ME', method: str = 'most_time_spent') -> List[Record]:
         
         if not events:
             return []
@@ -67,7 +67,7 @@ class IntervalTransformationService:
                         if not durations.empty and durations.max() > 0:
                             representative_value = durations.idxmax()
                 
-                new_rows.append(IntervalRecord(
+                new_rows.append(Record(
                     StartTime=bucket_start,
                     EndTime=bucket_end,
                     Value=representative_value,

@@ -1,12 +1,12 @@
 import pandas as pd
 from typing import List
-from app.models.schemas import IntervalRecord, IntervalSummary, SummaryResponse
+from app.models.schemas import Record, IntervalSummary
 
 class SummaryService:
     @staticmethod
-    def summarize_intervals(intervals: List[IntervalRecord]) -> SummaryResponse:
+    def summarize_intervals(intervals: List[Record]) -> List[IntervalSummary]:
         if not intervals:
-            return SummaryResponse(summary=[])
+            return []
 
         data = [i.dict() for i in intervals]
         df = pd.DataFrame(data)
@@ -39,4 +39,4 @@ class SummaryService:
                 TotalPatientsWithData=total_patients
             ))
             
-        return SummaryResponse(summary=results)
+        return results
