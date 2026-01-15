@@ -31,3 +31,6 @@ env/
 # IDEs
 .vscode/
 .idea/
+
+# Database
+*.db
