@@ -32,6 +32,14 @@ def run_verification():
         if resp.status_code == 200:
              summary = resp.json()
              print(f"Abstraction success! Summary length: {len(summary['summary'])}")
+             
+             # Check for Concept Data
+             if 'concept_data' in summary and summary['concept_data']:
+                 c_data = summary['concept_data']
+                 print(f"Concept Data verified: Name={c_data.get('name')}, Type={c_data.get('type')}")
+             else:
+                 print("ERROR: concept_data missing from response!")
+             
              print(f"First request duration: {first_duration:.4f}s")
              
              # Test Caching: Send same request again
@@ -65,14 +73,22 @@ def run_verification():
         "concept_name": "TestConceptNumeric",
         "start_date": "2020-01-01T00:00:00",
         "end_date": "2021-12-31T23:59:59"
-        # min_value/max_value removed
-        # interval_str/method removed (GenerationRequest)
     }
     try:
         resp = requests.post(f"{BASE_URL}/raw-data", json=raw_payload)
         resp.raise_for_status()
-        raw_events = resp.json()
+        
+        # New structure: SummaryResponse
+        data = resp.json()
+        raw_events = data.get("events", [])
+        
         print(f"Raw Data success! Generated {len(raw_events)} events.")
+        
+        # Verify Summary and Concept Data existence
+        if "summary" in data and "concept_data" in data:
+            print("Raw Data: Summary and Concept Data verified.")
+        else:
+            print("ERROR: Raw Data missing summary or concept_data.")
         
         # Verify values are numeric and within default range [0, 100]
         if raw_events:
@@ -109,10 +125,14 @@ def run_verification():
     }
     try:
         resp = requests.post(f"{BASE_URL}/abstraction", json=gen_payload)
-        # This uses standard generation, so it might fail if concept doesn't exist (strict mode)
         if resp.status_code == 200:
-            events = resp.json()
+            data = resp.json()
+            events = data.get("events", [])
             print(f"Generation success! Generated {len(events)} events.")
+            if "summary" in data and "concept_data" in data:
+                 print("Generation: Summary and Concept Data verified.")
+            else:
+                 print("ERROR: Generation missing summary or concept_data.")
         else:
             print(f"Generation returned status {resp.status_code} (Expected if concept is missing).")
     except Exception as e:

@@ -3,11 +3,7 @@ from typing import Dict, Any
 from pydantic import BaseModel
 from app.core.database import SessionLocal
 from app.models.concept import Concept
-
-class ConceptSchema(BaseModel):
-    name: str
-    type: str
-    allowed_values: Dict[str, Any]
+from app.models.schemas import ConceptSchema
 
 class ConceptManager:
     @staticmethod

@@ -1,5 +1,6 @@
 from fastapi import APIRouter
-from app.services.concept_manager import ConceptManager, ConceptSchema
+from app.services.concept_manager import ConceptManager
+from app.models.schemas import ConceptSchema
 
 router = APIRouter()
 
