@@ -1,0 +1,5073 @@
+{
+    "menu": {
+        "RawConcept": [
+            {
+                "name": "BASAL_BITZUA_DOSAGE",
+                "type": "raw-numeric",
+                "id": "6701",
+                "description": "String"
+            },
+            {
+                "name": "BASAL_BITZUA_FREQUENCY",
+                "type": "raw-nominal",
+                "id": "6702",
+                "description": "String"
+            },
+            {
+                "name": "BloodSugar",
+                "type": "raw-numeric",
+                "id": "20010",
+                "description": "String"
+            },
+            {
+                "name": "Treatment",
+                "type": "raw-boolean",
+                "id": "20011"
+            },
+            {
+                "name": "Alcohol_Use",
+                "type": "raw-nominal",
+                "id": "47"
+            },
+            {
+                "name": "ALP",
+                "type": "raw-numeric",
+                "id": "23"
+            },
+            {
+                "name": "ALT",
+                "type": "raw-numeric",
+                "id": "15"
+            },
+            {
+                "name": "Anti_Phospholipid_Syndrome",
+                "type": "raw-nominal",
+                "id": "54"
+            },
+            {
+                "name": "Anti_Platelets_Drugs_chozek_hachomer",
+                "type": "raw-nominal",
+                "id": "644",
+                "description": "String"
+            },
+            {
+                "name": "Anti_Platelets_Drugs_daily_dos",
+                "type": "raw-numeric",
+                "id": "646",
+                "description": "String"
+            },
+            {
+                "name": "Anti_Platelets_Drugs_factor_daily_dos",
+                "type": "raw-numeric",
+                "id": "645",
+                "description": "String"
+            },
+            {
+                "name": "Anti_Platelets_Drugs_kamot",
+                "type": "raw-numeric",
+                "id": "647",
+                "description": "String"
+            },
+            {
+                "name": "Anti_Platelets_Drugs_makat_parit",
+                "type": "raw-numeric",
+                "id": "642",
+                "description": "String"
+            },
+            {
+                "name": "Anti_Platelets_Drugs_teur_atc5",
+                "type": "raw-nominal",
+                "id": "643",
+                "description": "String"
+            },
+            {
+                "name": "Apixaban_chozek_hachomer",
+                "type": "raw-nominal",
+                "id": "620",
+                "description": "String"
+            },
+            {
+                "name": "Apixaban_daily_dos",
+                "type": "raw-numeric",
+                "id": "622",
+                "description": "String"
+            },
+            {
+                "name": "Apixaban_factor_daily_dos",
+                "type": "raw-numeric",
+                "id": "621",
+                "description": "String"
+            },
+            {
+                "name": "Apixaban_kamot",
+                "type": "raw-numeric",
+                "id": "623",
+                "description": "String"
+            },
+            {
+                "name": "Apixaban_makat_parit",
+                "type": "raw-numeric",
+                "id": "618",
+                "description": "String"
+            },
+            {
+                "name": "Apixaban_teur_atc5",
+                "type": "raw-nominal",
+                "id": "619",
+                "description": "String"
+            },
+            {
+                "name": "aPTT",
+                "type": "raw-numeric",
+                "id": "18"
+            },
+            {
+                "name": "AST",
+                "type": "raw-numeric",
+                "id": "14"
+            },
+            {
+                "name": "Bedbound",
+                "type": "raw-nominal",
+                "id": "34"
+            },
+            {
+                "name": "Bilirubin_Total",
+                "type": "raw-numeric",
+                "id": "62"
+            },
+            {
+                "name": "Birth_Year",
+                "type": "raw-numeric",
+                "id": "29"
+            },
+            {
+                "name": "Bleeding",
+                "type": "raw-nominal",
+                "id": "59"
+            },
+            {
+                "name": "Blood_Glucose",
+                "type": "raw-numeric",
+                "id": "22"
+            },
+            {
+                "name": "Blood_Pressure_Diastole",
+                "type": "raw-numeric",
+                "id": "60"
+            },
+            {
+                "name": "Blood_Pressure_Systole",
+                "type": "raw-numeric",
+                "id": "24"
+            },
+            {
+                "name": "Cancer_diagnosis_not_close",
+                "type": "raw-nominal",
+                "id": "36"
+            },
+            {
+                "name": "Cirrhosis",
+                "type": "raw-nominal",
+                "id": "38"
+            },
+            {
+                "name": "Congestive_Heart_Failure",
+                "type": "raw-nominal",
+                "id": "41"
+            },
+            {
+                "name": "Creatinine",
+                "type": "raw-numeric",
+                "id": "10"
+            },
+            {
+                "name": "Dabigatran_Etexilate_chozek_hachomer",
+                "type": "raw-nominal",
+                "id": "603",
+                "description": "String"
+            },
+            {
+                "name": "Dabigatran_Etexilate_daily_dos",
+                "type": "raw-numeric",
+                "id": "605",
+                "description": "String"
+            },
+            {
+                "name": "Dabigatran_Etexilate_factor_daily_dos",
+                "type": "raw-numeric",
+                "id": "604",
+                "description": "String"
+            },
+            {
+                "name": "Dabigatran_Etexilate_kamot",
+                "type": "raw-numeric",
+                "id": "606",
+                "description": "String"
+            },
+            {
+                "name": "Dabigatran_Etexilate_makat_parit",
+                "type": "raw-numeric",
+                "id": "601",
+                "description": "String"
+            },
+            {
+                "name": "Dabigatran_Etexilate_teur_atc5",
+                "type": "raw-nominal",
+                "id": "602",
+                "description": "String"
+            },
+            {
+                "name": "Date_Ptira",
+                "type": "raw-nominal",
+                "id": "31"
+            },
+            {
+                "name": "Demented_Patient",
+                "type": "raw-nominal",
+                "id": "33"
+            },
+            {
+                "name": "Diabetes_Mellitus",
+                "type": "raw-nominal",
+                "id": "43"
+            },
+            {
+                "name": "Edoxaban_chozek_hachomer",
+                "type": "raw-nominal",
+                "id": "628",
+                "description": "String"
+            },
+            {
+                "name": "Edoxaban_daily_dos",
+                "type": "raw-numeric",
+                "id": "630",
+                "description": "String"
+            },
+            {
+                "name": "Edoxaban_factor_daily_dos",
+                "type": "raw-numeric",
+                "id": "629",
+                "description": "String"
+            },
+            {
+                "name": "Edoxaban_kamot",
+                "type": "raw-numeric",
+                "id": "631",
+                "description": "String"
+            },
+            {
+                "name": "Edoxaban_makat_parit",
+                "type": "raw-numeric",
+                "id": "626",
+                "description": "String"
+            },
+            {
+                "name": "Edoxaban_teur_atc5",
+                "type": "raw-nominal",
+                "id": "627",
+                "description": "String"
+            },
+            {
+                "name": "eGFR",
+                "type": "raw-numeric",
+                "id": "26"
+            },
+            {
+                "name": "Falls",
+                "type": "raw-nominal",
+                "id": "49"
+            },
+            {
+                "name": "Gamma_GT",
+                "type": "raw-numeric",
+                "id": "16"
+            },
+            {
+                "name": "HbA1C",
+                "type": "raw-numeric",
+                "id": "21"
+            },
+            {
+                "name": "HCT",
+                "type": "raw-numeric",
+                "id": "4"
+            },
+            {
+                "name": "Heart_Rate",
+                "type": "raw-numeric",
+                "id": "25"
+            },
+            {
+                "name": "Height",
+                "type": "raw-numeric",
+                "id": "32"
+            },
+            {
+                "name": "Hemodyalisis",
+                "type": "raw-nominal",
+                "id": "37"
+            },
+            {
+                "name": "Hemophilia",
+                "type": "raw-nominal",
+                "id": "48"
+            },
+            {
+                "name": "HGB",
+                "type": "raw-numeric",
+                "id": "3"
+            },
+            {
+                "name": "Hypertension",
+                "type": "raw-nominal",
+                "id": "42"
+            },
+            {
+                "name": "Hypertrophic_Cardiomyopathy",
+                "type": "raw-nominal",
+                "id": "40"
+            },
+            {
+                "name": "INR",
+                "type": "raw-numeric",
+                "id": "19"
+            },
+            {
+                "name": "Ischemic_Heart_Disease",
+                "type": "raw-nominal",
+                "id": "46"
+            },
+            {
+                "name": "Ischemic_Stroke",
+                "type": "raw-nominal",
+                "id": "35"
+            },
+            {
+                "name": "Left_Ventricular_Dysfunction",
+                "type": "raw-nominal",
+                "id": "55"
+            },
+            {
+                "name": "MCH_MCHC",
+                "type": "raw-numeric",
+                "id": "6"
+            },
+            {
+                "name": "MCV",
+                "type": "raw-numeric",
+                "id": "5"
+            },
+            {
+                "name": "Mechanical_Heart_Valve",
+                "type": "raw-nominal",
+                "id": "52"
+            },
+            {
+                "name": "MI",
+                "type": "raw-nominal",
+                "id": "56"
+            },
+            {
+                "name": "MPV",
+                "type": "raw-numeric",
+                "id": "9"
+            },
+            {
+                "name": "Nontraumatic_Intracerebral_Hemorrhage",
+                "type": "raw-nominal",
+                "id": "63"
+            },
+            {
+                "name": "Nontraumatic_Subarachnoid_Hemorrhage",
+                "type": "raw-nominal",
+                "id": "64"
+            },
+            {
+                "name": "Nsaid_chozek_hachomer",
+                "type": "raw-nominal",
+                "id": "636",
+                "description": "String"
+            },
+            {
+                "name": "Nsaid_daily_dos",
+                "type": "raw-numeric",
+                "id": "638",
+                "description": "String"
+            },
+            {
+                "name": "Nsaid_factor_daily_dos",
+                "type": "raw-numeric",
+                "id": "637",
+                "description": "String"
+            },
+            {
+                "name": "Nsaid_kamot",
+                "type": "raw-numeric",
+                "id": "639",
+                "description": "String"
+            },
+            {
+                "name": "Nsaid_makat_parit",
+                "type": "raw-numeric",
+                "id": "634",
+                "description": "String"
+            },
+            {
+                "name": "Nsaid_teur_atc5",
+                "type": "raw-nominal",
+                "id": "635",
+                "description": "String"
+            },
+            {
+                "name": "Other_Nontraumatic_Hemorrhage",
+                "type": "raw-nominal",
+                "id": "65"
+            },
+            {
+                "name": "Peptic_Ulcer",
+                "type": "raw-nominal",
+                "id": "39"
+            },
+            {
+                "name": "PLT",
+                "type": "raw-numeric",
+                "id": "8"
+            },
+            {
+                "name": "Potassium",
+                "type": "raw-numeric",
+                "id": "13"
+            },
+            {
+                "name": "PT",
+                "type": "raw-numeric",
+                "id": "17"
+            },
+            {
+                "name": "PVD",
+                "type": "raw-nominal",
+                "id": "57"
+            },
+            {
+                "name": "RBC",
+                "type": "raw-numeric",
+                "id": "2"
+            },
+            {
+                "name": "RDW",
+                "type": "raw-numeric",
+                "id": "7"
+            },
+            {
+                "name": "Rivaroxaban_chozek_hachomer",
+                "type": "raw-nominal",
+                "id": "612",
+                "description": "String"
+            },
+            {
+                "name": "Rivaroxaban_daily_dos",
+                "type": "raw-numeric",
+                "id": "614",
+                "description": "String"
+            },
+            {
+                "name": "Rivaroxaban_factor_daily_dos",
+                "type": "raw-numeric",
+                "id": "613",
+                "description": "String"
+            },
+            {
+                "name": "Rivaroxaban_kamot",
+                "type": "raw-numeric",
+                "id": "615",
+                "description": "String"
+            },
+            {
+                "name": "Rivaroxaban_makat_parit",
+                "type": "raw-numeric",
+                "id": "610",
+                "description": "String"
+            },
+            {
+                "name": "Rivaroxaban_teur_atc5",
+                "type": "raw-nominal",
+                "id": "611",
+                "description": "String"
+            },
+            {
+                "name": "Severe_Mitral_Stenosis",
+                "type": "raw-nominal",
+                "id": "53"
+            },
+            {
+                "name": "Sex",
+                "type": "raw-nominal",
+                "id": "28"
+            },
+            {
+                "name": "Smoking",
+                "type": "raw-nominal",
+                "id": "50"
+            },
+            {
+                "name": "Sodium",
+                "type": "raw-numeric",
+                "id": "12"
+            },
+            {
+                "name": "Start_AF_Diagnosis",
+                "type": "raw-nominal",
+                "id": "30"
+            },
+            {
+                "name": "Stroke",
+                "type": "raw-nominal",
+                "id": "58"
+            },
+            {
+                "name": "TIA",
+                "type": "raw-nominal",
+                "id": "44"
+            },
+            {
+                "name": "TSH",
+                "type": "raw-numeric",
+                "id": "20"
+            },
+            {
+                "name": "Urea",
+                "type": "raw-numeric",
+                "id": "11"
+            },
+            {
+                "name": "Vascular_Disease",
+                "type": "raw-nominal",
+                "id": "45"
+            },
+            {
+                "name": "Visit",
+                "type": "raw-nominal",
+                "id": "61"
+            },
+            {
+                "name": "Von_Willebrand's_Disease",
+                "type": "raw-nominal",
+                "id": "51"
+            },
+            {
+                "name": "WBC",
+                "type": "raw-numeric",
+                "id": "1"
+            },
+            {
+                "name": "Weight",
+                "type": "raw-numeric",
+                "id": "27"
+            },
+            {
+                "name": "Year_of_Family_DR_Visit",
+                "type": "raw-numeric",
+                "id": "66"
+            },
+            {
+                "name": "WBC Count",
+                "type": "raw-numeric",
+                "id": "1"
+            },
+            {
+                "name": "Age",
+                "type": "raw-numeric",
+                "id": "10695",
+                "description": "String"
+            },
+            {
+                "name": "Albumin",
+                "type": "raw-numeric",
+                "id": "10703",
+                "description": "String"
+            },
+            {
+                "name": "Biafine_BITZUA",
+                "type": "raw-nominal",
+                "id": "10789",
+                "description": "String"
+            },
+            {
+                "name": "Biafine_HORAA",
+                "type": "raw-nominal",
+                "id": "10788",
+                "description": "String"
+            },
+            {
+                "name": "Biafine_TEUD",
+                "type": "raw-nominal",
+                "id": "10790",
+                "description": "String"
+            },
+            {
+                "name": "Blood_Disease",
+                "type": "raw-nominal",
+                "id": "10702",
+                "description": "String"
+            },
+            {
+                "name": "BURN_CARE_BITZUA",
+                "type": "raw-nominal",
+                "id": "10773",
+                "description": "String"
+            },
+            {
+                "name": "BURN_CARE_HORAA",
+                "type": "raw-nominal",
+                "id": "10772",
+                "description": "String"
+            },
+            {
+                "name": "BURN_CARE_TEUD",
+                "type": "raw-nominal",
+                "id": "10767",
+                "description": "String"
+            },
+            {
+                "name": "Change_Possition_BITZUA",
+                "type": "raw-nominal",
+                "id": "10879",
+                "description": "String"
+            },
+            {
+                "name": "Change_Possition_HORAA",
+                "type": "raw-nominal",
+                "id": "10878",
+                "description": "String"
+            },
+            {
+                "name": "Current_functional_status",
+                "type": "raw-nominal",
+                "id": "10699",
+                "description": "String"
+            },
+            {
+                "name": "Department",
+                "type": "raw-nominal",
+                "id": "10872",
+                "description": "String"
+            },
+            {
+                "name": "Dermagran_B_BITZUA",
+                "type": "raw-nominal",
+                "id": "10768",
+                "description": "String"
+            },
+            {
+                "name": "Dermagran_B_HORAA",
+                "type": "raw-nominal",
+                "id": "10774",
+                "description": "String"
+            },
+            {
+                "name": "Dermagran_B_TEUD",
+                "type": "raw-nominal",
+                "id": "10783",
+                "description": "String"
+            },
+            {
+                "name": "Diabetes",
+                "type": "raw-nominal",
+                "id": "10701",
+                "description": "String"
+            },
+            {
+                "name": "Dietitian_Consulting_HAFNAYA",
+                "type": "raw-nominal",
+                "id": "10728",
+                "description": "String"
+            },
+            {
+                "name": "Dietitian_Consulting_YEUTZ",
+                "type": "raw-nominal",
+                "id": "10729",
+                "description": "String"
+            },
+            {
+                "name": "Discharge_letter_doctor",
+                "type": "raw-nominal",
+                "id": "10741",
+                "description": "String"
+            },
+            {
+                "name": "Discharge_letter_nurse",
+                "type": "raw-nominal",
+                "id": "10742",
+                "description": "String"
+            },
+            {
+                "name": "Gauze_Paraffin_BITZUA",
+                "type": "raw-nominal",
+                "id": "10770",
+                "description": "String"
+            },
+            {
+                "name": "Gauze_Paraffin_HORAA",
+                "type": "raw-nominal",
+                "id": "10769",
+                "description": "String"
+            },
+            {
+                "name": "Gauze_Paraffin_TEUD",
+                "type": "raw-nominal",
+                "id": "10771",
+                "description": "String"
+            },
+            {
+                "name": "Hadracha_BITZUA",
+                "type": "raw-nominal",
+                "id": "10876",
+                "description": "String"
+            },
+            {
+                "name": "Hadracha_Discharge",
+                "type": "raw-nominal",
+                "id": "10887",
+                "description": "String"
+            },
+            {
+                "name": "Hadracha_HORAA",
+                "type": "raw-nominal",
+                "id": "10875",
+                "description": "String"
+            },
+            {
+                "name": "Hadracha_TEUD",
+                "type": "raw-nominal",
+                "id": "10874",
+                "description": "String"
+            },
+            {
+                "name": "Havishat_Colgen_BITZUA",
+                "type": "raw-nominal",
+                "id": "10813",
+                "description": "String"
+            },
+            {
+                "name": "Havishat_Colgen_HORAA",
+                "type": "raw-nominal",
+                "id": "10812",
+                "description": "String"
+            },
+            {
+                "name": "Havishat_Colgen_TEUD",
+                "type": "raw-nominal",
+                "id": "10814",
+                "description": "String"
+            },
+            {
+                "name": "HAVISHA_MENIA_BITZUA",
+                "type": "raw-nominal",
+                "id": "10891",
+                "description": "String"
+            },
+            {
+                "name": "HAVISHA_MENIA_HORAA",
+                "type": "raw-nominal",
+                "id": "10890",
+                "description": "String"
+            },
+            {
+                "name": "HAVISHA_MENIA_TEUD",
+                "type": "raw-nominal",
+                "id": "10892",
+                "description": "String"
+            },
+            {
+                "name": "Havisha_Treatment_BITZUA",
+                "type": "raw-nominal",
+                "id": "10737",
+                "description": "String"
+            },
+            {
+                "name": "Havisha_Treatment_HORAA",
+                "type": "raw-nominal",
+                "id": "10735",
+                "description": "String"
+            },
+            {
+                "name": "Havisha_Treatment_TEUD",
+                "type": "raw-nominal",
+                "id": "10736",
+                "description": "String"
+            },
+            {
+                "name": "Havishot_Kesef_AND_Nogdei_Reiach_BITZUA",
+                "type": "raw-nominal",
+                "id": "10810",
+                "description": "String"
+            },
+            {
+                "name": "Havishot_Kesef_AND_Nogdei_Reiach_HORAA",
+                "type": "raw-nominal",
+                "id": "10809",
+                "description": "String"
+            },
+            {
+                "name": "Havishot_Kesef_AND_Nogdei_Reiach_TEUD",
+                "type": "raw-nominal",
+                "id": "10811",
+                "description": "String"
+            },
+            {
+                "name": "Havishot_Kesef_BITZUA",
+                "type": "raw-nominal",
+                "id": "10807",
+                "description": "String"
+            },
+            {
+                "name": "Havishot_Kesef_HORAA",
+                "type": "raw-nominal",
+                "id": "10806",
+                "description": "String"
+            },
+            {
+                "name": "Havishot_Kesef_TEUD",
+                "type": "raw-nominal",
+                "id": "10808",
+                "description": "String"
+            },
+            {
+                "name": "Havishot_Ketzef_BITZUA",
+                "type": "raw-nominal",
+                "id": "10804",
+                "description": "String"
+            },
+            {
+                "name": "Havishot_Ketzef_HORAA",
+                "type": "raw-nominal",
+                "id": "10803",
+                "description": "String"
+            },
+            {
+                "name": "Havishot_Ketzef_TEUD",
+                "type": "raw-nominal",
+                "id": "10805",
+                "description": "String"
+            },
+            {
+                "name": "Havishot_Sofhot_BITZUA",
+                "type": "raw-nominal",
+                "id": "10801",
+                "description": "String"
+            },
+            {
+                "name": "Havishot_Sofhot_HORAA",
+                "type": "raw-nominal",
+                "id": "10800",
+                "description": "String"
+            },
+            {
+                "name": "Havishot_Sofhot_TEUD",
+                "type": "raw-nominal",
+                "id": "10802",
+                "description": "String"
+            },
+            {
+                "name": "Hydrocolloid_BITZUA",
+                "type": "raw-nominal",
+                "id": "10786",
+                "description": "String"
+            },
+            {
+                "name": "Hydrocolloid_HORAA",
+                "type": "raw-nominal",
+                "id": "10785",
+                "description": "String"
+            },
+            {
+                "name": "Hydrocolloid_TEUD",
+                "type": "raw-nominal",
+                "id": "10787",
+                "description": "String"
+            },
+            {
+                "name": "HYDROGEL_BITZUA",
+                "type": "raw-nominal",
+                "id": "10792",
+                "description": "String"
+            },
+            {
+                "name": "HYDROGEL_HORAA",
+                "type": "raw-nominal",
+                "id": "10791",
+                "description": "String"
+            },
+            {
+                "name": "HYDROGEL_TEUD",
+                "type": "raw-nominal",
+                "id": "10793",
+                "description": "String"
+            },
+            {
+                "name": "Ishpuz_Duration",
+                "type": "raw-nominal",
+                "id": "10922",
+                "description": "String"
+            },
+            {
+                "name": "Laydown_Angle_BITZUA",
+                "type": "raw-nominal",
+                "id": "10726",
+                "description": "String"
+            },
+            {
+                "name": "Laydown_Angle_HORAA",
+                "type": "raw-nominal",
+                "id": "10725",
+                "description": "String"
+            },
+            {
+                "name": "LEGS_UP_BITZUA",
+                "type": "raw-nominal",
+                "id": "10717",
+                "description": "String"
+            },
+            {
+                "name": "LEGS_UP_HORAA",
+                "type": "raw-nominal",
+                "id": "10871",
+                "description": "String"
+            },
+            {
+                "name": "MUST",
+                "type": "raw-numeric",
+                "id": "10877",
+                "description": "String"
+            },
+            {
+                "name": "Nacl_0.9_%_BITZUA",
+                "type": "raw-nominal",
+                "id": "10775",
+                "description": "String"
+            },
+            {
+                "name": "Nacl_0.9_%_HORAA",
+                "type": "raw-nominal",
+                "id": "10776",
+                "description": "String"
+            },
+            {
+                "name": "Nacl_0.9_%_TEUD",
+                "type": "raw-nominal",
+                "id": "10781",
+                "description": "String"
+            },
+            {
+                "name": "Norton_Scale",
+                "type": "raw-numeric",
+                "id": "10706",
+                "description": "String"
+            },
+            {
+                "name": "NORTON_TEUD",
+                "type": "raw-numeric",
+                "id": "10713",
+                "description": "String"
+            },
+            {
+                "name": "Nutrition_Diatition",
+                "type": "raw-nominal",
+                "id": "10705",
+                "description": "String"
+            },
+            {
+                "name": "Nutrition_Nurse",
+                "type": "raw-numeric",
+                "id": "10704",
+                "description": "String"
+            },
+            {
+                "name": "Occupetional_Theraphy",
+                "type": "raw-nominal",
+                "id": "10730",
+                "description": "String"
+            },
+            {
+                "name": "Open_Gilayon",
+                "type": "raw-nominal",
+                "id": "10693",
+                "description": "String"
+            },
+            {
+                "name": "Pain_level",
+                "type": "raw-numeric",
+                "id": "10700",
+                "description": "String"
+            },
+            {
+                "name": "Pain_level_BITZUA",
+                "type": "raw-nominal",
+                "id": "10710",
+                "description": "String"
+            },
+            {
+                "name": "Pain_level_HORAA",
+                "type": "raw-nominal",
+                "id": "10711",
+                "description": "String"
+            },
+            {
+                "name": "Pain_level_TEUD",
+                "type": "raw-numeric",
+                "id": "10709",
+                "description": "String"
+            },
+            {
+                "name": "Pasta_baby_BITZUA",
+                "type": "raw-nominal",
+                "id": "10777",
+                "description": "String"
+            },
+            {
+                "name": "Pasta_baby_HORAA",
+                "type": "raw-nominal",
+                "id": "10763",
+                "description": "String"
+            },
+            {
+                "name": "Pasta_baby_TEUD",
+                "type": "raw-nominal",
+                "id": "10784",
+                "description": "String"
+            },
+            {
+                "name": "Petza_Close",
+                "type": "raw-numeric",
+                "id": "10912",
+                "description": "String"
+            },
+            {
+                "name": "Pressure_Pizur",
+                "type": "raw-nominal",
+                "id": "10727",
+                "description": "String"
+            },
+            {
+                "name": "Pressure_Ulcer_Change",
+                "type": "raw-nominal",
+                "id": "10886",
+                "description": "String"
+            },
+            {
+                "name": "Pressure_Ulcer_Color",
+                "type": "raw-nominal",
+                "id": "10817",
+                "description": "String"
+            },
+            {
+                "name": "Pressure_Ulcer_Depth",
+                "type": "raw-numeric",
+                "id": "10885",
+                "description": "String"
+            },
+            {
+                "name": "Pressure_Ulcer_Diagnosis",
+                "type": "raw-nominal",
+                "id": "10708",
+                "description": "String"
+            },
+            {
+                "name": "Pressure_Ulcer_DOCTOR_VISIT",
+                "type": "raw-nominal",
+                "id": "10740",
+                "description": "String"
+            },
+            {
+                "name": "Pressure_Ulcer_Hafrasha_Amount",
+                "type": "raw-nominal",
+                "id": "10818",
+                "description": "String"
+            },
+            {
+                "name": "Pressure_Ulcer_Hafrasha_Type",
+                "type": "raw-nominal",
+                "id": "10819",
+                "description": "String"
+            },
+            {
+                "name": "Pressure_Ulcer_Infection",
+                "type": "raw-nominal",
+                "id": "10882",
+                "description": "String"
+            },
+            {
+                "name": "Pressure_Ulcer_Length",
+                "type": "raw-numeric",
+                "id": "10883",
+                "description": "String"
+            },
+            {
+                "name": "Pressure_Ulcer_NURSE_VISIT",
+                "type": "raw-nominal",
+                "id": "10739",
+                "description": "String"
+            },
+            {
+                "name": "Pressure_Ulcer_Position",
+                "type": "raw-nominal",
+                "id": "10816",
+                "description": "String"
+            },
+            {
+                "name": "Pressure_Ulcer_Rank",
+                "type": "raw-nominal",
+                "id": "10820",
+                "description": "String"
+            },
+            {
+                "name": "Pressure_Ulcer_Smell",
+                "type": "raw-nominal",
+                "id": "10734",
+                "description": "String"
+            },
+            {
+                "name": "Pressure_Ulcer_VISIT_SIGNITURE",
+                "type": "raw-nominal",
+                "id": "10738",
+                "description": "String"
+            },
+            {
+                "name": "Pressure_Ulcer_Width",
+                "type": "raw-numeric",
+                "id": "10884",
+                "description": "String"
+            },
+            {
+                "name": "Prev_functional_status",
+                "type": "raw-nominal",
+                "id": "10698",
+                "description": "String"
+            },
+            {
+                "name": "Ptira_Diagnosis",
+                "type": "raw-nominal",
+                "id": "10888",
+                "description": "String"
+            },
+            {
+                "name": "Ptira_letter",
+                "type": "raw-nominal",
+                "id": "10744",
+                "description": "String"
+            },
+            {
+                "name": "Release_Date",
+                "type": "raw-nominal",
+                "id": "10913",
+                "description": "String"
+            },
+            {
+                "name": "Report_Physician",
+                "type": "raw-nominal",
+                "id": "10732",
+                "description": "String"
+            },
+            {
+                "name": "Send_Information_To_Outpatient",
+                "type": "raw-nominal",
+                "id": "10743",
+                "description": "String"
+            },
+            {
+                "name": "Shemen_Zait_BITZUA",
+                "type": "raw-nominal",
+                "id": "10764",
+                "description": "String"
+            },
+            {
+                "name": "Shemen_Zait_HORAA",
+                "type": "raw-nominal",
+                "id": "10780",
+                "description": "String"
+            },
+            {
+                "name": "Shemen_Zait_TEUD",
+                "type": "raw-nominal",
+                "id": "10765",
+                "description": "String"
+            },
+            {
+                "name": "SHIMUN_OR_BITZUA",
+                "type": "raw-nominal",
+                "id": "10715",
+                "description": "String"
+            },
+            {
+                "name": "SHIMUN_OR_HORAA",
+                "type": "raw-nominal",
+                "id": "10714",
+                "description": "String"
+            },
+            {
+                "name": "Silicon_BITZUA",
+                "type": "raw-nominal",
+                "id": "10779",
+                "description": "String"
+            },
+            {
+                "name": "Silicon_HORAA",
+                "type": "raw-nominal",
+                "id": "10782",
+                "description": "String"
+            },
+            {
+                "name": "Silicon_TEUD",
+                "type": "raw-nominal",
+                "id": "10778",
+                "description": "String"
+            },
+            {
+                "name": "Skin_Completetion_status_Scale",
+                "type": "raw-nominal",
+                "id": "10707",
+                "description": "String"
+            },
+            {
+                "name": "Skin_Integrity_ISHPUZ",
+                "type": "raw-numeric",
+                "id": "10881",
+                "description": "String"
+            },
+            {
+                "name": "Skin_Integrity_KABALA",
+                "type": "raw-numeric",
+                "id": "10873",
+                "description": "String"
+            },
+            {
+                "name": "Skin_Integrity_status_Scale",
+                "type": "raw-nominal",
+                "id": "10815",
+                "description": "String"
+            },
+            {
+                "name": "Skin_Omdan_TEUD",
+                "type": "raw-nominal",
+                "id": "10901",
+                "description": "String"
+            },
+            {
+                "name": "Skin_status_Scale_BITZUA",
+                "type": "raw-nominal",
+                "id": "10719",
+                "description": "String"
+            },
+            {
+                "name": "Skin_status_Scale_HORAA",
+                "type": "raw-nominal",
+                "id": "10718",
+                "description": "String"
+            },
+            {
+                "name": "Skin_status_Scale_TEUD",
+                "type": "raw-nominal",
+                "id": "10712",
+                "description": "String"
+            },
+            {
+                "name": "Sug_Hitarvut",
+                "type": "raw-numeric",
+                "id": "10902",
+                "description": "String"
+            },
+            {
+                "name": "Tender_Wet_BITZUA",
+                "type": "raw-nominal",
+                "id": "10798",
+                "description": "String"
+            },
+            {
+                "name": "Tender_Wet_HORAA",
+                "type": "raw-nominal",
+                "id": "10797",
+                "description": "String"
+            },
+            {
+                "name": "Tender_Wet_TEUD",
+                "type": "raw-nominal",
+                "id": "10799",
+                "description": "String"
+            },
+            {
+                "name": "Tipul_Bepetsa_HORAA",
+                "type": "raw-nominal",
+                "id": "10889",
+                "description": "String"
+            },
+            {
+                "name": "Ulcer_Petza",
+                "type": "raw-nominal",
+                "id": "10921",
+                "description": "String"
+            },
+            {
+                "name": "Urea_10_%_BITZUA",
+                "type": "raw-nominal",
+                "id": "10795",
+                "description": "String"
+            },
+            {
+                "name": "Urea_10_%_HORAA",
+                "type": "raw-nominal",
+                "id": "10794",
+                "description": "String"
+            },
+            {
+                "name": "Urea_10_%_TEUD",
+                "type": "raw-nominal",
+                "id": "10796",
+                "description": "String"
+            },
+            {
+                "name": "Age",
+                "type": "raw-numeric",
+                "id": "10695",
+                "description": "String"
+            },
+            {
+                "name": "Albumin",
+                "type": "raw-numeric",
+                "id": "10703",
+                "description": "String"
+            },
+            {
+                "name": "Biafine_BITZUA",
+                "type": "raw-nominal",
+                "id": "10789",
+                "description": "String"
+            },
+            {
+                "name": "Biafine_HORAA",
+                "type": "raw-nominal",
+                "id": "10788",
+                "description": "String"
+            },
+            {
+                "name": "Biafine_TEUD",
+                "type": "raw-nominal",
+                "id": "10790",
+                "description": "String"
+            },
+            {
+                "name": "Blood_Disease",
+                "type": "raw-nominal",
+                "id": "10702",
+                "description": "String"
+            },
+            {
+                "name": "BURN_CARE_BITZUA",
+                "type": "raw-nominal",
+                "id": "10773",
+                "description": "String"
+            },
+            {
+                "name": "BURN_CARE_HORAA",
+                "type": "raw-nominal",
+                "id": "10772",
+                "description": "String"
+            },
+            {
+                "name": "BURN_CARE_TEUD",
+                "type": "raw-nominal",
+                "id": "10767",
+                "description": "String"
+            },
+            {
+                "name": "Change_Possition_BITZUA",
+                "type": "raw-nominal",
+                "id": "10879",
+                "description": "String"
+            },
+            {
+                "name": "Change_Possition_HORAA",
+                "type": "raw-nominal",
+                "id": "10878",
+                "description": "String"
+            },
+            {
+                "name": "Current_functional_status",
+                "type": "raw-nominal",
+                "id": "10699",
+                "description": "String"
+            },
+            {
+                "name": "Department",
+                "type": "raw-nominal",
+                "id": "10872",
+                "description": "String"
+            },
+            {
+                "name": "Dermagran_B_BITZUA",
+                "type": "raw-nominal",
+                "id": "10768",
+                "description": "String"
+            },
+            {
+                "name": "Dermagran_B_HORAA",
+                "type": "raw-nominal",
+                "id": "10774",
+                "description": "String"
+            },
+            {
+                "name": "Dermagran_B_TEUD",
+                "type": "raw-nominal",
+                "id": "10783",
+                "description": "String"
+            },
+            {
+                "name": "Diabetes",
+                "type": "raw-nominal",
+                "id": "10701",
+                "description": "String"
+            },
+            {
+                "name": "Dietitian_Consulting_HAFNAYA",
+                "type": "raw-nominal",
+                "id": "10728",
+                "description": "String"
+            },
+            {
+                "name": "Dietitian_Consulting_YEUTZ",
+                "type": "raw-nominal",
+                "id": "10729",
+                "description": "String"
+            },
+            {
+                "name": "Discharge_letter_doctor",
+                "type": "raw-nominal",
+                "id": "10741",
+                "description": "String"
+            },
+            {
+                "name": "Discharge_letter_nurse",
+                "type": "raw-nominal",
+                "id": "10742",
+                "description": "String"
+            },
+            {
+                "name": "End_Plan",
+                "type": "raw-nominal",
+                "id": "100002",
+                "description": "String"
+            },
+            {
+                "name": "Gauze_Paraffin_BITZUA",
+                "type": "raw-nominal",
+                "id": "10770",
+                "description": "String"
+            },
+            {
+                "name": "Gauze_Paraffin_HORAA",
+                "type": "raw-nominal",
+                "id": "10769",
+                "description": "String"
+            },
+            {
+                "name": "Gauze_Paraffin_TEUD",
+                "type": "raw-nominal",
+                "id": "10771",
+                "description": "String"
+            },
+            {
+                "name": "Hadracha_BITZUA",
+                "type": "raw-nominal",
+                "id": "10876",
+                "description": "String"
+            },
+            {
+                "name": "Hadracha_Discharge",
+                "type": "raw-nominal",
+                "id": "10887",
+                "description": "String"
+            },
+            {
+                "name": "Hadracha_HORAA",
+                "type": "raw-nominal",
+                "id": "10875",
+                "description": "String"
+            },
+            {
+                "name": "Hadracha_TEUD",
+                "type": "raw-nominal",
+                "id": "10874",
+                "description": "String"
+            },
+            {
+                "name": "Havishat_Colgen_BITZUA",
+                "type": "raw-nominal",
+                "id": "10813",
+                "description": "String"
+            },
+            {
+                "name": "Havishat_Colgen_HORAA",
+                "type": "raw-nominal",
+                "id": "10812",
+                "description": "String"
+            },
+            {
+                "name": "Havishat_Colgen_TEUD",
+                "type": "raw-nominal",
+                "id": "10814",
+                "description": "String"
+            },
+            {
+                "name": "HAVISHA_MENIA_BITZUA",
+                "type": "raw-nominal",
+                "id": "10891",
+                "description": "String"
+            },
+            {
+                "name": "HAVISHA_MENIA_HORAA",
+                "type": "raw-nominal",
+                "id": "10890",
+                "description": "String"
+            },
+            {
+                "name": "HAVISHA_MENIA_TEUD",
+                "type": "raw-nominal",
+                "id": "10892",
+                "description": "String"
+            },
+            {
+                "name": "Havisha_Treatment_BITZUA",
+                "type": "raw-nominal",
+                "id": "10737",
+                "description": "String"
+            },
+            {
+                "name": "Havisha_Treatment_HORAA",
+                "type": "raw-nominal",
+                "id": "10735",
+                "description": "String"
+            },
+            {
+                "name": "Havisha_Treatment_TEUD",
+                "type": "raw-nominal",
+                "id": "10736",
+                "description": "String"
+            },
+            {
+                "name": "Havishot_Kesef_AND_Nogdei_Reiach_BITZUA",
+                "type": "raw-nominal",
+                "id": "10810",
+                "description": "String"
+            },
+            {
+                "name": "Havishot_Kesef_AND_Nogdei_Reiach_HORAA",
+                "type": "raw-nominal",
+                "id": "10809",
+                "description": "String"
+            },
+            {
+                "name": "Havishot_Kesef_AND_Nogdei_Reiach_TEUD",
+                "type": "raw-nominal",
+                "id": "10811",
+                "description": "String"
+            },
+            {
+                "name": "Havishot_Kesef_BITZUA",
+                "type": "raw-nominal",
+                "id": "10807",
+                "description": "String"
+            },
+            {
+                "name": "Havishot_Kesef_HORAA",
+                "type": "raw-nominal",
+                "id": "10806",
+                "description": "String"
+            },
+            {
+                "name": "Havishot_Kesef_TEUD",
+                "type": "raw-nominal",
+                "id": "10808",
+                "description": "String"
+            },
+            {
+                "name": "Havishot_Ketzef_BITZUA",
+                "type": "raw-nominal",
+                "id": "10804",
+                "description": "String"
+            },
+            {
+                "name": "Havishot_Ketzef_HORAA",
+                "type": "raw-nominal",
+                "id": "10803",
+                "description": "String"
+            },
+            {
+                "name": "Havishot_Ketzef_TEUD",
+                "type": "raw-nominal",
+                "id": "10805",
+                "description": "String"
+            },
+            {
+                "name": "Havishot_Sofhot_BITZUA",
+                "type": "raw-nominal",
+                "id": "10801",
+                "description": "String"
+            },
+            {
+                "name": "Havishot_Sofhot_HORAA",
+                "type": "raw-nominal",
+                "id": "10800",
+                "description": "String"
+            },
+            {
+                "name": "Havishot_Sofhot_TEUD",
+                "type": "raw-nominal",
+                "id": "10802",
+                "description": "String"
+            },
+            {
+                "name": "Hydrocolloid_BITZUA",
+                "type": "raw-nominal",
+                "id": "10786",
+                "description": "String"
+            },
+            {
+                "name": "Hydrocolloid_HORAA",
+                "type": "raw-nominal",
+                "id": "10785",
+                "description": "String"
+            },
+            {
+                "name": "Hydrocolloid_TEUD",
+                "type": "raw-nominal",
+                "id": "10787",
+                "description": "String"
+            },
+            {
+                "name": "HYDROGEL_BITZUA",
+                "type": "raw-nominal",
+                "id": "10792",
+                "description": "String"
+            },
+            {
+                "name": "HYDROGEL_HORAA",
+                "type": "raw-nominal",
+                "id": "10791",
+                "description": "String"
+            },
+            {
+                "name": "HYDROGEL_TEUD",
+                "type": "raw-nominal",
+                "id": "10793",
+                "description": "String"
+            },
+            {
+                "name": "Ishpuz_Duration",
+                "type": "raw-nominal",
+                "id": "10922",
+                "description": "String"
+            },
+            {
+                "name": "Laydown_Angle_BITZUA",
+                "type": "raw-nominal",
+                "id": "10726",
+                "description": "String"
+            },
+            {
+                "name": "Laydown_Angle_HORAA",
+                "type": "raw-nominal",
+                "id": "10725",
+                "description": "String"
+            },
+            {
+                "name": "LEGS_UP_BITZUA",
+                "type": "raw-nominal",
+                "id": "10717",
+                "description": "String"
+            },
+            {
+                "name": "LEGS_UP_HORAA",
+                "type": "raw-nominal",
+                "id": "10871",
+                "description": "String"
+            },
+            {
+                "name": "MUST",
+                "type": "raw-numeric",
+                "id": "10877",
+                "description": "String"
+            },
+            {
+                "name": "Nacl_0.9_%_BITZUA",
+                "type": "raw-nominal",
+                "id": "10775",
+                "description": "String"
+            },
+            {
+                "name": "Nacl_0.9_%_HORAA",
+                "type": "raw-nominal",
+                "id": "10776",
+                "description": "String"
+            },
+            {
+                "name": "Nacl_0.9_%_TEUD",
+                "type": "raw-nominal",
+                "id": "10781",
+                "description": "String"
+            },
+            {
+                "name": "Norton_Scale",
+                "type": "raw-numeric",
+                "id": "10706",
+                "description": "String"
+            },
+            {
+                "name": "NORTON_TEUD",
+                "type": "raw-numeric",
+                "id": "10713",
+                "description": "String"
+            },
+            {
+                "name": "Nutrition_Diatition",
+                "type": "raw-nominal",
+                "id": "10705",
+                "description": "String"
+            },
+            {
+                "name": "Nutrition_Nurse",
+                "type": "raw-numeric",
+                "id": "10704",
+                "description": "String"
+            },
+            {
+                "name": "Occupetional_Theraphy",
+                "type": "raw-nominal",
+                "id": "10730",
+                "description": "String"
+            },
+            {
+                "name": "Open_Gilayon",
+                "type": "raw-nominal",
+                "id": "10693",
+                "description": "String"
+            },
+            {
+                "name": "Pain_level",
+                "type": "raw-numeric",
+                "id": "10700",
+                "description": "String"
+            },
+            {
+                "name": "Pain_level_BITZUA",
+                "type": "raw-nominal",
+                "id": "10710",
+                "description": "String"
+            },
+            {
+                "name": "Pain_level_HORAA",
+                "type": "raw-nominal",
+                "id": "10711",
+                "description": "String"
+            },
+            {
+                "name": "Pain_level_TEUD",
+                "type": "raw-numeric",
+                "id": "10709",
+                "description": "String"
+            },
+            {
+                "name": "Pasta_baby_BITZUA",
+                "type": "raw-nominal",
+                "id": "10777",
+                "description": "String"
+            },
+            {
+                "name": "Pasta_baby_HORAA",
+                "type": "raw-nominal",
+                "id": "10763",
+                "description": "String"
+            },
+            {
+                "name": "Pasta_baby_TEUD",
+                "type": "raw-nominal",
+                "id": "10784",
+                "description": "String"
+            },
+            {
+                "name": "Petza_Close",
+                "type": "raw-numeric",
+                "id": "10912",
+                "description": "String"
+            },
+            {
+                "name": "Pressure_Pizur",
+                "type": "raw-nominal",
+                "id": "10727",
+                "description": "String"
+            },
+            {
+                "name": "Pressure_Ulcer_Change",
+                "type": "raw-nominal",
+                "id": "10886",
+                "description": "String"
+            },
+            {
+                "name": "Pressure_Ulcer_Color",
+                "type": "raw-nominal",
+                "id": "10817",
+                "description": "String"
+            },
+            {
+                "name": "Pressure_Ulcer_Depth",
+                "type": "raw-numeric",
+                "id": "10885",
+                "description": "String"
+            },
+            {
+                "name": "Pressure_Ulcer_Diagnosis",
+                "type": "raw-nominal",
+                "id": "10708",
+                "description": "String"
+            },
+            {
+                "name": "Pressure_Ulcer_DOCTOR_VISIT",
+                "type": "raw-nominal",
+                "id": "10740",
+                "description": "String"
+            },
+            {
+                "name": "Pressure_Ulcer_Hafrasha_Amount",
+                "type": "raw-nominal",
+                "id": "10818",
+                "description": "String"
+            },
+            {
+                "name": "Pressure_Ulcer_Hafrasha_Type",
+                "type": "raw-nominal",
+                "id": "10819",
+                "description": "String"
+            },
+            {
+                "name": "Pressure_Ulcer_Infection",
+                "type": "raw-nominal",
+                "id": "10882",
+                "description": "String"
+            },
+            {
+                "name": "Pressure_Ulcer_Length",
+                "type": "raw-numeric",
+                "id": "10883",
+                "description": "String"
+            },
+            {
+                "name": "Pressure_Ulcer_NURSE_VISIT",
+                "type": "raw-nominal",
+                "id": "10739",
+                "description": "String"
+            },
+            {
+                "name": "Pressure_Ulcer_Position",
+                "type": "raw-nominal",
+                "id": "10816",
+                "description": "String"
+            },
+            {
+                "name": "Pressure_Ulcer_Rank",
+                "type": "raw-nominal",
+                "id": "10820",
+                "description": "String"
+            },
+            {
+                "name": "Pressure_Ulcer_Smell",
+                "type": "raw-nominal",
+                "id": "10734",
+                "description": "String"
+            },
+            {
+                "name": "Pressure_Ulcer_VISIT_SIGNITURE",
+                "type": "raw-nominal",
+                "id": "10738",
+                "description": "String"
+            },
+            {
+                "name": "Pressure_Ulcer_Width",
+                "type": "raw-numeric",
+                "id": "10884",
+                "description": "String"
+            },
+            {
+                "name": "Prev_functional_status",
+                "type": "raw-nominal",
+                "id": "10698",
+                "description": "String"
+            },
+            {
+                "name": "Ptira_Diagnosis",
+                "type": "raw-nominal",
+                "id": "10888",
+                "description": "String"
+            },
+            {
+                "name": "Ptira_letter",
+                "type": "raw-nominal",
+                "id": "10744",
+                "description": "String"
+            },
+            {
+                "name": "Release_Date",
+                "type": "raw-nominal",
+                "id": "10913",
+                "description": "String"
+            },
+            {
+                "name": "Report_Physician",
+                "type": "raw-nominal",
+                "id": "10732",
+                "description": "String"
+            },
+            {
+                "name": "Send_Information_To_Outpatient",
+                "type": "raw-nominal",
+                "id": "10743",
+                "description": "String"
+            },
+            {
+                "name": "Shemen_Zait_BITZUA",
+                "type": "raw-nominal",
+                "id": "10764",
+                "description": "String"
+            },
+            {
+                "name": "Shemen_Zait_HORAA",
+                "type": "raw-nominal",
+                "id": "10780",
+                "description": "String"
+            },
+            {
+                "name": "Shemen_Zait_TEUD",
+                "type": "raw-nominal",
+                "id": "10765",
+                "description": "String"
+            },
+            {
+                "name": "SHIMUN_OR_BITZUA",
+                "type": "raw-nominal",
+                "id": "10715",
+                "description": "String"
+            },
+            {
+                "name": "SHIMUN_OR_HORAA",
+                "type": "raw-nominal",
+                "id": "10714",
+                "description": "String"
+            },
+            {
+                "name": "Silicon_BITZUA",
+                "type": "raw-nominal",
+                "id": "10779",
+                "description": "String"
+            },
+            {
+                "name": "Silicon_HORAA",
+                "type": "raw-nominal",
+                "id": "10782",
+                "description": "String"
+            },
+            {
+                "name": "Silicon_TEUD",
+                "type": "raw-nominal",
+                "id": "10778",
+                "description": "String"
+            },
+            {
+                "name": "Skin_Completetion_status_Scale",
+                "type": "raw-nominal",
+                "id": "10707",
+                "description": "String"
+            },
+            {
+                "name": "Skin_Integrity_ISHPUZ",
+                "type": "raw-numeric",
+                "id": "10881",
+                "description": "String"
+            },
+            {
+                "name": "Skin_Integrity_KABALA",
+                "type": "raw-numeric",
+                "id": "10873",
+                "description": "String"
+            },
+            {
+                "name": "Skin_Integrity_status_Scale",
+                "type": "raw-nominal",
+                "id": "10815",
+                "description": "String"
+            },
+            {
+                "name": "Skin_Omdan_TEUD",
+                "type": "raw-nominal",
+                "id": "10901",
+                "description": "String"
+            },
+            {
+                "name": "Skin_status_Scale_BITZUA",
+                "type": "raw-nominal",
+                "id": "10719",
+                "description": "String"
+            },
+            {
+                "name": "Skin_status_Scale_HORAA",
+                "type": "raw-nominal",
+                "id": "10718",
+                "description": "String"
+            },
+            {
+                "name": "Skin_status_Scale_TEUD",
+                "type": "raw-nominal",
+                "id": "10712",
+                "description": "String"
+            },
+            {
+                "name": "Start_Plan",
+                "type": "raw-nominal",
+                "id": "100001",
+                "description": "String"
+            },
+            {
+                "name": "Sug_Hitarvut",
+                "type": "raw-numeric",
+                "id": "10902",
+                "description": "String"
+            },
+            {
+                "name": "Tender_Wet_BITZUA",
+                "type": "raw-nominal",
+                "id": "10798",
+                "description": "String"
+            },
+            {
+                "name": "Tender_Wet_HORAA",
+                "type": "raw-nominal",
+                "id": "10797",
+                "description": "String"
+            },
+            {
+                "name": "Tender_Wet_TEUD",
+                "type": "raw-nominal",
+                "id": "10799",
+                "description": "String"
+            },
+            {
+                "name": "Tipul_Bepetsa_HORAA",
+                "type": "raw-nominal",
+                "id": "10889",
+                "description": "String"
+            },
+            {
+                "name": "Ulcer_Petza",
+                "type": "raw-nominal",
+                "id": "10921",
+                "description": "String"
+            },
+            {
+                "name": "Urea_10_%_BITZUA",
+                "type": "raw-nominal",
+                "id": "10795",
+                "description": "String"
+            },
+            {
+                "name": "Urea_10_%_HORAA",
+                "type": "raw-nominal",
+                "id": "10794",
+                "description": "String"
+            },
+            {
+                "name": "Urea_10_%_TEUD",
+                "type": "raw-nominal",
+                "id": "10796",
+                "description": "String"
+            },
+            {
+                "name": "Price",
+                "type": "raw-numeric",
+                "id": "998"
+            },
+            {
+                "name": "Test_Entity_Recursive",
+                "type": "raw-nominal"
+            }
+        ],
+        "AbstractConcept": [
+            {
+                "name": "Bedridden_Before_visit_pattern",
+                "type": "pattern",
+                "id": "142"
+            },
+            {
+                "name": "OneBeforeLast",
+                "type": "pattern",
+                "id": "20012"
+            },
+            {
+                "name": "TestGradient",
+                "type": "gradient",
+                "id": "1001"
+            },
+            {
+                "name": "TestPattern",
+                "type": "pattern",
+                "id": "1003"
+            },
+            {
+                "name": "TestRate",
+                "type": "rate",
+                "id": "1004"
+            },
+            {
+                "name": "TestState",
+                "type": "state",
+                "id": "77777"
+            },
+            {
+                "name": "TestTrend",
+                "type": "trend",
+                "id": "1002"
+            },
+            {
+                "name": "AbsCI_or_RelCI_state",
+                "type": "state",
+                "id": "465"
+            },
+            {
+                "name": "Absolute_Contra_Indication_count_pattern",
+                "type": "pattern",
+                "id": "440"
+            },
+            {
+                "name": "Absolute_Contra_Indication_state",
+                "type": "state",
+                "id": "175"
+            },
+            {
+                "name": "Active_Bleeding_pattern",
+                "type": "pattern",
+                "id": "118"
+            },
+            {
+                "name": "Active_cancer_1p_CI_state",
+                "type": "state",
+                "id": "425"
+            },
+            {
+                "name": "Active_cancer_Before_visit_pattern",
+                "type": "pattern",
+                "id": "138"
+            },
+            {
+                "name": "Age_between_65_75_1p_CHASD_state",
+                "type": "state",
+                "id": "114"
+            },
+            {
+                "name": "Age_Big65_1p_BLED_state",
+                "type": "state",
+                "id": "413"
+            },
+            {
+                "name": "Age_Big65_state",
+                "type": "state",
+                "id": "190"
+            },
+            {
+                "name": "Age_Big75_2_points_CHASD_state",
+                "type": "state",
+                "id": "115"
+            },
+            {
+                "name": "Age_in_Visit_pattern",
+                "type": "pattern",
+                "id": "116"
+            },
+            {
+                "name": "Alcohol_etilism_1p_BLED_state",
+                "type": "state",
+                "id": "414"
+            },
+            {
+                "name": "Alcohol_etilism_Before_visit_pattern",
+                "type": "pattern",
+                "id": "148"
+            },
+            {
+                "name": "Anti_Platelets_Drugs_pattern",
+                "type": "pattern",
+                "id": "871"
+            },
+            {
+                "name": "Apixaban_pattern",
+                "type": "pattern",
+                "id": "875"
+            },
+            {
+                "name": "Bedridden_1p_CI_state",
+                "type": "state",
+                "id": "430"
+            },
+            {
+                "name": "Bedridden_Before_visit_pattern",
+                "type": "pattern",
+                "id": "142"
+            },
+            {
+                "name": "Bilirubin_High_state",
+                "type": "state",
+                "id": "110"
+            },
+            {
+                "name": "CHADS_VASC_Eq_0_state",
+                "type": "state",
+                "id": "466"
+            },
+            {
+                "name": "CHADS_Vasc_score_pattern",
+                "type": "pattern",
+                "id": "179"
+            },
+            {
+                "name": "CHASD_VASC_BigEq_2_state",
+                "type": "state",
+                "id": "445"
+            },
+            {
+                "name": "CHASD_VASC_Eq_1_state",
+                "type": "state",
+                "id": "446"
+            },
+            {
+                "name": "CHForLVD_1_p_CHASD_state",
+                "type": "state",
+                "id": "400"
+            },
+            {
+                "name": "CHF_or_LVD_Before_visit_pattern",
+                "type": "pattern",
+                "id": "145"
+            },
+            {
+                "name": "CHF_or_LVD_state",
+                "type": "state",
+                "id": "128"
+            },
+            {
+                "name": "Cirrhosis_1p_CI_state",
+                "type": "state",
+                "id": "428"
+            },
+            {
+                "name": "Cirrhosis_Before_visit_pattern",
+                "type": "pattern",
+                "id": "140"
+            },
+            {
+                "name": "Condition_NotNoac_state",
+                "type": "state",
+                "id": "470"
+            },
+            {
+                "name": "Condition_StartNoac_state",
+                "type": "state",
+                "id": "456"
+            },
+            {
+                "name": "Creatinine_Clearence_1p_CI_state",
+                "type": "state",
+                "id": "427"
+            },
+            {
+                "name": "Creatinine_Clearence_Low_pattern",
+                "type": "pattern",
+                "id": "124"
+            },
+            {
+                "name": "Dabigatran_Etexilate_pattern",
+                "type": "pattern",
+                "id": "873"
+            },
+            {
+                "name": "Decrease_HGB_pattern",
+                "type": "pattern",
+                "id": "117"
+            },
+            {
+                "name": "Diabetes_Hyper_HbA1C_1_p_CHASD_state",
+                "type": "state",
+                "id": "402"
+            },
+            {
+                "name": "Diabetes_Hyper_HbA1C_before_visit_pattern",
+                "type": "pattern",
+                "id": "126"
+            },
+            {
+                "name": "Diabetes_or_BG_or_HbA1C_state",
+                "type": "state",
+                "id": "125"
+            },
+            {
+                "name": "Edoxaban_pattern",
+                "type": "pattern",
+                "id": "876"
+            },
+            {
+                "name": "HAS_BLED_BigEq_3_state",
+                "type": "state",
+                "id": "467"
+            },
+            {
+                "name": "HAS_BLED_Less_3_state",
+                "type": "state",
+                "id": "447"
+            },
+            {
+                "name": "HAS_BLED_score_pattern",
+                "type": "pattern",
+                "id": "830"
+            },
+            {
+                "name": "HBA1C_High_prev_6_m_pattern",
+                "type": "pattern",
+                "id": "188"
+            },
+            {
+                "name": "Hemodialysis_1p_CI_state",
+                "type": "state",
+                "id": "426"
+            },
+            {
+                "name": "Hemodialysis_Before_visit_pattern",
+                "type": "pattern",
+                "id": "139"
+            },
+            {
+                "name": "Hemophilia_1p_CI_state",
+                "type": "state",
+                "id": "421"
+            },
+            {
+                "name": "Hemophilia_Before_visit_pattern",
+                "type": "pattern",
+                "id": "137"
+            },
+            {
+                "name": "HGB_Low_state",
+                "type": "state",
+                "id": "101"
+            },
+            {
+                "name": "HGB_Normal_state",
+                "type": "state",
+                "id": "102"
+            },
+            {
+                "name": "HGB_Very_Low_state",
+                "type": "state",
+                "id": "100"
+            },
+            {
+                "name": "Hospitalization_Bleeding_1p_BLED_state",
+                "type": "state",
+                "id": "410"
+            },
+            {
+                "name": "Hospitalization_Bleeding_1p_CI_state",
+                "type": "state",
+                "id": "423"
+            },
+            {
+                "name": "Hospitalization_Bleeding_Before_visit_pattern",
+                "type": "pattern",
+                "id": "147"
+            },
+            {
+                "name": "Hypertension_1_p_CHASD_state",
+                "type": "state",
+                "id": "401"
+            },
+            {
+                "name": "Hypertension_Before_visit_pattern",
+                "type": "pattern",
+                "id": "144"
+            },
+            {
+                "name": "Hypertrophic_Cardiomyopathy_1p_state",
+                "type": "state",
+                "id": "444"
+            },
+            {
+                "name": "Hypertrophic_Cardiomyopathy_Before_visit_pattern",
+                "type": "pattern",
+                "id": "460"
+            },
+            {
+                "name": "Hypertrophic_Cardiomyopathy_count_pattern",
+                "type": "pattern",
+                "id": "451"
+            },
+            {
+                "name": "Hyper_pattern",
+                "type": "pattern",
+                "id": "505"
+            },
+            {
+                "name": "Hyper_prev_6_m_pattern",
+                "type": "pattern",
+                "id": "187"
+            },
+            {
+                "name": "Intracranial_bleeding_diagnosis_state",
+                "type": "state",
+                "id": "180"
+            },
+            {
+                "name": "Intracranial_Bleeding_Last_1p_CI_state",
+                "type": "state",
+                "id": "418"
+            },
+            {
+                "name": "Intracranial_Bleeding_Last_pattern",
+                "type": "pattern",
+                "id": "150"
+            },
+            {
+                "name": "Ischemic_stroke_Last_1p_CI_state",
+                "type": "state",
+                "id": "424"
+            },
+            {
+                "name": "Ischemic_stroke_Last_pattern",
+                "type": "pattern",
+                "id": "123"
+            },
+            {
+                "name": "Ischemic_Stroke_or_TIA_pattern",
+                "type": "pattern",
+                "id": "550"
+            },
+            {
+                "name": "Ischemic_Stroke_or_TIA_state",
+                "type": "state",
+                "id": "127"
+            },
+            {
+                "name": "IStroke_or_TIA_2p_CHASD_state",
+                "type": "state",
+                "id": "403"
+            },
+            {
+                "name": "lastBilirublin_1p_BLED_state",
+                "type": "state",
+                "id": "407"
+            },
+            {
+                "name": "lastSerumCreatinine_1p_BLED_state",
+                "type": "state",
+                "id": "405"
+            },
+            {
+                "name": "lastSysbp_1p_BLED_state",
+                "type": "state",
+                "id": "406"
+            },
+            {
+                "name": "last_ALP_prev_1_y_bigEq_348_state",
+                "type": "state",
+                "id": "502"
+            },
+            {
+                "name": "last_ALP_prev_1_y_pattern",
+                "type": "pattern",
+                "id": "516"
+            },
+            {
+                "name": "last_ALT_prev_1_y_bigEq_117_state",
+                "type": "state",
+                "id": "501"
+            },
+            {
+                "name": "last_ALT_prev_1_y_pattern",
+                "type": "pattern",
+                "id": "515"
+            },
+            {
+                "name": "last_AST_or_ALT_or_ALP_1p_BLED_state",
+                "type": "state",
+                "id": "408"
+            },
+            {
+                "name": "last_AST_or_ALT_or_ALP_ranges_state",
+                "type": "state",
+                "id": "503"
+            },
+            {
+                "name": "last_AST_prev_1_y_bigEq_120_state",
+                "type": "state",
+                "id": "500"
+            },
+            {
+                "name": "last_AST_prev_1_y_pattern",
+                "type": "pattern",
+                "id": "514"
+            },
+            {
+                "name": "last_bilirublin_prev_6_m_big_2.4_state",
+                "type": "state",
+                "id": "132"
+            },
+            {
+                "name": "last_bilirublin_prev_6_m_pattern",
+                "type": "pattern",
+                "id": "513"
+            },
+            {
+                "name": "last_Birth_Year_Before_Visit_pattern",
+                "type": "pattern",
+                "id": "590"
+            },
+            {
+                "name": "last_Creatinine_bigEq_1.5_state",
+                "type": "state",
+                "id": "158"
+            },
+            {
+                "name": "last_HGB_less10_1p_CI_state",
+                "type": "state",
+                "id": "422"
+            },
+            {
+                "name": "last_HGB_less_11_1p_BLED_state",
+                "type": "state",
+                "id": "412"
+            },
+            {
+                "name": "last_HGB_less_7_1p_CI_state",
+                "type": "state",
+                "id": "416"
+            },
+            {
+                "name": "last_HGB_prev_3_m_less_10_state",
+                "type": "state",
+                "id": "122"
+            },
+            {
+                "name": "last_HGB_prev_3_m_pattern",
+                "type": "pattern",
+                "id": "507"
+            },
+            {
+                "name": "last_HGB_prev_6_m_less_11_state",
+                "type": "state",
+                "id": "135"
+            },
+            {
+                "name": "last_HGB_prev_6_m_less_7_state",
+                "type": "state",
+                "id": "105"
+            },
+            {
+                "name": "last_HGB_prev_6_m_less_9_state",
+                "type": "state",
+                "id": "181"
+            },
+            {
+                "name": "last_HGB_prev_6_m_pattern",
+                "type": "pattern",
+                "id": "506"
+            },
+            {
+                "name": "last_PLT_3m_less50_1p_CI_state",
+                "type": "state",
+                "id": "419"
+            },
+            {
+                "name": "last_PLT_less_100_1p_BLED_state",
+                "type": "state",
+                "id": "411"
+            },
+            {
+                "name": "last_PLT_prev_3_m_less_50_state",
+                "type": "state",
+                "id": "120"
+            },
+            {
+                "name": "last_PLT_prev_3_m_pattern",
+                "type": "pattern",
+                "id": "509"
+            },
+            {
+                "name": "last_PLT_prev_6_m_less_100_state",
+                "type": "state",
+                "id": "134"
+            },
+            {
+                "name": "last_PLT_prev_6_m_pattern",
+                "type": "pattern",
+                "id": "508"
+            },
+            {
+                "name": "last_serum_Creatinine_prev_6_m_big_2_state",
+                "type": "state",
+                "id": "130"
+            },
+            {
+                "name": "last_serum_creatinine_prev_6_m_pattern",
+                "type": "pattern",
+                "id": "511"
+            },
+            {
+                "name": "last_Sys_bp_prev_6_m_big_160_state",
+                "type": "state",
+                "id": "131"
+            },
+            {
+                "name": "last_sys_bp_prev_6_m_pattern",
+                "type": "pattern",
+                "id": "512"
+            },
+            {
+                "name": "last_weight_before_visit_pattern",
+                "type": "pattern",
+                "id": "517"
+            },
+            {
+                "name": "last_weight_lessEq_60_state",
+                "type": "state",
+                "id": "157"
+            },
+            {
+                "name": "Liver_Enzyme_Elevation_pattern",
+                "type": "pattern",
+                "id": "133"
+            },
+            {
+                "name": "MechHV_MitSten_AntiPhos_count_pattern",
+                "type": "pattern",
+                "id": "449"
+            },
+            {
+                "name": "MechHV_or_MitSten_or_AntiPhos_1p_state",
+                "type": "state",
+                "id": "443"
+            },
+            {
+                "name": "MechHV_or_MitSten_or_AntiPhos_Before_visit_pattern",
+                "type": "pattern",
+                "id": "459"
+            },
+            {
+                "name": "MechHV_or_MitSten_or_AntiPhos_state",
+                "type": "state",
+                "id": "442"
+            },
+            {
+                "name": "NOAC_state",
+                "type": "state",
+                "id": "504"
+            },
+            {
+                "name": "NoCI_And_NoRel_And_NoMech_And_HyperCard_state",
+                "type": "state",
+                "id": "453"
+            },
+            {
+                "name": "NoCI_And_NoRel_And_NoMech_And_NoHyperCard_And_ChasdBigEq2_state",
+                "type": "state",
+                "id": "454"
+            },
+            {
+                "name": "NoCI_And_NoRel_And_NoMech_AND_NoHyperCard_And_ChasdEq0_state",
+                "type": "state",
+                "id": "468"
+            },
+            {
+                "name": "NoCI_And_NoRel_And_NoMech_And_NoHyperCard_And_ChasdEq1_And_HasBigEq3_state",
+                "type": "state",
+                "id": "469"
+            },
+            {
+                "name": "NoCI_And_NoRel_And_NoMech_And_NoHyperCard_And_ChasdEq1_And_HasLess3_state",
+                "type": "state",
+                "id": "455"
+            },
+            {
+                "name": "NoCI_And_NoRel_And_NoMech_state",
+                "type": "state",
+                "id": "448"
+            },
+            {
+                "name": "Not_Using_Noac_QA_pattern",
+                "type": "pattern",
+                "id": "458"
+            },
+            {
+                "name": "No_Absolute_Contra_Indication_state",
+                "type": "state",
+                "id": "176"
+            },
+            {
+                "name": "No_Hypertrophic_Cardiomyopathy_state",
+                "type": "state",
+                "id": "452"
+            },
+            {
+                "name": "No_MechHV_MitSten_AntiPhos_state",
+                "type": "state",
+                "id": "450"
+            },
+            {
+                "name": "No_Relative_Contra_Indication_state",
+                "type": "state",
+                "id": "178"
+            },
+            {
+                "name": "NSAIDs _or_antiPLT_1p_BLED_state",
+                "type": "state",
+                "id": "415"
+            },
+            {
+                "name": "NSAIDs _or_antiPLT_Before_visit_pattern",
+                "type": "pattern",
+                "id": "149"
+            },
+            {
+                "name": "NSAIDs _or_antiPLT_state",
+                "type": "state",
+                "id": "129"
+            },
+            {
+                "name": "Nsaid_pattern",
+                "type": "pattern",
+                "id": "872"
+            },
+            {
+                "name": "PLT_Low_state",
+                "type": "state",
+                "id": "104"
+            },
+            {
+                "name": "prev_last_less9_bigEq11_1p_CI_state",
+                "type": "state",
+                "id": "417"
+            },
+            {
+                "name": "prev_last_less_9_bigEq_11_state",
+                "type": "state",
+                "id": "183"
+            },
+            {
+                "name": "prev_last_less_9_pattern",
+                "type": "pattern",
+                "id": "182"
+            },
+            {
+                "name": "Prothrombin_Time_pattern",
+                "type": "pattern",
+                "id": "119"
+            },
+            {
+                "name": "PT_aPTT_1p_CI_state",
+                "type": "state",
+                "id": "471"
+            },
+            {
+                "name": "PT_or_aPTT_NotNormal_state",
+                "type": "state",
+                "id": "103"
+            },
+            {
+                "name": "Relative_Contra_Indication_count_pattern",
+                "type": "pattern",
+                "id": "441"
+            },
+            {
+                "name": "Relative_Contra_Indication_state",
+                "type": "state",
+                "id": "177"
+            },
+            {
+                "name": "Rivaroxaban_pattern",
+                "type": "pattern",
+                "id": "874"
+            },
+            {
+                "name": "Severe_Dementia_1p_CI_state",
+                "type": "state",
+                "id": "429"
+            },
+            {
+                "name": "Severe_Dementia_Before_visit_pattern",
+                "type": "pattern",
+                "id": "141"
+            },
+            {
+                "name": "Stroke_1p_BLED_state",
+                "type": "state",
+                "id": "409"
+            },
+            {
+                "name": "Stroke_Before_visit_pattern",
+                "type": "pattern",
+                "id": "146"
+            },
+            {
+                "name": "Using_Noac_QA_pattern",
+                "type": "pattern",
+                "id": "457"
+            },
+            {
+                "name": "Vascular_1_p_CHASD_state",
+                "type": "state",
+                "id": "404"
+            },
+            {
+                "name": "Vascular_Before_visit_pattern",
+                "type": "pattern",
+                "id": "143"
+            },
+            {
+                "name": "Visit_ct_0_p_CHASD_state",
+                "type": "state",
+                "id": "860"
+            },
+            {
+                "name": "Visit_pattern",
+                "type": "pattern",
+                "id": "870"
+            },
+            {
+                "name": "Visit_Year_After_BirthYear_pattern",
+                "type": "pattern",
+                "id": "595"
+            },
+            {
+                "name": "Von_Willebrand_1p_CI_state",
+                "type": "state",
+                "id": "420"
+            },
+            {
+                "name": "Von_Willebrand_Before_visit_pattern",
+                "type": "pattern",
+                "id": "136"
+            },
+            {
+                "name": "Von_Willebrand_Counter_pattern",
+                "type": "pattern",
+                "id": "164"
+            },
+            {
+                "name": "Admission_Norton",
+                "type": "pattern",
+                "id": "11026"
+            },
+            {
+                "name": "Admission_NutritionDietition",
+                "type": "pattern",
+                "id": "11069"
+            },
+            {
+                "name": "Admission_NutritionDietitionInNurseState",
+                "type": "pattern",
+                "id": "11070"
+            },
+            {
+                "name": "Admission_NutritionNurse",
+                "type": "pattern",
+                "id": "11068"
+            },
+            {
+                "name": "Admission_NutritionNurseInDietitionState",
+                "type": "pattern",
+                "id": "11071"
+            },
+            {
+                "name": "Admission_Nutrition_Dietition_State",
+                "type": "state",
+                "id": "11075",
+                "description": ""
+            },
+            {
+                "name": "Admission_Nutrition_Nurse_State",
+                "type": "state",
+                "id": "11067",
+                "description": ""
+            },
+            {
+                "name": "Admission_Pain",
+                "type": "pattern",
+                "id": "11076"
+            },
+            {
+                "name": "Admission_Skin",
+                "type": "pattern",
+                "id": "11066"
+            },
+            {
+                "name": "BitzuaChangePosition6Times",
+                "type": "gradient",
+                "id": "11038"
+            },
+            {
+                "name": "BitzuaChangePosition9Times",
+                "type": "gradient",
+                "id": "11039"
+            },
+            {
+                "name": "BitzuaHoraaNacl0.9%",
+                "type": "pattern",
+                "id": "11020"
+            },
+            {
+                "name": "BitzuaHoraaShemenZait",
+                "type": "pattern",
+                "id": "11001"
+            },
+            {
+                "name": "BitzuaSmallerHoraaShemenZait",
+                "type": "pattern",
+                "id": "11002"
+            },
+            {
+                "name": "change position 6 times a day",
+                "type": "state",
+                "id": "10759",
+                "description": ""
+            },
+            {
+                "name": "change position 9 times a day",
+                "type": "state",
+                "id": "10760",
+                "description": ""
+            },
+            {
+                "name": "DietitionYeutzOrNutrition",
+                "type": "pattern",
+                "id": "11175"
+            },
+            {
+                "name": "FollowUpAndPreventionAndTreatment_State",
+                "type": "state",
+                "id": "10749",
+                "description": ""
+            },
+            {
+                "name": "FollowUpAndPrevention_ChangePosition6Or9Times",
+                "type": "gradient",
+                "id": "11089"
+            },
+            {
+                "name": "FollowUpAndPrevention_ChangePositionHoraa",
+                "type": "pattern",
+                "id": "11091"
+            },
+            {
+                "name": "FollowUpAndPrevention_ChangePosition_Order",
+                "type": "pattern",
+                "id": "11090"
+            },
+            {
+                "name": "FollowUpAndPrevention_change_position_6_times_a_day_state",
+                "type": "state",
+                "id": "11087",
+                "description": ""
+            },
+            {
+                "name": "FollowUpAndPrevention_change_position_9_times_a_day_state",
+                "type": "state",
+                "id": "11088",
+                "description": ""
+            },
+            {
+                "name": "FollowUpAndPrevention_DietitionHafnaya",
+                "type": "pattern",
+                "id": "11084"
+            },
+            {
+                "name": "FollowUpAndPrevention_DietitionHafnayaState_Dietition",
+                "type": "state",
+                "id": "11142",
+                "description": ""
+            },
+            {
+                "name": "FollowUpAndPrevention_DietitionHafnayaState_Nurse",
+                "type": "state",
+                "id": "11083",
+                "description": ""
+            },
+            {
+                "name": "FollowUpAndPrevention_DietitionYeutz_Dietition",
+                "type": "pattern",
+                "id": "11143"
+            },
+            {
+                "name": "FollowUpAndPrevention_DietitionYeutz_Nurse",
+                "type": "pattern",
+                "id": "11121"
+            },
+            {
+                "name": "FollowUpAndPrevention_HadrachaTeud",
+                "type": "gradient",
+                "id": "11036"
+            },
+            {
+                "name": "FollowUpAndPrevention_LaydownAngleHoraa",
+                "type": "pattern",
+                "id": "11138"
+            },
+            {
+                "name": "FollowUpAndPrevention_LaydownAngleOnceADay",
+                "type": "gradient",
+                "id": "11041"
+            },
+            {
+                "name": "FollowUpAndPrevention_LaydownAngle_Order",
+                "type": "pattern",
+                "id": "11137"
+            },
+            {
+                "name": "FollowUpAndPrevention_LegsUpBitzua",
+                "type": "gradient",
+                "id": "11119"
+            },
+            {
+                "name": "FollowUpAndPrevention_LegsUpBitzua_Order",
+                "type": "pattern",
+                "id": "11120"
+            },
+            {
+                "name": "FollowUpAndPrevention_LegsUpHoraa",
+                "type": "pattern",
+                "id": "11118"
+            },
+            {
+                "name": "FollowUpAndPrevention_LowNortonState",
+                "type": "state",
+                "id": "11117",
+                "description": ""
+            },
+            {
+                "name": "FollowUpAndPrevention_Norton3TimesAWeek",
+                "type": "gradient",
+                "id": "11033"
+            },
+            {
+                "name": "FollowUpAndPrevention_PainBitzuaAnceADay",
+                "type": "pattern",
+                "id": "11034"
+            },
+            {
+                "name": "FollowUpAndPrevention_PainBitzuaOnceADay_Order",
+                "type": "pattern",
+                "id": "11080"
+            },
+            {
+                "name": "FollowUpAndPrevention_PainHoraa",
+                "type": "pattern",
+                "id": "11092"
+            },
+            {
+                "name": "FollowUpAndPrevention_PainTeudOnceADay",
+                "type": "pattern",
+                "id": "11074"
+            },
+            {
+                "name": "FollowUpAndPrevention_Pizur",
+                "type": "gradient",
+                "id": "11042"
+            },
+            {
+                "name": "FollowUpAndPrevention_ShimunAllBitzua",
+                "type": "pattern",
+                "id": "11135"
+            },
+            {
+                "name": "FollowUpAndPrevention_ShimunAllHoraa",
+                "type": "pattern",
+                "id": "11134"
+            },
+            {
+                "name": "FollowUpAndPrevention_ShimunBabyPasta_Order",
+                "type": "pattern",
+                "id": "11139"
+            },
+            {
+                "name": "FollowUpAndPrevention_ShimunBitzuaOnceADay",
+                "type": "pattern",
+                "id": "11085"
+            },
+            {
+                "name": "FollowUpAndPrevention_ShimunHoraa",
+                "type": "pattern",
+                "id": "11082"
+            },
+            {
+                "name": "FollowUpAndPrevention_ShimunOnceADay",
+                "type": "gradient",
+                "id": "11136"
+            },
+            {
+                "name": "FollowUpAndPrevention_ShimunShemenZait_Order",
+                "type": "pattern",
+                "id": "11140"
+            },
+            {
+                "name": "FollowUpAndPrevention_ShimunSilicon_Order",
+                "type": "pattern",
+                "id": "11141"
+            },
+            {
+                "name": "FollowUpAndPrevention_ShimunState",
+                "type": "state",
+                "id": "11081",
+                "description": ""
+            },
+            {
+                "name": "FollowUpAndPrevention_Shimun_Order",
+                "type": "pattern",
+                "id": "11086"
+            },
+            {
+                "name": "FollowUpAndPrevention_Skin3TimesAWeek",
+                "type": "gradient",
+                "id": "11032"
+            },
+            {
+                "name": "FollowUpAndPrevention_SkinBitzuaOnceADay",
+                "type": "gradient",
+                "id": "11035"
+            },
+            {
+                "name": "FollowUpAndPrevention_SkinBitzuaOnceADay_Order",
+                "type": "pattern",
+                "id": "11079"
+            },
+            {
+                "name": "FollowUpAndPrevention_SkinHoraaOnceADay",
+                "type": "pattern",
+                "id": "11078"
+            },
+            {
+                "name": "FollowUpAndPrevention_State",
+                "type": "state",
+                "id": "10747",
+                "description": ""
+            },
+            {
+                "name": "FollowUp_Norton3TimesAWeek",
+                "type": "pattern",
+                "id": "11027"
+            },
+            {
+                "name": "FollowUp_PainBitzuaOnceADay",
+                "type": "pattern",
+                "id": "11031"
+            },
+            {
+                "name": "FollowUp_PainBitzuaOnceADay_Order",
+                "type": "pattern",
+                "id": "11072"
+            },
+            {
+                "name": "FollowUp_PainHoraa",
+                "type": "pattern",
+                "id": "11077"
+            },
+            {
+                "name": "FollowUp_PainTeudOnceADay",
+                "type": "pattern",
+                "id": "11065"
+            },
+            {
+                "name": "FollowUp_Skin3TimesAWeek",
+                "type": "pattern",
+                "id": "11030"
+            },
+            {
+                "name": "FollowUp_State",
+                "type": "state",
+                "id": "10745",
+                "description": ""
+            },
+            {
+                "name": "Havisha_BlackDryNoHafrashaNoSmell_AllBitzua",
+                "type": "pattern",
+                "id": "11178"
+            },
+            {
+                "name": "Havisha_BlackDryNoHafrashaNoSmell_Bitzua",
+                "type": "pattern",
+                "id": "11179"
+            },
+            {
+                "name": "Havisha_BlackDryNoHafrashaNoSmell_State",
+                "type": "state",
+                "id": "11177",
+                "description": ""
+            },
+            {
+                "name": "Havisha_HydrocolloidBitzuaInTreatement",
+                "type": "pattern",
+                "id": "11167"
+            },
+            {
+                "name": "Havisha_Hydrocolloid_OnceEveryTwoDays",
+                "type": "pattern",
+                "id": "11155"
+            },
+            {
+                "name": "Havisha_Hydrocolloid_Order",
+                "type": "pattern",
+                "id": "11156"
+            },
+            {
+                "name": "Havisha_HydrogelBitzuaInTreatement",
+                "type": "pattern",
+                "id": "11168"
+            },
+            {
+                "name": "Havisha_HYDROGEL_OnceADay",
+                "type": "pattern",
+                "id": "11158"
+            },
+            {
+                "name": "Havisha_HYDROGEL_Order",
+                "type": "pattern",
+                "id": "11159"
+            },
+            {
+                "name": "Havisha_KesefAndNogdeiReiachBitzua_Order",
+                "type": "pattern",
+                "id": "11151"
+            },
+            {
+                "name": "Havisha_KesefBitzuaInTreatement",
+                "type": "pattern",
+                "id": "11172"
+            },
+            {
+                "name": "Havisha_KesefNogdeiReiachBitzuaInTreatement",
+                "type": "pattern",
+                "id": "11165"
+            },
+            {
+                "name": "Havisha_KesefNogdeiReiach_OnceEveryTwoDays",
+                "type": "pattern",
+                "id": "11150"
+            },
+            {
+                "name": "Havisha_Kesef_OnceEveryTwoDays",
+                "type": "pattern",
+                "id": "11163"
+            },
+            {
+                "name": "Havisha_Kesef_Order",
+                "type": "pattern",
+                "id": "11171"
+            },
+            {
+                "name": "Havisha_KetzefBitzuaInTreatement",
+                "type": "pattern",
+                "id": "11169"
+            },
+            {
+                "name": "Havisha_Ketzef_OnceEveryTwoDays",
+                "type": "pattern",
+                "id": "11161"
+            },
+            {
+                "name": "Havisha_Ketzef_Order",
+                "type": "pattern",
+                "id": "11170"
+            },
+            {
+                "name": "Havisha_Nacl0.9BitzuaInTreatement",
+                "type": "pattern",
+                "id": "11166"
+            },
+            {
+                "name": "Havisha_Nacl0.9_AllHoraaBitzua",
+                "type": "pattern",
+                "id": "11112"
+            },
+            {
+                "name": "Havisha_Nacl0.9_BitzuaTwiceADay",
+                "type": "pattern",
+                "id": "11111"
+            },
+            {
+                "name": "Havisha_Nacl0.9_ConditionsState",
+                "type": "state",
+                "id": "11110",
+                "description": ""
+            },
+            {
+                "name": "Havisha_Nacl0.9_FirstHoraa",
+                "type": "pattern",
+                "id": "11116"
+            },
+            {
+                "name": "Havisha_Nacl0.9_Order",
+                "type": "pattern",
+                "id": "11115"
+            },
+            {
+                "name": "Havisha_Nacl0.9_TreatementsInRightCondition",
+                "type": "pattern",
+                "id": "11113"
+            },
+            {
+                "name": "Havisha_Nacl0.9_TwiceADay",
+                "type": "pattern",
+                "id": "11153"
+            },
+            {
+                "name": "Havisha_RedNoHafrashaOrLittle_AllBitzua",
+                "type": "pattern",
+                "id": "11173"
+            },
+            {
+                "name": "Havisha_RedNoHafrashaOrLittle_AllHoraa",
+                "type": "pattern",
+                "id": "11107"
+            },
+            {
+                "name": "Havisha_RedNoHafrashaOrLittle_Bitzua",
+                "type": "pattern",
+                "id": "11174"
+            },
+            {
+                "name": "Havisha_RedNoHafrashaOrLittle_Horaa",
+                "type": "pattern",
+                "id": "11108"
+            },
+            {
+                "name": "Havisha_RedNoHafrashaOrMuata_State",
+                "type": "state",
+                "id": "11176",
+                "description": ""
+            },
+            {
+                "name": "Havisha_ShemenZaitBitzuaInTreatement",
+                "type": "pattern",
+                "id": "11164"
+            },
+            {
+                "name": "Havisha_ShemenZait_ConditionsState",
+                "type": "state",
+                "id": "11109",
+                "description": ""
+            },
+            {
+                "name": "Havisha_ShemenZait_OnceADay",
+                "type": "pattern",
+                "id": "11147"
+            },
+            {
+                "name": "Havisha_OliveOil_Order",
+                "type": "pattern",
+                "id": "11148"
+            },
+            {
+                "name": "Havisha_YellowOrMixWithHafrasha_AllBitzua",
+                "type": "pattern",
+                "id": "11181"
+            },
+            {
+                "name": "Havisha_YellowOrMixWithHafrasha_Bitzua",
+                "type": "pattern",
+                "id": "11182"
+            },
+            {
+                "name": "Havisha_YellowOrMixWithHafrasha_State",
+                "type": "state",
+                "id": "11180",
+                "description": ""
+            },
+            {
+                "name": "HoraaBitzuaBiafine",
+                "type": "pattern",
+                "id": "11010"
+            },
+            {
+                "name": "HoraaBitzuaBurnCare",
+                "type": "pattern",
+                "id": "11006"
+            },
+            {
+                "name": "HoraaBitzuaDermagranB",
+                "type": "pattern",
+                "id": "11007"
+            },
+            {
+                "name": "HoraaBitzuaGauzeParaffin",
+                "type": "pattern",
+                "id": "11008"
+            },
+            {
+                "name": "HoraaBitzuaHavishaMenia",
+                "type": "pattern",
+                "id": "11019"
+            },
+            {
+                "name": "HoraaBitzuaHavishatColgen",
+                "type": "pattern",
+                "id": "11018"
+            },
+            {
+                "name": "HoraaBitzuaHavishotKesef",
+                "type": "pattern",
+                "id": "11016"
+            },
+            {
+                "name": "HoraaBitzuaHavishotKesefANDNogdeiReiach",
+                "type": "pattern",
+                "id": "11017"
+            },
+            {
+                "name": "HoraaBitzuaHavishotKetzef",
+                "type": "pattern",
+                "id": "11015"
+            },
+            {
+                "name": "HoraaBitzuaHavishotSofhot",
+                "type": "pattern",
+                "id": "11014"
+            },
+            {
+                "name": "HoraaBitzuaHydrocolloid",
+                "type": "pattern",
+                "id": "11009"
+            },
+            {
+                "name": "HoraaBitzuaHydrogel",
+                "type": "pattern",
+                "id": "11011"
+            },
+            {
+                "name": "HoraaBitzuaNacl0.9%",
+                "type": "pattern",
+                "id": "11003"
+            },
+            {
+                "name": "HoraaBitzuaNacl0.9%NEW",
+                "type": "pattern",
+                "id": "11021"
+            },
+            {
+                "name": "HoraaBitzuaPastaBaby",
+                "type": "pattern",
+                "id": "11004"
+            },
+            {
+                "name": "HoraaBitzuaShemenZait",
+                "type": "pattern",
+                "id": "11000"
+            },
+            {
+                "name": "HoraaBitzuaSilicon",
+                "type": "pattern",
+                "id": "11005"
+            },
+            {
+                "name": "HoraaBitzuaTenderWet",
+                "type": "pattern",
+                "id": "11013"
+            },
+            {
+                "name": "HoraaBitzuaUrea10%",
+                "type": "pattern",
+                "id": "11012"
+            },
+            {
+                "name": "is_hospitalized",
+                "type": "state",
+                "id": "10751",
+                "description": ""
+            },
+            {
+                "name": "Kabala_Albumin",
+                "type": "pattern",
+                "id": "11064"
+            },
+            {
+                "name": "Norton_STATE",
+                "type": "state",
+                "id": "10910",
+                "description": ""
+            },
+            {
+                "name": "Patient_State",
+                "type": "state",
+                "id": "10870",
+                "description": ""
+            },
+            {
+                "name": "SHIMUN",
+                "type": "state",
+                "id": "10893",
+                "description": ""
+            },
+            {
+                "name": "Treatment_BitzuaChangePosition6Times",
+                "type": "gradient",
+                "id": "11124"
+            },
+            {
+                "name": "Treatment_BitzuaChangePosition9Times",
+                "type": "gradient",
+                "id": "11126"
+            },
+            {
+                "name": "Treatment_ChangePosition6Or9Times",
+                "type": "gradient",
+                "id": "11127"
+            },
+            {
+                "name": "Treatment_ChangePositionHoraa",
+                "type": "pattern",
+                "id": "11129"
+            },
+            {
+                "name": "Treatment_ChangePositionState",
+                "type": "state",
+                "id": "11190",
+                "description": ""
+            },
+            {
+                "name": "Treatment_ChangePosition_Order",
+                "type": "pattern",
+                "id": "11128"
+            },
+            {
+                "name": "Treatment_change_position_6_times_a_day_state",
+                "type": "state",
+                "id": "11123",
+                "description": ""
+            },
+            {
+                "name": "Treatment_change_position_9_times_a_day_state",
+                "type": "state",
+                "id": "11125",
+                "description": ""
+            },
+            {
+                "name": "Treatment_DietitionHafnaya",
+                "type": "pattern",
+                "id": "11188"
+            },
+            {
+                "name": "Treatment_DietitionHafnayaState_Dietition",
+                "type": "state",
+                "id": "11183",
+                "description": ""
+            },
+            {
+                "name": "Treatment_DietitionHafnayaState_Nurse",
+                "type": "state",
+                "id": "11186",
+                "description": ""
+            },
+            {
+                "name": "Treatment_DietitionYeutz_Dietition",
+                "type": "pattern",
+                "id": "11185"
+            },
+            {
+                "name": "Treatment_DietitionYeutz_Nurse",
+                "type": "pattern",
+                "id": "11189"
+            },
+            {
+                "name": "Treatment_DoctorVisit",
+                "type": "pattern",
+                "id": "11099"
+            },
+            {
+                "name": "Treatment_LegsUpBitzua",
+                "type": "gradient",
+                "id": "11132"
+            },
+            {
+                "name": "Treatment_LegsUpBitzua_Order",
+                "type": "pattern",
+                "id": "11133"
+            },
+            {
+                "name": "Treatment_LegsUpHoraa",
+                "type": "pattern",
+                "id": "11131"
+            },
+            {
+                "name": "Treatment_Norton3TimesAWeek",
+                "type": "gradient",
+                "id": "11100"
+            },
+            {
+                "name": "Treatment_NurseVisit",
+                "type": "pattern",
+                "id": "11097"
+            },
+            {
+                "name": "Treatement_PainBitzuaAnceADay",
+                "type": "pattern",
+                "id": "11101"
+            },
+            {
+                "name": "Treatment_PainBitzuaOnceADay_Order",
+                "type": "pattern",
+                "id": "11102"
+            },
+            {
+                "name": "Treatment_PainHoraa",
+                "type": "pattern",
+                "id": "11103"
+            },
+            {
+                "name": "Treatment_PhysicianReport",
+                "type": "pattern",
+                "id": "11094"
+            },
+            {
+                "name": "Treatment_Pizur",
+                "type": "gradient",
+                "id": "11130"
+            },
+            {
+                "name": "Treatment_PressureUlcerDiagnosis",
+                "type": "pattern",
+                "id": "11095"
+            },
+            {
+                "name": "Treatment_Skin3TimesAWeek",
+                "type": "gradient",
+                "id": "11098"
+            },
+            {
+                "name": "Treatment_SkinBitzuaOnceADay",
+                "type": "gradient",
+                "id": "11104"
+            },
+            {
+                "name": "Treatment_SkinBitzuaOnceADay_Order",
+                "type": "pattern",
+                "id": "11105"
+            },
+            {
+                "name": "Treatment_SkinHoraaOnceADay",
+                "type": "pattern",
+                "id": "11106"
+            },
+            {
+                "name": "Treatment_SkinIntegrityOnceAWeek",
+                "type": "gradient",
+                "id": "11122"
+            },
+            {
+                "name": "Treatment_VisitSignature",
+                "type": "pattern",
+                "id": "11096"
+            },
+            {
+                "name": "אדום במפשעות ועכוז",
+                "type": "state",
+                "id": "10822",
+                "description": ""
+            },
+            {
+                "name": "אדום ללא הפרשה/הפרשה מועטה",
+                "type": "state",
+                "id": "10821",
+                "description": ""
+            },
+            {
+                "name": "אדום + צהוב ללא הפרשה / הפרשה מועטה",
+                "type": "state",
+                "id": "10833",
+                "description": ""
+            },
+            {
+                "name": "אודם במקום אחר",
+                "type": "state",
+                "id": "10866",
+                "description": ""
+            },
+            {
+                "name": "אודם בעקבים",
+                "type": "state",
+                "id": "10828",
+                "description": ""
+            },
+            {
+                "name": "האם נפטר?",
+                "type": "state",
+                "id": "10868",
+                "description": ""
+            },
+            {
+                "name": "נורטון מתחת ל15 ומאסט מעל 2",
+                "type": "state",
+                "id": "10906",
+                "description": ""
+            },
+            {
+                "name": "סיום טיפול",
+                "type": "state",
+                "id": "10762",
+                "description": ""
+            },
+            {
+                "name": "צהוב / מעורב (צהוב/שחור/אדום) לא מפריש",
+                "type": "state",
+                "id": "10839",
+                "description": ""
+            },
+            {
+                "name": "צהוב / מעורב (צהוב/שחור/אדום) מפריש",
+                "type": "state",
+                "id": "10844",
+                "description": ""
+            },
+            {
+                "name": "צהוב שחור מזוהם - מפריש עם ריח רע",
+                "type": "state",
+                "id": "10851",
+                "description": ""
+            },
+            {
+                "name": "צהוב + שחור מזוהם לא מפריש / הפרשה מעטה",
+                "type": "state",
+                "id": "10860",
+                "description": ""
+            },
+            {
+                "name": "שחור יבש ללא הפרשה וריח",
+                "type": "state",
+                "id": "10858",
+                "description": ""
+            },
+            {
+                "name": "Admission_Norton",
+                "type": "pattern",
+                "id": "11026"
+            },
+            {
+                "name": "Admission_NutritionDietition",
+                "type": "pattern",
+                "id": "11069"
+            },
+            {
+                "name": "Admission_NutritionDietitionInNurseState",
+                "type": "pattern",
+                "id": "11070"
+            },
+            {
+                "name": "Admission_NutritionNurse",
+                "type": "pattern",
+                "id": "11068"
+            },
+            {
+                "name": "Admission_NutritionNurseInDietitionState",
+                "type": "pattern",
+                "id": "11071"
+            },
+            {
+                "name": "Admission_Nutrition_Dietition_State",
+                "type": "state",
+                "id": "11075",
+                "description": ""
+            },
+            {
+                "name": "Admission_Nutrition_Nurse_State",
+                "type": "state",
+                "id": "11067",
+                "description": ""
+            },
+            {
+                "name": "Admission_Pain",
+                "type": "pattern",
+                "id": "11076"
+            },
+            {
+                "name": "Admission_Skin",
+                "type": "pattern",
+                "id": "11066"
+            },
+            {
+                "name": "All_BlackDry_Horaa",
+                "type": "pattern",
+                "id": "14317"
+            },
+            {
+                "name": "All_Havisha_BlackDray_Bitzua",
+                "type": "pattern",
+                "id": "14314"
+            },
+            {
+                "name": "All_Havisha_RedDis_Bitzua",
+                "type": "pattern",
+                "id": "14312"
+            },
+            {
+                "name": "All_Havisha_RedMifAkuz_Bitzua",
+                "type": "pattern",
+                "id": "8000"
+            },
+            {
+                "name": "All_Havisha_YelMeoMaf_Bitzua",
+                "type": "pattern",
+                "id": "14313"
+            },
+            {
+                "name": "All_RedDis_Horaa",
+                "type": "pattern",
+                "id": "14315"
+            },
+            {
+                "name": "All_YelMeoMaf_Horaa",
+                "type": "pattern",
+                "id": "14316"
+            },
+            {
+                "name": "BitzuaChangePosition6Times",
+                "type": "gradient",
+                "id": "11038"
+            },
+            {
+                "name": "BitzuaChangePosition9Times",
+                "type": "gradient",
+                "id": "11039"
+            },
+            {
+                "name": "BitzuaHoraaNacl0.9%",
+                "type": "pattern",
+                "id": "11020"
+            },
+            {
+                "name": "BitzuaHoraaShemenZait",
+                "type": "pattern",
+                "id": "11001"
+            },
+            {
+                "name": "BitzuaSmallerHoraaShemenZait",
+                "type": "pattern",
+                "id": "11002"
+            },
+            {
+                "name": "change position 6 times a day",
+                "type": "state",
+                "id": "10759",
+                "description": ""
+            },
+            {
+                "name": "change position 9 times a day",
+                "type": "state",
+                "id": "10760",
+                "description": ""
+            },
+            {
+                "name": "DietitionYeutzOrNutrition",
+                "type": "pattern",
+                "id": "11175"
+            },
+            {
+                "name": "Exam",
+                "type": "pattern",
+                "id": "9001"
+            },
+            {
+                "name": "Exam_Ulcer",
+                "type": "state",
+                "id": "9000"
+            },
+            {
+                "name": "Exam_Ulcer_Count",
+                "type": "pattern",
+                "id": "99999"
+            },
+            {
+                "name": "FollowUpAndPrevention_ChangePosition6Or9Times",
+                "type": "gradient",
+                "id": "11089"
+            },
+            {
+                "name": "FollowUpAndPrevention_ChangePositionBitzua6ADay_c",
+                "type": "pattern",
+                "id": "2065"
+            },
+            {
+                "name": "FollowUpAndPrevention_ChangePositionBitzua9ADay_c",
+                "type": "pattern",
+                "id": "2066"
+            },
+            {
+                "name": "FollowUpAndPrevention_ChangePositionHoraa",
+                "type": "pattern",
+                "id": "11091"
+            },
+            {
+                "name": "FollowUpAndPrevention_ChangePosition_Order",
+                "type": "pattern",
+                "id": "11090"
+            },
+            {
+                "name": "FollowUpAndPrevention_change_position_6_times_a_day_state",
+                "type": "state",
+                "id": "11087",
+                "description": ""
+            },
+            {
+                "name": "FollowUpAndPrevention_change_position_9_times_a_day_state",
+                "type": "state",
+                "id": "11088",
+                "description": ""
+            },
+            {
+                "name": "FollowUpAndPrevention_DietitionHafnaya",
+                "type": "pattern",
+                "id": "11084"
+            },
+            {
+                "name": "FollowUpAndPrevention_DietitionHafnayaState_Dietition",
+                "type": "state",
+                "id": "11142",
+                "description": ""
+            },
+            {
+                "name": "FollowUpAndPrevention_DietitionHafnayaState_Nurse",
+                "type": "state",
+                "id": "11083",
+                "description": ""
+            },
+            {
+                "name": "FollowUpAndPrevention_DietitionHafnaya_c",
+                "type": "gradient",
+                "id": "2063"
+            },
+            {
+                "name": "FollowUpAndPrevention_DietitionYeutz_c",
+                "type": "gradient",
+                "id": "2064"
+            },
+            {
+                "name": "FollowUpAndPrevention_DietitionYeutz_Dietition",
+                "type": "pattern",
+                "id": "11143"
+            },
+            {
+                "name": "FollowUpAndPrevention_DietitionYeutz_Nurse",
+                "type": "pattern",
+                "id": "11121"
+            },
+            {
+                "name": "FollowUpAndPrevention_HadrachaTeud",
+                "type": "gradient",
+                "id": "11036"
+            },
+            {
+                "name": "FollowUpAndPrevention_HadrachaTeud_cond",
+                "type": "gradient",
+                "id": "2056"
+            },
+            {
+                "name": "FollowUpAndPrevention_LaydownAngleHoraa",
+                "type": "pattern",
+                "id": "11138"
+            },
+            {
+                "name": "FollowUpAndPrevention_LaydownAngleOnceADay_c",
+                "type": "gradient",
+                "id": "2057"
+            },
+            {
+                "name": "FollowUpAndPrevention_LaydownAngleOnceADay",
+                "type": "gradient",
+                "id": "11041"
+            },
+            {
+                "name": "FollowUpAndPrevention_LaydownAngle_Order",
+                "type": "pattern",
+                "id": "11137"
+            },
+            {
+                "name": "FollowUpAndPrevention_LegsUpBitzua",
+                "type": "gradient",
+                "id": "11119"
+            },
+            {
+                "name": "FollowUpAndPrevention_LegsUpBitzua_Order",
+                "type": "pattern",
+                "id": "11120"
+            },
+            {
+                "name": "FollowUpAndPrevention_LegsUpHoraa",
+                "type": "pattern",
+                "id": "11118"
+            },
+            {
+                "name": "FollowUpAndPrevention_LowNortonState",
+                "type": "state",
+                "id": "11117",
+                "description": ""
+            },
+            {
+                "name": "FollowUpAndPrevention_Norton3TimesAWeek",
+                "type": "pattern",
+                "id": "11033"
+            },
+            {
+                "name": "FollowUpAndPrevention_Norton3TimesAWeek_c",
+                "type": "gradient",
+                "id": "2058"
+            },
+            {
+                "name": "FollowUpAndPrevention_OccupentialTheraphy_c",
+                "type": "gradient",
+                "id": "2062"
+            },
+            {
+                "name": "FollowUpAndPrevention_PainBitzuaAnceADay",
+                "type": "pattern",
+                "id": "11034"
+            },
+            {
+                "name": "FollowUpAndPrevention_PainBitzuaAnceADay_c",
+                "type": "pattern",
+                "id": "2059"
+            },
+            {
+                "name": "FollowUpAndPrevention_PainBitzuaOnceADay_Order",
+                "type": "pattern",
+                "id": "11080"
+            },
+            {
+                "name": "FollowUpAndPrevention_PainHoraa",
+                "type": "pattern",
+                "id": "11092"
+            },
+            {
+                "name": "FollowUpAndPrevention_PainTeudOnceADay",
+                "type": "pattern",
+                "id": "11074"
+            },
+            {
+                "name": "FollowUpAndPrevention_Pizur",
+                "type": "gradient",
+                "id": "11042"
+            },
+            {
+                "name": "FollowUpAndPrevention_Pizur_c",
+                "type": "gradient",
+                "id": "2061"
+            },
+            {
+                "name": "FollowUpAndPrevention_ShimunAllBitzua",
+                "type": "pattern",
+                "id": "11135"
+            },
+            {
+                "name": "FollowUpAndPrevention_ShimunAllHoraa",
+                "type": "pattern",
+                "id": "11134"
+            },
+            {
+                "name": "FollowUpAndPrevention_ShimunBabyPasta_Order",
+                "type": "pattern",
+                "id": "11139"
+            },
+            {
+                "name": "FollowUpAndPrevention_ShimunBitzuaOnceADay",
+                "type": "pattern",
+                "id": "11085"
+            },
+            {
+                "name": "FollowUpAndPrevention_ShimunHoraa",
+                "type": "pattern",
+                "id": "11082"
+            },
+            {
+                "name": "FollowUpAndPrevention_ShimunOnceADay",
+                "type": "gradient",
+                "id": "11136"
+            },
+            {
+                "name": "FollowUpAndPrevention_ShimunOnceADay_c",
+                "type": "gradient",
+                "id": "2060"
+            },
+            {
+                "name": "FollowUpAndPrevention_ShimunShemenZait_Order",
+                "type": "pattern",
+                "id": "11140"
+            },
+            {
+                "name": "FollowUpAndPrevention_ShimunSilicon_Order",
+                "type": "pattern",
+                "id": "11141"
+            },
+            {
+                "name": "FollowUpAndPrevention_ShimunState",
+                "type": "state",
+                "id": "11081",
+                "description": ""
+            },
+            {
+                "name": "FollowUpAndPrevention_Shimun_Order",
+                "type": "pattern",
+                "id": "11086"
+            },
+            {
+                "name": "FollowUpAndPrevention_Skin3TimesAWeek",
+                "type": "gradient",
+                "id": "11032"
+            },
+            {
+                "name": "FollowUpAndPrevention_SkinBitzuaOnceADay",
+                "type": "gradient",
+                "id": "11035"
+            },
+            {
+                "name": "FollowUpAndPrevention_SkinBitzuaOnceADay_cond",
+                "type": "gradient",
+                "id": "2055"
+            },
+            {
+                "name": "FollowUpAndPrevention_SkinBitzuaOnceADay_Order",
+                "type": "pattern",
+                "id": "11079"
+            },
+            {
+                "name": "FollowUpAndPrevention_SkinHoraaOnceADay",
+                "type": "pattern",
+                "id": "11078"
+            },
+            {
+                "name": "FollowUp_And_No_PreventionOrTreatment",
+                "type": "state",
+                "id": "3005"
+            },
+            {
+                "name": "FollowUp_Hadracha_Discharge_condition",
+                "type": "gradient",
+                "id": "2051"
+            },
+            {
+                "name": "FollowUp_Norton3TimesAWeek",
+                "type": "pattern",
+                "id": "11027"
+            },
+            {
+                "name": "FollowUp_Norton3TimesAWeek_condition",
+                "type": "pattern",
+                "id": "2050"
+            },
+            {
+                "name": "FollowUp_Or_Treatment",
+                "type": "state",
+                "id": "2018"
+            },
+            {
+                "name": "FollowUp_Or_Treatment_Or_NoOdemMivzaotAkuz",
+                "type": "state",
+                "id": "2022"
+            },
+            {
+                "name": "Follow_Or_Treatment_Or_NortonBiggerEqual10",
+                "type": "state",
+                "id": "2019"
+            },
+            {
+                "name": "FollowUp_Or_Treatment_Or_NortonSmall10_Or_Big14",
+                "type": "state",
+                "id": "2021"
+            },
+            {
+                "name": "FollowUp_Or_Treatment_Or_NortonSmallerEqual14",
+                "type": "state",
+                "id": "2020"
+            },
+            {
+                "name": "FollowUp_PainBitzuaOnceADay",
+                "type": "pattern",
+                "id": "11031"
+            },
+            {
+                "name": "FollowUp_PainBitzuaOnceADay_condition",
+                "type": "pattern",
+                "id": "2053"
+            },
+            {
+                "name": "FollowUp_PainBitzuaOnceADay_Order",
+                "type": "pattern",
+                "id": "11072"
+            },
+            {
+                "name": "FollowUp_PainHoraa",
+                "type": "pattern",
+                "id": "11077"
+            },
+            {
+                "name": "FollowUp_PainTeudOnceADay",
+                "type": "pattern",
+                "id": "11065"
+            },
+            {
+                "name": "FollowUp_Skin3TimesAWeek",
+                "type": "pattern",
+                "id": "11030"
+            },
+            {
+                "name": "FollowUp_Skin3TimesAWeek_condition",
+                "type": "pattern",
+                "id": "2052"
+            },
+            {
+                "name": "FollowUp_Skin_Deterioration",
+                "type": "pattern",
+                "id": "11200"
+            },
+            {
+                "name": "Havisha_BlackDryNoHafrashaNoSmell_AllBitzua",
+                "type": "pattern",
+                "id": "11178"
+            },
+            {
+                "name": "Havisha_BlackDryNoHafrashaNoSmell_Bitzua",
+                "type": "pattern",
+                "id": "11179"
+            },
+            {
+                "name": "Havisha_BlackDryNoHafrashaNoSmell_State",
+                "type": "state",
+                "id": "11177",
+                "description": ""
+            },
+            {
+                "name": "Havisha_HydrocolloidBitzuaInTreatement",
+                "type": "pattern",
+                "id": "11167"
+            },
+            {
+                "name": "Havisha_Hydrocolloid_OnceEveryTwoDays",
+                "type": "pattern",
+                "id": "11155"
+            },
+            {
+                "name": "Havisha_Hydrocolloid_Order",
+                "type": "pattern",
+                "id": "11156"
+            },
+            {
+                "name": "Havisha_HydrogelBitzuaInTreatement",
+                "type": "pattern",
+                "id": "11168"
+            },
+            {
+                "name": "Havisha_HYDROGEL_OnceADay",
+                "type": "pattern",
+                "id": "11158"
+            },
+            {
+                "name": "Havisha_HYDROGEL_Order",
+                "type": "pattern",
+                "id": "11159"
+            },
+            {
+                "name": "Havisha_KesefAndNogdeiReiachBitzua_Order",
+                "type": "pattern",
+                "id": "11151"
+            },
+            {
+                "name": "Havisha_KesefBitzuaInTreatement",
+                "type": "pattern",
+                "id": "11172"
+            },
+            {
+                "name": "Havisha_KesefNogdeiReiachBitzuaInTreatement",
+                "type": "pattern",
+                "id": "11165"
+            },
+            {
+                "name": "Havisha_KesefNogdeiReiach_OnceEveryTwoDays",
+                "type": "pattern",
+                "id": "11150"
+            },
+            {
+                "name": "Havisha_Kesef_OnceEveryTwoDays",
+                "type": "pattern",
+                "id": "11163"
+            },
+            {
+                "name": "Havisha_Kesef_Order",
+                "type": "pattern",
+                "id": "11171"
+            },
+            {
+                "name": "Havisha_KetzefBitzuaInTreatement",
+                "type": "pattern",
+                "id": "11169"
+            },
+            {
+                "name": "Havisha_Ketzef_OnceEveryTwoDays",
+                "type": "pattern",
+                "id": "11161"
+            },
+            {
+                "name": "Havisha_Ketzef_Order",
+                "type": "pattern",
+                "id": "11170"
+            },
+            {
+                "name": "Havisha_Nacl0.9BitzuaInTreatement",
+                "type": "pattern",
+                "id": "11166"
+            },
+            {
+                "name": "Havisha_Nacl0.9_AllHoraaBitzua",
+                "type": "pattern",
+                "id": "11112"
+            },
+            {
+                "name": "Havisha_Nacl0.9_BitzuaTwiceADay",
+                "type": "pattern",
+                "id": "11111"
+            },
+            {
+                "name": "Havisha_Nacl0.9_ConditionsState",
+                "type": "state",
+                "id": "11110",
+                "description": ""
+            },
+            {
+                "name": "Havisha_Nacl0.9_FirstHoraa",
+                "type": "pattern",
+                "id": "11116"
+            },
+            {
+                "name": "Havisha_Nacl0.9_Order",
+                "type": "pattern",
+                "id": "11115"
+            },
+            {
+                "name": "Havisha_Nacl0.9_TreatementsInRightCondition",
+                "type": "pattern",
+                "id": "11113"
+            },
+            {
+                "name": "Havisha_Nacl0.9_TwiceADay",
+                "type": "pattern",
+                "id": "11153"
+            },
+            {
+                "name": "Havisha_RedNoHafrashaOrLittle_AllBitzua",
+                "type": "pattern",
+                "id": "11173"
+            },
+            {
+                "name": "Havisha_RedNoHafrashaOrLittle_AllHoraa",
+                "type": "pattern",
+                "id": "11107"
+            },
+            {
+                "name": "Havisha_RedNoHafrashaOrLittle_Bitzua",
+                "type": "pattern",
+                "id": "11174"
+            },
+            {
+                "name": "Havisha_RedNoHafrashaOrLittle_Horaa",
+                "type": "pattern",
+                "id": "11108"
+            },
+            {
+                "name": "Havisha_RedNoHafrashaOrMuata_State",
+                "type": "state",
+                "id": "11176",
+                "description": ""
+            },
+            {
+                "name": "Havisha_ShemenZaitBitzuaInTreatement",
+                "type": "pattern",
+                "id": "11164"
+            },
+            {
+                "name": "Havisha_ShemenZait_ConditionsState",
+                "type": "state",
+                "id": "11109",
+                "description": ""
+            },
+            {
+                "name": "Havisha_ShemenZait_OnceADay",
+                "type": "pattern",
+                "id": "11147"
+            },
+            {
+                "name": "Havisha_OliveOil_Order",
+                "type": "pattern",
+                "id": "11148"
+            },
+            {
+                "name": "Havisha_YellowOrMixWithHafrasha_AllBitzua",
+                "type": "pattern",
+                "id": "11181"
+            },
+            {
+                "name": "Havisha_YellowOrMixWithHafrasha_Bitzua",
+                "type": "pattern",
+                "id": "11182"
+            },
+            {
+                "name": "Havisha_YellowOrMixWithHafrasha_State",
+                "type": "state",
+                "id": "11180",
+                "description": ""
+            },
+            {
+                "name": "High_Norton_Scale_PATTERN",
+                "type": "pattern",
+                "id": "1115878"
+            },
+            {
+                "name": "HoraaBitzuaBiafine",
+                "type": "pattern",
+                "id": "11010"
+            },
+            {
+                "name": "HoraaBitzuaBurnCare",
+                "type": "pattern",
+                "id": "11006"
+            },
+            {
+                "name": "HoraaBitzuaDermagranB",
+                "type": "pattern",
+                "id": "11007"
+            },
+            {
+                "name": "HoraaBitzuaGauzeParaffin",
+                "type": "pattern",
+                "id": "11008"
+            },
+            {
+                "name": "HoraaBitzuaHavishaMenia",
+                "type": "pattern",
+                "id": "11019"
+            },
+            {
+                "name": "HoraaBitzuaHavishatColgen",
+                "type": "pattern",
+                "id": "11018"
+            },
+            {
+                "name": "HoraaBitzuaHavishotKesef",
+                "type": "pattern",
+                "id": "11016"
+            },
+            {
+                "name": "HoraaBitzuaHavishotKesefANDNogdeiReiach",
+                "type": "pattern",
+                "id": "11017"
+            },
+            {
+                "name": "HoraaBitzuaHavishotKetzef",
+                "type": "pattern",
+                "id": "11015"
+            },
+            {
+                "name": "HoraaBitzuaHavishotSofhot",
+                "type": "pattern",
+                "id": "11014"
+            },
+            {
+                "name": "HoraaBitzuaHydrocolloid",
+                "type": "pattern",
+                "id": "11009"
+            },
+            {
+                "name": "HoraaBitzuaHydrogel",
+                "type": "pattern",
+                "id": "11011"
+            },
+            {
+                "name": "HoraaBitzuaNacl0.9%",
+                "type": "pattern",
+                "id": "11003"
+            },
+            {
+                "name": "HoraaBitzuaNacl0.9%NEW",
+                "type": "pattern",
+                "id": "11021"
+            },
+            {
+                "name": "HoraaBitzuaPastaBaby",
+                "type": "pattern",
+                "id": "11004"
+            },
+            {
+                "name": "HoraaBitzuaShemenZait",
+                "type": "pattern",
+                "id": "11000"
+            },
+            {
+                "name": "HoraaBitzuaSilicon",
+                "type": "pattern",
+                "id": "11005"
+            },
+            {
+                "name": "HoraaBitzuaTenderWet",
+                "type": "pattern",
+                "id": "11013"
+            },
+            {
+                "name": "HoraaBitzuaUrea10%",
+                "type": "pattern",
+                "id": "11012"
+            },
+            {
+                "name": "is_hospitalized",
+                "type": "state",
+                "id": "10751",
+                "description": ""
+            },
+            {
+                "name": "Kabala_Albumin",
+                "type": "pattern",
+                "id": "11064"
+            },
+            {
+                "name": "Norton 10-14",
+                "type": "state",
+                "id": "14310",
+                "description": ""
+            },
+            {
+                "name": "Norton less 10",
+                "type": "state",
+                "id": "14311",
+                "description": ""
+            },
+            {
+                "name": "norton_scale_GRADIENT",
+                "type": "gradient",
+                "id": "3002"
+            },
+            {
+                "name": "Norton_Scale_Incr_Pattern",
+                "type": "pattern",
+                "id": "1000022"
+            },
+            {
+                "name": "Norton_STATE",
+                "type": "state",
+                "id": "10910",
+                "description": ""
+            },
+            {
+                "name": "Norton_Trapez",
+                "type": "pattern",
+                "id": "7000"
+            },
+            {
+                "name": "No_Odem",
+                "type": "state",
+                "id": "5017"
+            },
+            {
+                "name": "No_Odem_Baakevim",
+                "type": "state",
+                "id": "2040"
+            },
+            {
+                "name": "No_Odem_BemakomAcher",
+                "type": "state",
+                "id": "2041"
+            },
+            {
+                "name": "No_Odem_MifsaotAkuz",
+                "type": "gradient",
+                "id": "2029"
+            },
+            {
+                "name": "No_Odem_Trapez",
+                "type": "pattern",
+                "id": "5018"
+            },
+            {
+                "name": "No_Pressure_Ulcer_Infection",
+                "type": "state",
+                "id": "5030"
+            },
+            {
+                "name": "No_Pressure_Ulcer_Infection_Trapez",
+                "type": "pattern",
+                "id": "5031"
+            },
+            {
+                "name": "No_Rank_1",
+                "type": "state",
+                "id": "5010"
+            },
+            {
+                "name": "No_Rank_1_Trapez",
+                "type": "pattern",
+                "id": "5026"
+            },
+            {
+                "name": "No_Rank_2",
+                "type": "state",
+                "id": "5011"
+            },
+            {
+                "name": "No_Rank_2_3",
+                "type": "state",
+                "id": "5012"
+            },
+            {
+                "name": "No_Rank_2_3_Trapez",
+                "type": "pattern",
+                "id": "5028"
+            },
+            {
+                "name": "No_Rank_2_Trapez",
+                "type": "pattern",
+                "id": "5027"
+            },
+            {
+                "name": "No_Rank_3",
+                "type": "state",
+                "id": "5007"
+            },
+            {
+                "name": "No_Rank_3_Trapez",
+                "type": "pattern",
+                "id": "5029"
+            },
+            {
+                "name": "No_Red_Secretion",
+                "type": "pattern",
+                "id": "5020"
+            },
+            {
+                "name": "No_Red_Yellow_Secretion",
+                "type": "pattern",
+                "id": "5021"
+            },
+            {
+                "name": "No_Yellow_Black_NoSecretion",
+                "type": "pattern",
+                "id": "5024"
+            },
+            {
+                "name": "No_Yellow_Black_Secretion_Smell",
+                "type": "pattern",
+                "id": "5025"
+            },
+            {
+                "name": "No_Yellow_Mixed_NoSecretion",
+                "type": "pattern",
+                "id": "5022"
+            },
+            {
+                "name": "No_Yellow_Mixed_Secretion",
+                "type": "pattern",
+                "id": "5023"
+            },
+            {
+                "name": "Patient_State",
+                "type": "state",
+                "id": "10870",
+                "description": ""
+            },
+            {
+                "name": "Prevention_And_Norton10-14",
+                "type": "state",
+                "id": "2002"
+            },
+            {
+                "name": "Prevention_And_Norton10-14_And_No_Exit",
+                "type": "state",
+                "id": "2026"
+            },
+            {
+                "name": "Prevention_And_NortonBigger10_And_No_Exit",
+                "type": "state",
+                "id": "2027"
+            },
+            {
+                "name": "Prevention_And_NortonBigThen14",
+                "type": "state",
+                "id": "2003"
+            },
+            {
+                "name": "Prevention_And_NortonLessThan10",
+                "type": "state",
+                "id": "2028"
+            },
+            {
+                "name": "Prevention_And_NortonSmall10_And_No_Exit",
+                "type": "state",
+                "id": "2024"
+            },
+            {
+                "name": "Prevention_And_No_FollowUpOrTreatment",
+                "type": "state",
+                "id": "2025"
+            },
+            {
+                "name": "Prevention_And_OdemMifsaotAkuz_And_No_Exit",
+                "type": "state",
+                "id": "2030"
+            },
+            {
+                "name": "Prevention_And_Odem_Mifsaot_Akutz",
+                "type": "state",
+                "id": "2000"
+            },
+            {
+                "name": "Prevention_Or_Treatment",
+                "type": "state",
+                "id": "2017"
+            },
+            {
+                "name": "SHIMUN",
+                "type": "state",
+                "id": "10893",
+                "description": ""
+            },
+            {
+                "name": "Trapez_BlackDry",
+                "type": "pattern",
+                "id": "8007"
+            },
+            {
+                "name": "Trapez_RedDis",
+                "type": "pattern",
+                "id": "8003"
+            },
+            {
+                "name": "Trapez_RedMifAkuz",
+                "type": "pattern",
+                "id": "8001"
+            },
+            {
+                "name": "Trapez_YelMeoMaf",
+                "type": "pattern",
+                "id": "8005"
+            },
+            {
+                "name": "Treatment_And_BlaDryNoDisNoSm",
+                "type": "state",
+                "id": "2015"
+            },
+            {
+                "name": "Treatment_And_BlaYeDisSmell",
+                "type": "state",
+                "id": "2016"
+            },
+            {
+                "name": "Treatment_And_Norton10-14",
+                "type": "state",
+                "id": "2005"
+            },
+            {
+                "name": "Treatment_And_NortonBigThen14",
+                "type": "state",
+                "id": "2006"
+            },
+            {
+                "name": "Treatment_And_NortonLessThan10",
+                "type": "state",
+                "id": "2004"
+            },
+            {
+                "name": "Treatment_And_OdemBakevim",
+                "type": "state",
+                "id": "2009"
+            },
+            {
+                "name": "Treatment_And_OdemInOtherPlace",
+                "type": "state",
+                "id": "2007"
+            },
+            {
+                "name": "Treatment_And_OdemMivsaofAkuts",
+                "type": "state",
+                "id": "2008"
+            },
+            {
+                "name": "Treatment_And_RedY_W_dis",
+                "type": "state",
+                "id": "2011"
+            },
+            {
+                "name": "Treatment_And_Red_w_dis",
+                "type": "state",
+                "id": "2010"
+            },
+            {
+                "name": "Treatment_And_YeBlaInfec",
+                "type": "state",
+                "id": "2014"
+            },
+            {
+                "name": "Treatment_And_YeMeoMaf",
+                "type": "state",
+                "id": "2013"
+            },
+            {
+                "name": "Treatment_And_YeOrMeoNodis",
+                "type": "state",
+                "id": "2012"
+            },
+            {
+                "name": "Treatment_BitzuaChangePosition6Times",
+                "type": "gradient",
+                "id": "11124"
+            },
+            {
+                "name": "Treatment_BitzuaChangePosition9Times",
+                "type": "gradient",
+                "id": "11126"
+            },
+            {
+                "name": "Treatment_ChangePosition6Or9Times",
+                "type": "gradient",
+                "id": "11127"
+            },
+            {
+                "name": "Treatment_ChangePositionHoraa",
+                "type": "pattern",
+                "id": "11129"
+            },
+            {
+                "name": "Treatment_ChangePositionState",
+                "type": "state",
+                "id": "11190",
+                "description": ""
+            },
+            {
+                "name": "Treatment_ChangePosition_Order",
+                "type": "pattern",
+                "id": "11128"
+            },
+            {
+                "name": "Treatment_change_position_6_times_a_day_state",
+                "type": "state",
+                "id": "11123",
+                "description": ""
+            },
+            {
+                "name": "Treatment_change_position_9_times_a_day_state",
+                "type": "state",
+                "id": "11125",
+                "description": ""
+            },
+            {
+                "name": "Treatment_DietitionHafnaya",
+                "type": "pattern",
+                "id": "11188"
+            },
+            {
+                "name": "Treatment_DietitionHafnayaState_Dietition",
+                "type": "state",
+                "id": "11183",
+                "description": ""
+            },
+            {
+                "name": "Treatment_DietitionHafnayaState_Nurse",
+                "type": "state",
+                "id": "11186",
+                "description": ""
+            },
+            {
+                "name": "Treatment_DietitionYeutz_Dietition",
+                "type": "pattern",
+                "id": "11185"
+            },
+            {
+                "name": "Treatment_DietitionYeutz_Nurse",
+                "type": "pattern",
+                "id": "11189"
+            },
+            {
+                "name": "Treatment_DoctorVisit",
+                "type": "pattern",
+                "id": "11099"
+            },
+            {
+                "name": "Treatment_LegsUpBitzua",
+                "type": "gradient",
+                "id": "11132"
+            },
+            {
+                "name": "Treatment_LegsUpBitzua_Order",
+                "type": "pattern",
+                "id": "11133"
+            },
+            {
+                "name": "Treatment_LegsUpHoraa",
+                "type": "pattern",
+                "id": "11131"
+            },
+            {
+                "name": "Treatment_Norton3TimesAWeek",
+                "type": "gradient",
+                "id": "11100"
+            },
+            {
+                "name": "Treatment_NurseVisit",
+                "type": "pattern",
+                "id": "11097"
+            },
+            {
+                "name": "Treatement_PainBitzuaAnceADay",
+                "type": "pattern",
+                "id": "11101"
+            },
+            {
+                "name": "Treatment_PainBitzuaOnceADay_Order",
+                "type": "pattern",
+                "id": "11102"
+            },
+            {
+                "name": "Treatment_PainHoraa",
+                "type": "pattern",
+                "id": "11103"
+            },
+            {
+                "name": "Treatment_PhysicianReport",
+                "type": "pattern",
+                "id": "11094"
+            },
+            {
+                "name": "Treatment_Pizur",
+                "type": "gradient",
+                "id": "11130"
+            },
+            {
+                "name": "Treatment_PressureUlcerDiagnosis",
+                "type": "pattern",
+                "id": "11095"
+            },
+            {
+                "name": "Treatment_Skin3TimesAWeek",
+                "type": "gradient",
+                "id": "11098"
+            },
+            {
+                "name": "Treatment_SkinBitzuaOnceADay",
+                "type": "gradient",
+                "id": "11104"
+            },
+            {
+                "name": "Treatment_SkinBitzuaOnceADay_Order",
+                "type": "pattern",
+                "id": "11105"
+            },
+            {
+                "name": "Treatment_SkinHoraaOnceADay",
+                "type": "pattern",
+                "id": "11106"
+            },
+            {
+                "name": "Treatment_SkinIntegrityOnceAWeek",
+                "type": "gradient",
+                "id": "11122"
+            },
+            {
+                "name": "Treatment_VisitSignature",
+                "type": "pattern",
+                "id": "11096"
+            },
+            {
+                "name": "האם נפטר?",
+                "type": "state",
+                "id": "10868",
+                "description": ""
+            },
+            {
+                "name": "סיום טיפול",
+                "type": "state",
+                "id": "10762",
+                "description": ""
+            },
+            {
+                "name": "אודם במקום אחר",
+                "type": "state",
+                "id": "10866",
+                "description": ""
+            },
+            {
+                "name": "אודם בעקבים",
+                "type": "state",
+                "id": "10828",
+                "description": ""
+            },
+            {
+                "name": "אדום ללא הפרשה/הפרשה מועטה",
+                "type": "state",
+                "id": "10821",
+                "description": ""
+            },
+            {
+                "name": "אדום + צהוב ללא הפרשה / הפרשה מועטה",
+                "type": "state",
+                "id": "10833",
+                "description": ""
+            },
+            {
+                "name": "אדום במפשעות ועכוז",
+                "type": "state",
+                "id": "10822",
+                "description": ""
+            },
+            {
+                "name": "נורטון מתחת ל15 ומאסט מעל 2",
+                "type": "state",
+                "id": "10906",
+                "description": ""
+            },
+            {
+                "name": "שחור יבש ללא הפרשה וריח",
+                "type": "state",
+                "id": "10858",
+                "description": ""
+            },
+            {
+                "name": "צהוב / מעורב (צהוב/שחור/אדום) מפריש",
+                "type": "state",
+                "id": "10844",
+                "description": ""
+            },
+            {
+                "name": "צהוב / מעורב (צהוב/שחור/אדום) לא מפריש",
+                "type": "state",
+                "id": "10839",
+                "description": ""
+            },
+            {
+                "name": "צהוב שחור מזוהם - מפריש עם ריח רע",
+                "type": "state",
+                "id": "10851",
+                "description": ""
+            },
+            {
+                "name": "צהוב + שחור מזוהם לא מפריש / הפרשה מעטה",
+                "type": "state",
+                "id": "10860",
+                "description": ""
+            },
+            {
+                "name": "PriceSqueredState",
+                "type": "state",
+                "id": "10010",
+                "description": ""
+            }
+        ]
+    }
+}
