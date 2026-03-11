@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- edited with XML Spy v4.1 U (http://www.xmlspy.com) by Ben-Gurion University (Ben-Gurion University) -->
+<context xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="C:\Guy\workspace\KB\950\16.10-2.xsd" id="800" name="Visit_Pre_6_m_ctxt" concept-type="context">
+  <categories/>
+  <standard-terms/>
+  <synonyms/>
+  <temporal-semantic downward-hereditary="true" forward="true" backward="true" solid="true" concatenable="true" gestalt="true"/>
+  <inducer-entities>
+    <inducer-entity id="61">
+      <value-constraints>
+        <value-constraint value="1" operator="equal"/>
+      </value-constraints>
+      <from boundary-point="start">
+        <time-gap value="-6" granularity="month"/>
+      </from>
+    </inducer-entity>
+  </inducer-entities>
+  <clippers/>
+</context>
