@@ -6,19 +6,19 @@ from pathlib import Path
 
 router = APIRouter()
 
+from app.services.menu_builder import get_navigation_structure
+from app.core.config import settings
+
 @router.get("/menu")
 def get_menu():
     """
-    Get menu from json file.
+    Get menu by scanning TakEntities XML files.
     """
     try:
-        menu_path = Path(__file__).resolve().parent.parent.parent.parent / "data" / "menu.json"
-        
-        with open(menu_path, "r", encoding="utf-8") as f:
-            return json.load(f)
+        # Pass the directory to get_navigation_structure to lazy-load if not built
+        return get_navigation_structure(settings.TAK_FILES_DIR)
     except Exception as e:
         # In production we might want to log this or return a 500, but for now getting the error detail is helpful if it persists.
-        # But since we are confident it's the encoding, let's revert to a standard return or basic error if fails.
         raise e
 
 
