@@ -22,7 +22,7 @@ class Record(BaseModel):
 
 # --- Request/Response Models for Services ---
 
-class GenerationRequest(BaseModel):
+class DataRequest(BaseModel):
     patients_list: List[str] = Field(..., example=[str(i) for i in range(1000, 1021)])
     concept_name: str = "WBC_STATE_BMT"
     start_date: datetime = datetime(1991, 1, 1)
@@ -53,7 +53,7 @@ class VisitorResponse(BaseModel, Generic[T]):
     result: T
 
 class MultiplePatientsAbstractionRequest(BaseModel):
-    # Generation Params
+    # Fetching Params
     patients_list: List[str] = Field(..., example=[str(i) for i in range(1000, 1021)])
     concept_name: str = "WBC_STATE_BMT"
     start_date: datetime = datetime(1991, 1, 1)

@@ -4,4 +4,4 @@ numpy
 python-multipart
 sqlalchemy
 uvicorn
-fastapi
+fastapipymongo

@@ -1,6 +1,6 @@
 from typing import List, Any
-from app.models.schemas import MultiplePatientsAbstractionRequest, VisitorResponse, GenerationRequest, Record, IntervalSummary
-from app.services.generator import DataGeneratorService
+from app.models.schemas import MultiplePatientsAbstractionRequest, VisitorResponse, DataRequest, Record, IntervalSummary
+from app.services.data_fetcher import mongo_fetcher
 from app.services.transformer import IntervalTransformationService
 from app.services.summer import SummaryService
 from app.core.cache_utils import db_cache
@@ -22,14 +22,14 @@ class VisitorsQueriesService:
     @db_cache
     def create_multiple_patients_abstraction(request: MultiplePatientsAbstractionRequest) -> VisitorResponse[List[IntervalSummary]]:
         # Compatibility adapter for old request model
-        gen_request = GenerationRequest(
+        fetch_request = DataRequest(
             patients_list=request.patients_list,
             concept_name=request.concept_name,
             start_date=request.start_date,
             end_date=request.end_date
         )
-        # 1. Generate Data (Strict/Standard)
-        patient_events = DataGeneratorService.generate_data(gen_request)
+        # 1. Fetch Data (Abstract)
+        patient_events = mongo_fetcher.fetch_data(fetch_request, abstract=True)
         
         # 2. Transform Data
         intervals = IntervalTransformationService.transform_to_intervals(
@@ -44,13 +44,13 @@ class VisitorsQueriesService:
         return VisitorsQueriesService._build_visitor_response(summary_list, request.concept_name)
 
     @staticmethod
-    def generate_abstraction(request: GenerationRequest) -> VisitorResponse[List[Record]]:
-        # 1. Generate Data (Strict)
-        patient_events = DataGeneratorService.generate_data(request)
+    def fetch_abstraction(request: DataRequest) -> VisitorResponse[List[Record]]:
+        # 1. Fetch Data (Abstract)
+        patient_events = mongo_fetcher.fetch_data(request, abstract=True)
         return VisitorsQueriesService._build_visitor_response(patient_events, request.concept_name)
 
     @staticmethod
-    def generate_raw_data(request: GenerationRequest) -> VisitorResponse[List[Record]]:
-        # 1. Generate Data (Numeric)
-        patient_events = DataGeneratorService.generate_numeric_data(request)
+    def fetch_raw_data(request: DataRequest) -> VisitorResponse[List[Record]]:
+        # 1. Fetch Data (Raw)
+        patient_events = mongo_fetcher.fetch_data(request, abstract=False)
         return VisitorsQueriesService._build_visitor_response(patient_events, request.concept_name)
