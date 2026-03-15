@@ -3,15 +3,15 @@ from datetime import datetime, timedelta
 from typing import List
 # from functools import lru_cache
 from app.models.schemas import GenerationRequest, Record
-from app.services.concept_manager import ConceptManager
+from app.services.concept_manager import concept_manager_instance
 from app.core.cache_utils import db_cache
 
 class DataGeneratorService:
     @staticmethod
     def generate_data(request: GenerationRequest) -> List[Record]:
         # Fetch allowed values from DB (using internal session)
-        concept_schema = ConceptManager.get_or_create_concept(request.concept_name)
-        values = concept_schema.allowed_values.get("values", [])
+        concept = concept_manager_instance.get_entity_by_name(request.concept_name)
+        values = getattr(concept, "values", []) if concept else []
         
         # Unpack params and convert list to tuple for hashing
         return DataGeneratorService._generate_cached(
@@ -28,16 +28,18 @@ class DataGeneratorService:
 
     @staticmethod
     def generate_numeric_data(request: GenerationRequest) -> List[Record]:
-        # Skip DB lookup, pass empty values tuple to enforce numeric generation
+        concept = concept_manager_instance.get_entity_by_name(request.concept_name)
+        min_v = getattr(concept, "min", 0.0) if concept else 0.0
+        max_v = getattr(concept, "max", 100.0) if concept else 100.0
+        
         return DataGeneratorService._generate_cached(
             tuple(request.patients_list),
             request.start_date,
             request.end_date,
             (), # empty values
             request.concept_name,
-            # Using defaults for min/max since they are removed from request schema
-            0.0,
-            100.0,
+            min_v,
+            max_v,
             allow_numeric=True # Allow numeric generation
         )
 
