@@ -14,11 +14,21 @@ router = APIRouter()
 @router.get("/menu")
 def get_menu():
     """
-    Get menu by scanning TakEntities XML files.
+    Get menu containing all TAK entities with specific basic fields.
     """
     try:
-        # Pass the directory to get_navigation_structure to lazy-load if not built
-        return get_navigation_structure(settings.TAK_FILES_DIR)
+        all_entities = concept_manager_instance.get_all_entities()
+        
+        result = []
+        for name, entity in all_entities.items():
+            result.append({
+                "name": entity.name,
+                "concept_type": entity.concept_type,
+                "output_type": entity.output_type,
+                "duration_type": entity.duration_type
+            })
+            
+        return result
     except Exception as e:
         # In production we might want to log this or return a 500, but for now getting the error detail is helpful if it persists.
         raise e
