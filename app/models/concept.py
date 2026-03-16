@@ -14,6 +14,43 @@ class TAKEntity(BaseModel):
     name: Optional[str] = Field(alias="@name", default=None)
     concept_type: Optional[str] = Field(alias="@concept-type", default=None)
 
+    min: Optional[float] = None
+    max: Optional[float] = None
+    output_type: Optional[str] = None
+    duration_type: Optional[str] = None
+    values: Optional[List[str]] = None
+
+    @model_validator(mode="before")
+    @classmethod
+    def _extract_min_max_and_types(cls, obj: any):
+        if not isinstance(obj, dict):
+            return obj
+
+        # Extract min and max
+        numeric_allowed_values = obj.get("numeric-allowed-values", None)
+        if isinstance(numeric_allowed_values, dict):
+            min_val = numeric_allowed_values.get("@min-value")
+            max_val = numeric_allowed_values.get("@max-value")
+            
+            if min_val is not None:
+                obj["min"] = float(min_val)
+            if max_val is not None:
+                obj["max"] = float(max_val)
+        
+        # Determine output_type
+        if "min" in obj and "max" in obj:
+            obj["output_type"] = "range"
+        else:
+            obj["output_type"] = "categorial"
+
+        # Determine duration_type
+        cls_name = cls.__name__
+        if "Raw" in cls_name:
+            obj["duration_type"] = "point"
+        else:
+            obj["duration_type"] = "interval"
+
+        return obj
 
 # ==========================================
 # Level 1 Entities
@@ -89,50 +126,21 @@ class NumericRawConcept(RawConcept):
     """Numeric Raw Concept"""
 
     # numeric_allowed_values: Optional[dict] = Field(default=None, alias="numeric-allowed-values")
-    min: Optional[float] = None
-    max: Optional[float] = None
-
-    @model_validator(mode="before")
-    @classmethod
-    def _extract_min_max(cls, obj: any) -> List[str]:
-        numeric_allowed_values = obj.pop("numeric-allowed-values", None)
-
-        if isinstance(numeric_allowed_values, dict):
-            min_val = numeric_allowed_values.get("@min-value")
-            max_val = numeric_allowed_values.get("@max-value")
-            
-            obj["min"] = float(min_val)
-            obj["max"] = float(max_val)
-        
-        return obj
+    # Inherits min and max from TAKEntity
 
 class NominalRawConcept(RawConcept):
     """Nominal Raw Concept"""
-    values: List[str] = Field(default_factory=list)
 
     @model_validator(mode="before")
     @classmethod
     def _extract_values(cls, obj: any):
-        nominal_allowed_values = obj.pop("nominal-allowed-values", None)
-
-        if isinstance(nominal_allowed_values, dict):
-            nominal_allowed_values = nominal_allowed_values.get("values").get("nominal-allowed-value")
-            
-            if isinstance(nominal_allowed_values, dict):
-                nominal_allowed_values = [nominal_allowed_values]
-            
-            values = [value_obj.get("@value") for value_obj in nominal_allowed_values]
-            
-            obj["values"] = values
-        
-        return obj
+        return extract_values(obj, "nominal-allowed-values", "nominal-allowed-value")
 
 
 # --- Abstract Concepts ---
 
 class State(AbstractConcept):
     """State abstraction concept"""
-    values: List[str] = Field(default_factory=list)
     
     @model_validator(mode="before")
     @classmethod
@@ -141,7 +149,6 @@ class State(AbstractConcept):
 
 class Trend(AbstractConcept):
     """Trend abstraction concept"""
-    values: List[str] = Field(default_factory=list)
     
     @model_validator(mode="before")
     @classmethod
@@ -150,11 +157,21 @@ class Trend(AbstractConcept):
 
 class Pattern(AbstractConcept):
     """Pattern concept"""
-    values: List[str] = ["True"]
+
+    @model_validator(mode="before")
+    @classmethod
+    def _set_default_values(cls, obj: any):
+        if isinstance(obj, dict):
+            has_numeric = obj.get("numeric-allowed-values") is not None
+            has_min = obj.get("min") is not None
+            has_max = obj.get("max") is not None
+            if not (has_numeric or has_min or has_max) and obj.get("values") is None:
+                obj["values"] = ["True"]
+        return obj
 
 
 def extract_values(obj: dict, parameter: str, parameter2: str) -> dict:
-    allowed_values = obj.pop(parameter, None)
+    allowed_values = obj.get(parameter, None)
 
     if isinstance(allowed_values, dict):
         allowed_values = allowed_values.get("values").get(parameter2)
