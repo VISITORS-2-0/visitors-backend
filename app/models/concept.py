@@ -37,20 +37,26 @@ class TAKEntity(BaseModel):
             if max_val is not None:
                 obj["max"] = float(max_val)
         
-        # Determine output_type
-        if "min" in obj and "max" in obj:
-            obj["output_type"] = "range"
-        else:
-            obj["output_type"] = "categorial"
-
-        # Determine duration_type
-        cls_name = cls.__name__
-        if "Raw" in cls_name:
-            obj["duration_type"] = "point"
-        else:
-            obj["duration_type"] = "interval"
-
         return obj
+
+    @model_validator(mode="after")
+    def _determine_types(self) -> 'TAKEntity':
+        # 1. Determine duration_type
+        if "Raw" in self.__class__.__name__:
+            self.duration_type = "point"
+        else:
+            self.duration_type = "interval"
+            
+        # 2. Determine output_type
+        # If there are values, it's categorial, even if it has min/max
+        if self.values:
+            self.output_type = "categorial"
+        elif self.min is not None and self.max is not None:
+            self.output_type = "range"
+        else:
+            self.output_type = "categorial"
+            
+        return self
 
 # ==========================================
 # Level 1 Entities
@@ -145,7 +151,18 @@ class State(AbstractConcept):
     @model_validator(mode="before")
     @classmethod
     def _extract_values(cls, obj: any):
-        return extract_values(obj, "ordinal-allowed-values", "ordinal-allowed-value")
+        obj = extract_values(obj, "ordinal-allowed-values", "ordinal-allowed-value")
+        # If still no values, check mapping-function
+        if obj.get("values") is None and isinstance(obj.get("mapping-function"), dict):
+            mf = obj["mapping-function"]
+            mfts = mf.get("mapping-functions-to-values", {})
+            mf2vs = mfts.get("mapping-function-2-value", [])
+            if isinstance(mf2vs, dict): # Single value
+                mf2vs = [mf2vs]
+            values = [v.get("@value") for v in mf2vs if v.get("@value")]
+            if values:
+                obj["values"] = values
+        return obj
 
 class Trend(AbstractConcept):
     """Trend abstraction concept"""

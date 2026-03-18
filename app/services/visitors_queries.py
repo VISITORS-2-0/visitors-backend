@@ -5,8 +5,7 @@ from app.services.transformer import IntervalTransformationService
 from app.services.summer import SummaryService
 from app.core.cache_utils import db_cache
 from app.services.concept_manager import concept_manager_instance
-
-# ... (imports)
+from app.models.concept import TAKEntity
 
 class VisitorsQueriesService:
     @staticmethod
@@ -15,13 +14,7 @@ class VisitorsQueriesService:
         try:
              entity = concept_manager_instance.get_entity_by_name(concept_name)
              if entity:
-                 concept_def = {"id": entity.id, "name": entity.name, "concept_type": entity.concept_type}
-                 from app.models.concept import NumericRawConcept, NominalRawConcept, State, Trend, Pattern
-                 if isinstance(entity, NumericRawConcept):
-                     concept_def["min-value"] = entity.min
-                     concept_def["max-value"] = entity.max
-                 elif isinstance(entity, (NominalRawConcept, State, Trend, Pattern)):
-                     concept_def["values"] = entity.values
+                 concept_def = TAKEntity.model_validate(entity).model_dump(exclude_none=True)
         except Exception as e:
              print(f"Failed to fetch concept data: {e}")
         return VisitorResponse(result=result, concept_data=concept_def)
