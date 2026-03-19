@@ -49,6 +49,10 @@ def get_tak_object_by_name(concept_name: str):
     if "min" in data and "max" in data:
         if "values" in data:
             del data["values"]
+
+    xml_data = concept_manager_instance.get_raw_xml_by_name(concept_name)
+    if xml_data:
+        data["xml"] = xml_data
             
     return data
 

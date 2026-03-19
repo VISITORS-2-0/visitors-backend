@@ -25,6 +25,7 @@ class ConceptManager:
         
         self.tak_by_name: Dict[str, TAKEntity] = {}
         self.tak_name_by_id: Dict[str, str] = {}
+        self.raw_xml_by_name: Dict[str, Dict[str, Any]] = {}
 
     def init_entities(self) -> None:
         """
@@ -33,6 +34,7 @@ class ConceptManager:
         """
         self.tak_by_name = {}
         self.tak_name_by_id = {}
+        self.raw_xml_by_name = {}
         
         if not os.path.exists(self.tak_entities_dir):
             raise FileNotFoundError(f"Directory not found: {self.tak_entities_dir}")
@@ -61,6 +63,7 @@ class ConceptManager:
                 if tak_id is None:
                     raise ValueError(f"Missing '@id' attribute in {filename}")
                 
+                self.raw_xml_by_name[tak_name] = root_data
                 parsed_files.append((filename, root_tag, root_data, tak_name, tak_id))
                 
             except Exception as e:
@@ -113,6 +116,9 @@ class ConceptManager:
 
     def get_all_entities(self) -> Dict[str, TAKEntity]:
         return self.tak_by_name
+
+    def get_raw_xml_by_name(self, tak_name: str) -> Dict[str, Any]:
+        return self.raw_xml_by_name.get(tak_name)
 
 from app.core.config import settings
 concept_manager_instance = ConceptManager(settings.TAK_FILES_DIR)
