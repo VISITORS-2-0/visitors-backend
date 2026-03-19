@@ -179,9 +179,10 @@ class Pattern(AbstractConcept):
     @classmethod
     def _set_default_values(cls, obj: any):
         if isinstance(obj, dict):
-            has_min = "min" in obj
-            has_max = "max" in obj
-            if not has_min and not has_max and obj.get("values") is None:
+            has_numeric = obj.get("numeric-allowed-values") is not None
+            has_min = obj.get("min") is not None
+            has_max = obj.get("max") is not None
+            if not (has_numeric or has_min or has_max) and obj.get("values") is None:
                 obj["values"] = ["True"]
         return obj
 
