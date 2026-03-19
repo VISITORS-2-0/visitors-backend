@@ -180,9 +180,31 @@ class Pattern(AbstractConcept):
     def _set_default_values(cls, obj: any):
         if isinstance(obj, dict):
             has_numeric = obj.get("numeric-allowed-values") is not None
-            has_min = obj.get("min") is not None
-            has_max = obj.get("max") is not None
-            if not (has_numeric or has_min or has_max) and obj.get("values") is None:
+            has_min = "min" in obj
+            has_max = "max" in obj
+            
+            # If numeric-allowed-values exists but min and max are absent (null)
+            if has_numeric and not has_min and not has_max:
+                try:
+                    left_id = obj.get("pattern-output", {}).get("value-local-pattern", {}).get("mathematical-function", {}).get("left", {}).get("concept-id-allowed-values", {}).get("@id")
+                    if left_id:
+                        # Local import to avoid circular dependency
+                        from app.services.concept_manager import concept_manager_instance
+                        dep_concept = concept_manager_instance.get_entity_by_id(left_id)
+                        if dep_concept:
+                            if dep_concept.min is not None:
+                                obj["min"] = dep_concept.min
+                            if dep_concept.max is not None:
+                                obj["max"] = dep_concept.max
+                except Exception:
+                    pass
+
+            # Update has_min and has_max after potential extraction
+            has_min = "min" in obj
+            has_max = "max" in obj
+            
+            # If still no min/max and no values
+            if not has_min and not has_max and obj.get("values") is None:
                 obj["values"] = ["True"]
         return obj
 
