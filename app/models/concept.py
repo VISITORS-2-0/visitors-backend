@@ -64,11 +64,11 @@ class TAKEntity(BaseModel):
 
 class Event(TAKEntity):
     """Event class"""
-    pass
+    values: Optional[List[str]] = Field(default=["True"])
 
 class Context(TAKEntity):
     """Context class"""
-    pass
+    values: Optional[List[str]] = Field(default=["True"])
 
 class Concept(TAKEntity):
     """Base class for all Concepts"""
