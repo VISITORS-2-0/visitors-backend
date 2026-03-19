@@ -37,6 +37,7 @@ class ConceptManager:
         if not os.path.exists(self.tak_entities_dir):
             raise FileNotFoundError(f"Directory not found: {self.tak_entities_dir}")
 
+        parsed_files = []
         for filename in os.listdir(self.tak_entities_dir):
             if not filename.endswith('.xml'):
                 continue
@@ -60,18 +61,31 @@ class ConceptManager:
                 if tak_id is None:
                     raise ValueError(f"Missing '@id' attribute in {filename}")
                 
-                model_class = self._MODEL_MAP.get(root_tag)
-                
-                if model_class:
-                    tak_obj = model_class(**root_data)
-                    
-                    self.tak_by_name[tak_name] = tak_obj
-                    self.tak_name_by_id[tak_id] = tak_name
-                else:
-                    raise ValueError(f"Unknown tag '{root_tag}' in file {filename}")
+                parsed_files.append((filename, root_tag, root_data, tak_name, tak_id))
                 
             except Exception as e:
                 raise ValueError(f"Error processing {filename}: {str(e)}")
+
+        # Split into non-patterns and patterns
+        non_patterns = [p for p in parsed_files if p[1] != 'pattern']
+        patterns = [p for p in parsed_files if p[1] == 'pattern']
+
+        # Process all files in correct order
+        for file_list in [non_patterns, patterns]:
+            for filename, root_tag, root_data, tak_name, tak_id in file_list:
+                try:
+                    model_class = self._MODEL_MAP.get(root_tag)
+                    
+                    if model_class:
+                        tak_obj = model_class(**root_data)
+                        
+                        self.tak_by_name[tak_name] = tak_obj
+                        self.tak_name_by_id[tak_id] = tak_name
+                    else:
+                        raise ValueError(f"Unknown tag '{root_tag}' in file {filename}")
+                except Exception as e:
+                    print(f"Error instantiating {filename}: {str(e)}")
+
 
         derivied_into_dict = defaultdict(list)
 
