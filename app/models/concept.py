@@ -20,6 +20,41 @@ class TAKEntity(BaseModel):
     duration_type: Optional[str] = None
     values: Optional[List[str]] = None
 
+    # We define the type as a List of strings, and map it to the JSON key "derived-from"
+    derived_from: List[str] = Field(default_factory=list, alias="derived-from")
+    derived_into: List[str] = Field(default_factory=list)
+    siblings: List[str] = Field(default_factory=list)
+
+    @field_validator("derived_from", mode="before")
+    @classmethod
+    def extract_derived_from_ids(cls, value: Any) -> List[str]:
+        """
+        Extracts the 'derived-from-id' from the nested dictionary and 
+        ensures it is always returned as a list of strings.
+        """
+        # Handle the expected nested dictionary format from the JSON
+        if isinstance(value, dict):
+            inner_val = value.get("derived-from-id")
+            
+            if inner_val is None:
+                return []
+            
+            # If it's a single string, wrap it in a list
+            if isinstance(inner_val, str):
+                return [inner_val]
+            
+            # If it's already a list, ensure all elements are strings
+            if isinstance(inner_val, list):
+                return [str(v) for v in inner_val]
+                
+        # Fallbacks just in case the data comes in already somewhat flattened
+        if isinstance(value, str):
+            return [value]
+        if isinstance(value, list):
+            return [str(v) for v in value]
+            
+        return []
+
     @model_validator(mode="before")
     @classmethod
     def _extract_min_max_and_types(cls, obj: any):
@@ -85,41 +120,7 @@ class RawConcept(Concept):
 
 class AbstractConcept(Concept):
     """Base class for Abstract Concepts"""
-    
-    # We define the type as a List of strings, and map it to the JSON key "derived-from"
-    derived_from: List[str] = Field(default_factory=list, alias="derived-from")
-    derived_into: List[str] = Field(default_factory=list)
-    siblings: List[str] = Field(default_factory=list)
-
-    @field_validator("derived_from", mode="before")
-    @classmethod
-    def extract_derived_from_ids(cls, value: Any) -> List[str]:
-        """
-        Extracts the 'derived-from-id' from the nested dictionary and 
-        ensures it is always returned as a list of strings.
-        """
-        # Handle the expected nested dictionary format from the JSON
-        if isinstance(value, dict):
-            inner_val = value.get("derived-from-id")
-            
-            if inner_val is None:
-                return []
-            
-            # If it's a single string, wrap it in a list
-            if isinstance(inner_val, str):
-                return [inner_val]
-            
-            # If it's already a list, ensure all elements are strings
-            if isinstance(inner_val, list):
-                return [str(v) for v in inner_val]
-                
-        # Fallbacks just in case the data comes in already somewhat flattened
-        if isinstance(value, str):
-            return [value]
-        if isinstance(value, list):
-            return [str(v) for v in value]
-            
-        return []
+    pass
 
 
 # ==========================================

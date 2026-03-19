@@ -91,7 +91,7 @@ class ConceptManager:
 
         for tak_name, tak_obj in self.tak_by_name.items():
 
-            if isinstance(tak_obj, AbstractConcept):
+            if tak_obj.derived_from:
                 derived_from_names = []
 
                 for derived_from_id in tak_obj.derived_from:
@@ -101,9 +101,8 @@ class ConceptManager:
                 tak_obj.derived_from = derived_from_names
 
         for tak_name, tak_obj in self.tak_by_name.items():
-            if isinstance(tak_obj, AbstractConcept):
-                tak_obj.derived_into = derivied_into_dict.get(tak_obj.name, [])
-                tak_obj.siblings = list({sibling for parent in tak_obj.derived_from for sibling in derivied_into_dict.get(parent, []) if sibling != tak_name})
+            tak_obj.derived_into = derivied_into_dict.get(tak_obj.name, [])
+            tak_obj.siblings = list({sibling for parent in tak_obj.derived_from for sibling in derivied_into_dict.get(parent, []) if sibling != tak_name})
 
     def get_entity_by_name(self, tak_name: str) -> TAKEntity:
         return self.tak_by_name.get(tak_name)
