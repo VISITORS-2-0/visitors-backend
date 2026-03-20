@@ -77,7 +77,7 @@ class TAKEntity(BaseModel):
     @model_validator(mode="after")
     def _determine_types(self) -> 'TAKEntity':
         # 1. Determine duration_type
-        if "Raw" in self.__class__.__name__:
+        if self.__class__.__name__ == "NumericRawConcept":
             self.duration_type = "point"
         else:
             self.duration_type = "interval"
