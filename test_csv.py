@@ -6,10 +6,10 @@ from datetime import datetime
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 from app.models.schemas import DataRequest
-from app.services.data_fetcher import mongo_fetcher
+from app.services.data_fetcher import csv_fetcher
 
 def test_fetch_data():
-    print("Testing connection to Mongo and querying syntax...")
+    print("Testing parser and query using CSV files...")
     request = DataRequest(
         patients_list=["1000", "1001", "1"],
         concept_name="ALP",
@@ -19,12 +19,11 @@ def test_fetch_data():
     
     try:
         # We try to fetch from abstract. 
-        # This might return empty if the DB is empty or missing, but it validates the query.
-        results = mongo_fetcher.fetch_data(request, abstract=True)
-        print(f"Success! Fetched {len(results)} abstract records syntactically.")
+        results = csv_fetcher.fetch_data(request, abstract=True)
+        print(f"Success! Fetched {len(results)} abstract records.")
         
-        results = mongo_fetcher.fetch_data(request, abstract=False)
-        print(f"Success! Fetched {len(results)} raw records syntactically.")
+        results = csv_fetcher.fetch_data(request, abstract=False)
+        print(f"Success! Fetched {len(results)} raw records.")
         
     except Exception as e:
         print(f"Error occurred: {e}")

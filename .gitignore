@@ -34,3 +34,7 @@ env/
 
 # Database
 *.db
+
+# Large CSV Files
+CSV_Data/Abstract_Data.csv
+CSV_Data/Raw_Data.csv

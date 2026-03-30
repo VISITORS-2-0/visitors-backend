@@ -1,72 +1,107 @@
-import random
-from typing import Dict, Any
-from pydantic import BaseModel
-from app.core.database import SessionLocal
-from app.models.concept import Concept
+import os
+import xml.etree.ElementTree as ET
+from typing import Dict, Any, Optional, List
 from app.models.schemas import ConceptSchema
+from app.core.config import settings
+
 
 class ConceptManager:
+    """
+    Reads concept metadata (type + allowed values) directly from the
+    TakEntities XML files.  For concept-types that carry a <values> tag
+    (state, pattern, raw-nominal, trend) the allowed values are extracted
+    from the XML.  For raw-numeric the concept is returned with an empty
+    allowed_values dict (i.e. treated as raw / continuous).
+    """
+
+    # In-memory cache so we parse each XML file only once per process.
+    _cache: Dict[str, ConceptSchema] = {}
+
     @staticmethod
     def get_or_create_concept(concept_name: str) -> ConceptSchema:
-        with SessionLocal() as db:
-            # Check if concept exists
-            concept = db.query(Concept).filter(Concept.name == concept_name).first()
-            
-            if concept:
-                return ConceptSchema(
-                    name=concept.name,
-                    type=concept.type,
-                    allowed_values=concept.allowed_values
-                )
-                
-            # If not, generate it
-            new_raw_concept = ConceptManager._generate_random_raw_concept(concept_name)
-            
-            # Save to DB
-            db_concept = Concept(
-                name=new_raw_concept["concept_name"],
-                type=new_raw_concept["concept_type"],
-                allowed_values=new_raw_concept["allowed_values"]
-            )
-            db.add(db_concept)
-            db.commit()
-            db.refresh(db_concept)
-            
-            return ConceptSchema(
-                name=db_concept.name,
-                type=db_concept.type,
-                allowed_values=db_concept.allowed_values
-            )
+        if concept_name in ConceptManager._cache:
+            return ConceptManager._cache[concept_name]
+
+        schema = ConceptManager._parse_from_xml(concept_name)
+        if schema is not None:
+            ConceptManager._cache[concept_name] = schema
+            return schema
+
+        # Fallback: concept not found in TakEntities – return a bare schema
+        fallback = ConceptSchema(
+            name=concept_name,
+            type="unknown",
+            allowed_values={}
+        )
+        ConceptManager._cache[concept_name] = fallback
+        return fallback
+
+    # ------------------------------------------------------------------
+    # XML helpers
+    # ------------------------------------------------------------------
+    @staticmethod
+    def _parse_from_xml(concept_name: str) -> Optional[ConceptSchema]:
+        """
+        Look for an XML file whose root-element ``name`` attribute matches
+        *concept_name*.  We first try the obvious filename
+        ``<concept_name>.xml``; if that does not exist we fall back to a
+        linear scan of the directory.
+        """
+        tak_dir = settings.TAK_FILES_DIR
+
+        # Fast path – filename matches concept name
+        candidate = os.path.join(tak_dir, f"{concept_name}.xml")
+        if os.path.isfile(candidate):
+            return ConceptManager._parse_single_xml(candidate)
+
+        # Slow path – scan every file (handles renames / casing mismatches)
+        for fname in os.listdir(tak_dir):
+            if not fname.endswith(".xml"):
+                continue
+            fpath = os.path.join(tak_dir, fname)
+            try:
+                tree = ET.parse(fpath)
+                root = tree.getroot()
+                if root.attrib.get("name") == concept_name:
+                    return ConceptManager._parse_single_xml(fpath)
+            except ET.ParseError:
+                continue
+
+        return None
 
     @staticmethod
-    def _generate_random_raw_concept(concept_name):
-        """
-        Generates a random RawConcept object based on TAK Schema v24.
-        """
-        # For now, only rawOrdinal is supported as per user request
-        concept_types = [
-            "rawOrdinal"
-        ]
-        
-        selected_type = random.choice(concept_types)
-        
-        result = {
-            "concept_name": concept_name,
-            "concept_type": selected_type,
-            "allowed_values": {}
-        }
+    def _parse_single_xml(filepath: str) -> ConceptSchema:
+        tree = ET.parse(filepath)
+        root = tree.getroot()
 
-        if selected_type == "rawOrdinal":
-            # Example sets
-            options = [
-                ["Low", "Medium", "High"],
-                ["Trace", "1+", "2+", "3+"],
-                ["Stage I", "Stage II", "Stage III", "Stage IV"]
-            ]
-            values = random.choice(options)
-            result["allowed_values"] = {
-                "values": values,
-                "ordering": "asc"
-            }
-            
-        return result
+        concept_name = root.attrib.get("name", os.path.basename(filepath).replace(".xml", ""))
+        concept_type = root.attrib.get("concept-type", "unknown")
+
+        allowed_values: Dict[str, Any] = {}
+
+        # For types that have a <values> tag, extract the allowed values
+        values_el = root.find(".//values")
+        if values_el is not None:
+            vals: List[str] = []
+            ordering: Optional[str] = None
+
+            for child in values_el:
+                val = child.attrib.get("value")
+                if val is not None:
+                    vals.append(val)
+
+                # ordinal-allowed-value carries an 'order' attr -> ordinal ordering
+                if "order" in child.attrib:
+                    ordering = "asc"
+
+            allowed_values["values"] = vals
+            if ordering:
+                allowed_values["ordering"] = ordering
+
+        # For raw-numeric: allowed_values stays empty – treated as raw / continuous
+
+        return ConceptSchema(
+            name=concept_name,
+            type=concept_type,
+            allowed_values=allowed_values
+        )

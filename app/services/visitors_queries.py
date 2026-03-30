@@ -1,6 +1,6 @@
 from typing import List, Any
 from app.models.schemas import MultiplePatientsAbstractionRequest, VisitorResponse, DataRequest, Record, IntervalSummary
-from app.services.data_fetcher import mongo_fetcher
+from app.services.data_fetcher import csv_fetcher
 from app.services.transformer import IntervalTransformationService
 from app.services.summer import SummaryService
 from app.core.cache_utils import db_cache
@@ -29,7 +29,7 @@ class VisitorsQueriesService:
             end_date=request.end_date
         )
         # 1. Fetch Data (Abstract)
-        patient_events = mongo_fetcher.fetch_data(fetch_request, abstract=True)
+        patient_events = csv_fetcher.fetch_data(fetch_request, abstract=True)
         
         # 2. Transform Data
         intervals = IntervalTransformationService.transform_to_intervals(
@@ -46,11 +46,11 @@ class VisitorsQueriesService:
     @staticmethod
     def fetch_abstraction(request: DataRequest) -> VisitorResponse[List[Record]]:
         # 1. Fetch Data (Abstract)
-        patient_events = mongo_fetcher.fetch_data(request, abstract=True)
+        patient_events = csv_fetcher.fetch_data(request, abstract=True)
         return VisitorsQueriesService._build_visitor_response(patient_events, request.concept_name)
 
     @staticmethod
     def fetch_raw_data(request: DataRequest) -> VisitorResponse[List[Record]]:
         # 1. Fetch Data (Raw)
-        patient_events = mongo_fetcher.fetch_data(request, abstract=False)
+        patient_events = csv_fetcher.fetch_data(request, abstract=False)
         return VisitorsQueriesService._build_visitor_response(patient_events, request.concept_name)
