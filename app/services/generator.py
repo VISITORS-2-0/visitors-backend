@@ -18,10 +18,10 @@ class DataGeneratorService:
             tuple(request.patients_list),
             request.start_date,
             request.end_date,
-            tuple(values),
+            tuple(values) if values else None,
             request.concept_name,
             # Using defaults for min/max since they are removed from request schema
-            0.0, 
+            0.0,
             100.0,
             allow_numeric=False # Strict: only use values
         )
