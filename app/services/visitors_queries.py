@@ -4,16 +4,17 @@ from app.services.generator import DataGeneratorService
 from app.services.transformer import IntervalTransformationService
 from app.services.summer import SummaryService
 from app.core.cache_utils import db_cache
-from app.services.concept_manager import ConceptManager
-
-# ... (imports)
+from app.services.concept_manager import concept_manager_instance
+from app.models.concept import TAKEntity
 
 class VisitorsQueriesService:
     @staticmethod
     def _build_visitor_response(result: Any, concept_name: str) -> VisitorResponse:
         concept_def = None
         try:
-             concept_def = ConceptManager.get_or_create_concept(concept_name)
+             entity = concept_manager_instance.get_entity_by_name(concept_name)
+             if entity:
+                 concept_def = TAKEntity.model_validate(entity).model_dump(exclude_none=True)
         except Exception as e:
              print(f"Failed to fetch concept data: {e}")
         return VisitorResponse(result=result, concept_data=concept_def)

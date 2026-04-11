@@ -1,72 +1,124 @@
-import random
-from typing import Dict, Any
-from pydantic import BaseModel
-from app.core.database import SessionLocal
-from app.models.concept import Concept
-from app.models.schemas import ConceptSchema
+from collections import defaultdict
+import os
+import xmltodict
+from typing import Dict, Any, List
+from app.models.concept import (
+    TAKEntity, Event, Context, 
+    NumericRawConcept, NominalRawConcept, 
+    State, Trend, Pattern, AbstractConcept
+)
 
 class ConceptManager:
-    @staticmethod
-    def get_or_create_concept(concept_name: str) -> ConceptSchema:
-        with SessionLocal() as db:
-            # Check if concept exists
-            concept = db.query(Concept).filter(Concept.name == concept_name).first()
-            
-            if concept:
-                return ConceptSchema(
-                    name=concept.name,
-                    type=concept.type,
-                    allowed_values=concept.allowed_values
-                )
+    # Map the root XML tags to their corresponding Pydantic models
+    _MODEL_MAP = {
+        "event": Event,
+        "context": Context,
+        "numeric-raw-concept": NumericRawConcept,
+        "nominal-raw-concept": NominalRawConcept,
+        "state": State,
+        "trend": Trend,
+        "pattern": Pattern
+    }
+
+    def __init__(self, tak_entities_dir: str):
+        self.tak_entities_dir = tak_entities_dir
+        
+        self.tak_by_name: Dict[str, TAKEntity] = {}
+        self.tak_name_by_id: Dict[str, str] = {}
+        self.raw_xml_by_name: Dict[str, Dict[str, Any]] = {}
+
+    def init_entities(self) -> None:
+        """
+        Takes all XML files from tak_entities_dir, converts them to dicts 
+        using xmltodict, creates TAKEntity objects, and populates the data structure.
+        """
+        self.tak_by_name = {}
+        self.tak_name_by_id = {}
+        self.raw_xml_by_name = {}
+        
+        if not os.path.exists(self.tak_entities_dir):
+            raise FileNotFoundError(f"Directory not found: {self.tak_entities_dir}")
+
+        parsed_files = []
+        for filename in os.listdir(self.tak_entities_dir):
+            if not filename.endswith('.xml'):
+                continue
                 
-            # If not, generate it
-            new_raw_concept = ConceptManager._generate_random_raw_concept(concept_name)
-            
-            # Save to DB
-            db_concept = Concept(
-                name=new_raw_concept["concept_name"],
-                type=new_raw_concept["concept_type"],
-                allowed_values=new_raw_concept["allowed_values"]
-            )
-            db.add(db_concept)
-            db.commit()
-            db.refresh(db_concept)
-            
-            return ConceptSchema(
-                name=db_concept.name,
-                type=db_concept.type,
-                allowed_values=db_concept.allowed_values
-            )
+            file_path = os.path.join(self.tak_entities_dir, filename)
+            try:
+                with open(file_path, 'r', encoding='utf-8') as file:
+                    xml_content = file.read()
+                    
+                xml_dict = xmltodict.parse(xml_content)
+                
+                root_tag = list(xml_dict.keys())[0]
+                root_data = xml_dict[root_tag]
+                
+                tak_name = root_data.get('@name')
+                tak_id = root_data.get('@id')
 
-    @staticmethod
-    def _generate_random_raw_concept(concept_name):
-        """
-        Generates a random RawConcept object based on TAK Schema v24.
-        """
-        # For now, only rawOrdinal is supported as per user request
-        concept_types = [
-            "rawOrdinal"
-        ]
-        
-        selected_type = random.choice(concept_types)
-        
-        result = {
-            "concept_name": concept_name,
-            "concept_type": selected_type,
-            "allowed_values": {}
-        }
+                if tak_name is None:
+                    raise ValueError(f"Missing '@name' attribute in {filename}")
+                
+                if tak_id is None:
+                    raise ValueError(f"Missing '@id' attribute in {filename}")
+                
+                self.raw_xml_by_name[tak_name] = root_data
+                parsed_files.append((filename, root_tag, root_data, tak_name, tak_id))
+                
+            except Exception as e:
+                raise ValueError(f"Error processing {filename}: {str(e)}")
 
-        if selected_type == "rawOrdinal":
-            # Example sets
-            options = [
-                ["Low", "Medium", "High"],
-                ["Trace", "1+", "2+", "3+"],
-                ["Stage I", "Stage II", "Stage III", "Stage IV"]
-            ]
-            values = random.choice(options)
-            result["allowed_values"] = {
-                "values": values,
-                "ordering": "asc"
-            }
-            
-        return result
+        # Split into non-patterns and patterns
+        non_patterns = [p for p in parsed_files if p[1] != 'pattern']
+        patterns = [p for p in parsed_files if p[1] == 'pattern']
+
+        # Process all files in correct order
+        for file_list in [non_patterns, patterns]:
+            for filename, root_tag, root_data, tak_name, tak_id in file_list:
+                try:
+                    model_class = self._MODEL_MAP.get(root_tag)
+                    
+                    if model_class:
+                        tak_obj = model_class(**root_data)
+                        
+                        self.tak_by_name[tak_name] = tak_obj
+                        self.tak_name_by_id[tak_id] = tak_name
+                    else:
+                        raise ValueError(f"Unknown tag '{root_tag}' in file {filename}")
+                except Exception as e:
+                    print(f"Error instantiating {filename}: {str(e)}")
+
+
+        derivied_into_dict = defaultdict(list)
+
+        for tak_name, tak_obj in self.tak_by_name.items():
+
+            if tak_obj.derived_from:
+                derived_from_names = []
+
+                for derived_from_id in tak_obj.derived_from:
+                    derivied_into_dict[self.tak_name_by_id[derived_from_id]].append(tak_obj.name)
+                    derived_from_names.append(self.tak_name_by_id[derived_from_id])
+
+                tak_obj.derived_from = derived_from_names
+
+        for tak_name, tak_obj in self.tak_by_name.items():
+            tak_obj.derived_into = derivied_into_dict.get(tak_obj.name, [])
+            tak_obj.siblings = list({sibling for parent in tak_obj.derived_from for sibling in derivied_into_dict.get(parent, []) if sibling != tak_name})
+
+    def get_entity_by_name(self, tak_name: str) -> TAKEntity:
+        return self.tak_by_name.get(tak_name)
+
+    def get_entity_by_id(self, tak_id: str) -> TAKEntity:
+        tak_name = self.tak_name_by_id.get(tak_id)
+        return self.tak_by_name.get(tak_name)
+
+    def get_all_entities(self) -> Dict[str, TAKEntity]:
+        return self.tak_by_name
+
+    def get_raw_xml_by_name(self, tak_name: str) -> Dict[str, Any]:
+        return self.raw_xml_by_name.get(tak_name)
+
+from app.core.config import settings
+concept_manager_instance = ConceptManager(settings.TAK_FILES_DIR)
