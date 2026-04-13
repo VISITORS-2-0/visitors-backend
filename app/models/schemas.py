@@ -59,3 +59,22 @@ class MultiplePatientsAbstractionRequest(BaseModel):
     # Transformation Params
     interval_str: Literal['D', 'W-SUN', 'ME', 'YE'] = "ME"
     method: Literal['most_time_spent'] = "most_time_spent"
+
+class NumericRange(BaseModel):
+    min: float
+    max: float
+
+class MultiplePatientsNumericAbstractionRequest(BaseModel):
+    # Generation Params
+    patients_list: List[str] = Field(..., example=[str(i) for i in range(1000, 1021)])
+    concept_name: str = "AbsCI_or_RelCI_state"
+    start_date: datetime = datetime(1991, 1, 1)
+    end_date: datetime = datetime(1994, 12, 31)
+    
+    # Transformation Params
+    interval_str: Literal['D', 'W-SUN', 'ME', 'YE'] = "ME"
+    method: Literal['most_time_spent'] = "most_time_spent"
+    
+    # New parameter for numeric abstraction
+    ranges: Optional[List[NumericRange]] = None
+

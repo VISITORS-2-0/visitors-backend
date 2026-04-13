@@ -1,6 +1,6 @@
 from typing import List
 from fastapi import APIRouter
-from app.models.schemas import MultiplePatientsAbstractionRequest, VisitorResponse, GenerationRequest, Record, IntervalSummary
+from app.models.schemas import MultiplePatientsAbstractionRequest, VisitorResponse, GenerationRequest, Record, IntervalSummary, MultiplePatientsNumericAbstractionRequest
 from app.services.visitors_queries import VisitorsQueriesService
 
 router = APIRouter()
@@ -12,6 +12,14 @@ def abstract_multiple_patients(request: MultiplePatientsAbstractionRequest):
     Returns the summary intervals.
     """
     return VisitorsQueriesService.create_multiple_patients_abstraction(request)
+
+@router.post("/multiple-patients-numeric-abstraction", response_model=VisitorResponse[List[IntervalSummary]])
+def abstract_multiple_patients_numeric(request: MultiplePatientsNumericAbstractionRequest):
+    """
+    Abstract multiple patients data flow for numeric continuous values.
+    Divides the numeric range into specified/default bins before abstracting and returning the summary intervals.
+    """
+    return VisitorsQueriesService.create_multiple_patients_numeric_abstraction(request)
 
 @router.post("/abstraction", response_model=VisitorResponse[List[Record]])
 def generate_abstraction(request: GenerationRequest):
