@@ -23,6 +23,14 @@ app.add_middleware(
 
 app.include_router(api_router, prefix=settings.API_V1_STR)
 
+from app.services.concept_manager import concept_manager_instance
+
+@app.on_event("startup")
+async def startup_event():
+    print("Initializing TAK entities...")
+    concept_manager_instance.init_entities()
+    print(f"Loaded {len(concept_manager_instance.get_all_entities())} TAK entities.")
+
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run(app, host="0.0.0.0", port=8000)

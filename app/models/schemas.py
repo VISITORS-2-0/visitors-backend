@@ -24,7 +24,7 @@ class Record(BaseModel):
 
 class DataRequest(BaseModel):
     patients_list: List[str] = Field(..., example=[str(i) for i in range(1000, 1021)])
-    concept_name: str = "WBC_STATE_BMT"
+    concept_name: str = "AbsCI_or_RelCI_state"
     start_date: datetime = datetime(1991, 1, 1)
     end_date: datetime = datetime(1994, 12, 31)
 
@@ -43,22 +43,38 @@ class IntervalSummary(BaseModel):
     Value_Dict: Dict[str, int]
     TotalPatientsWithData: int
 
-class ConceptSchema(BaseModel):
-    name: str
-    type: str
-    allowed_values: Dict[str, Any]
+
 
 class VisitorResponse(BaseModel, Generic[T]):
-    concept_data: Optional[ConceptSchema] = None
+    concept_data: Optional[Dict[str, Any]] = None
     result: T
 
 class MultiplePatientsAbstractionRequest(BaseModel):
     # Fetching Params
     patients_list: List[str] = Field(..., example=[str(i) for i in range(1000, 1021)])
-    concept_name: str = "WBC_STATE_BMT"
+    concept_name: str = "AbsCI_or_RelCI_state"
     start_date: datetime = datetime(1991, 1, 1)
     end_date: datetime = datetime(1994, 12, 31)
     
     # Transformation Params
     interval_str: Literal['D', 'W-SUN', 'ME', 'YE'] = "ME"
     method: Literal['most_time_spent'] = "most_time_spent"
+
+class NumericRange(BaseModel):
+    min: float
+    max: float
+
+class MultiplePatientsNumericAbstractionRequest(BaseModel):
+    # Generation Params
+    patients_list: List[str] = Field(..., example=[str(i) for i in range(1000, 1021)])
+    concept_name: str = "AbsCI_or_RelCI_state"
+    start_date: datetime = datetime(1991, 1, 1)
+    end_date: datetime = datetime(1994, 12, 31)
+    
+    # Transformation Params
+    interval_str: Literal['D', 'W-SUN', 'ME', 'YE'] = "ME"
+    method: Literal['most_time_spent'] = "most_time_spent"
+    
+    # New parameter for numeric abstraction
+    ranges: Optional[List[NumericRange]] = None
+
