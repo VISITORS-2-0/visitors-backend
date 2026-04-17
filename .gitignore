@@ -34,3 +34,5 @@ env/
 
 # Database
 *.db
+CSV_Data/Abstract_Data.csv
+CSV_Data/Raw_Data.csv
