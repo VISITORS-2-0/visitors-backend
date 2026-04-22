@@ -1,5 +1,5 @@
 from fastapi import APIRouter
-from app.api.v1.endpoints import generation, transformation, analytics, visitors_queries, concepts
+from app.api.v1.endpoints import transformation, visitors_queries, concepts
 
 api_router = APIRouter()
 
