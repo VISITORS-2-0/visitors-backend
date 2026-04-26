@@ -27,6 +27,7 @@ class DataRequest(BaseModel):
     concept_name: str = "AbsCI_or_RelCI_state"
     start_date: datetime = datetime(1991, 1, 1)
     end_date: datetime = datetime(1994, 12, 31)
+    use_generated_data: bool = False
 
 class TransformationRequest(BaseModel):
     data: List[Record]
@@ -55,6 +56,7 @@ class MultiplePatientsAbstractionRequest(BaseModel):
     concept_name: str = "AbsCI_or_RelCI_state"
     start_date: datetime = datetime(1991, 1, 1)
     end_date: datetime = datetime(1994, 12, 31)
+    use_generated_data: bool = False
     
     # Transformation Params
     interval_str: Literal['D', 'W-SUN', 'ME', 'YE'] = "ME"
@@ -70,6 +72,7 @@ class MultiplePatientsNumericAbstractionRequest(BaseModel):
     concept_name: str = "AbsCI_or_RelCI_state"
     start_date: datetime = datetime(1991, 1, 1)
     end_date: datetime = datetime(1994, 12, 31)
+    use_generated_data: bool = False
     
     # Transformation Params
     interval_str: Literal['D', 'W-SUN', 'ME', 'YE'] = "ME"
