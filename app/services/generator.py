@@ -2,13 +2,13 @@ import random
 from datetime import datetime, timedelta
 from typing import List
 # from functools import lru_cache
-from app.models.schemas import GenerationRequest, Record
+from app.models.schemas import DataRequest, Record
 from app.services.concept_manager import concept_manager_instance
 from app.core.cache_utils import db_cache
 
 class DataGeneratorService:
     @staticmethod
-    def generate_data(request: GenerationRequest) -> List[Record]:
+    def generate_data(request: DataRequest) -> List[Record]:
         # Fetch allowed values from DB (using internal session)
         concept = concept_manager_instance.get_entity_by_name(request.concept_name)
         values = getattr(concept, "values", []) if concept else []
@@ -27,7 +27,7 @@ class DataGeneratorService:
         )
 
     @staticmethod
-    def generate_numeric_data(request: GenerationRequest) -> List[Record]:
+    def generate_numeric_data(request: DataRequest) -> List[Record]:
         concept = concept_manager_instance.get_entity_by_name(request.concept_name)
         min_v = getattr(concept, "min", 0.0) if concept else 0.0
         max_v = getattr(concept, "max", 100.0) if concept else 100.0

@@ -1,6 +1,7 @@
 from typing import List, Any
 from fastapi import HTTPException
-from app.models.schemas import MultiplePatientsAbstractionRequest, VisitorResponse, GenerationRequest, Record, IntervalSummary, MultiplePatientsNumericAbstractionRequest, NumericRange
+from app.models.schemas import MultiplePatientsAbstractionRequest, VisitorResponse, DataRequest, Record, IntervalSummary, MultiplePatientsNumericAbstractionRequest, NumericRange
+from app.services.csv_data_fetcher import csv_fetcher
 from app.services.generator import DataGeneratorService
 from app.services.transformer import IntervalTransformationService
 from app.services.summer import SummaryService
@@ -92,14 +93,18 @@ class VisitorsQueriesService:
         else:
             ranges = VisitorsQueriesService._generate_default_ranges(concept_min, concept_max)
             
-        gen_request = GenerationRequest(
+        gen_request = DataRequest(
             patients_list=request.patients_list,
             concept_name=request.concept_name,
             start_date=request.start_date,
-            end_date=request.end_date
+            end_date=request.end_date,
+            use_generated_data=request.use_generated_data
         )
         
-        patient_events = DataGeneratorService.generate_numeric_data(gen_request)
+        if request.use_generated_data:
+            patient_events = DataGeneratorService.generate_numeric_data(gen_request)
+        else:
+            patient_events = csv_fetcher.fetch_data(gen_request, abstract=False)
         patient_events = VisitorsQueriesService._assign_ranges_to_records(patient_events, ranges)
         
         intervals = IntervalTransformationService.transform_to_intervals(
@@ -120,14 +125,18 @@ class VisitorsQueriesService:
     @db_cache
     def create_multiple_patients_abstraction(request: MultiplePatientsAbstractionRequest) -> VisitorResponse[List[IntervalSummary]]:
         # Compatibility adapter for old request model
-        gen_request = GenerationRequest(
+        gen_request = DataRequest(
             patients_list=request.patients_list,
             concept_name=request.concept_name,
             start_date=request.start_date,
-            end_date=request.end_date
+            end_date=request.end_date,
+            use_generated_data=request.use_generated_data
         )
         # 1. Generate Data (Strict/Standard)
-        patient_events = DataGeneratorService.generate_data(gen_request)
+        if request.use_generated_data:
+            patient_events = DataGeneratorService.generate_data(gen_request)
+        else:
+            patient_events = csv_fetcher.fetch_data(gen_request, abstract=True)
         
         # 2. Transform Data
         intervals = IntervalTransformationService.transform_to_intervals(
@@ -142,13 +151,19 @@ class VisitorsQueriesService:
         return VisitorsQueriesService._build_visitor_response(summary_list, request.concept_name)
 
     @staticmethod
-    def generate_abstraction(request: GenerationRequest) -> VisitorResponse[List[Record]]:
+    def generate_abstraction(request: DataRequest) -> VisitorResponse[List[Record]]:
         # 1. Generate Data (Strict)
-        patient_events = DataGeneratorService.generate_data(request)
+        if request.use_generated_data:
+            patient_events = DataGeneratorService.generate_data(request)
+        else:
+            patient_events = csv_fetcher.fetch_data(request, abstract=True)
         return VisitorsQueriesService._build_visitor_response(patient_events, request.concept_name)
 
     @staticmethod
-    def generate_raw_data(request: GenerationRequest) -> VisitorResponse[List[Record]]:
+    def generate_raw_data(request: DataRequest) -> VisitorResponse[List[Record]]:
         # 1. Generate Data (Numeric)
-        patient_events = DataGeneratorService.generate_numeric_data(request)
+        if request.use_generated_data:
+            patient_events = DataGeneratorService.generate_numeric_data(request)
+        else:
+            patient_events = csv_fetcher.fetch_data(request, abstract=False)
         return VisitorsQueriesService._build_visitor_response(patient_events, request.concept_name)

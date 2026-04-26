@@ -22,11 +22,12 @@ class Record(BaseModel):
 
 # --- Request/Response Models for Services ---
 
-class GenerationRequest(BaseModel):
+class DataRequest(BaseModel):
     patients_list: List[str] = Field(..., example=[str(i) for i in range(1000, 1021)])
     concept_name: str = "AbsCI_or_RelCI_state"
     start_date: datetime = datetime(1991, 1, 1)
     end_date: datetime = datetime(1994, 12, 31)
+    use_generated_data: bool = False
 
 class TransformationRequest(BaseModel):
     data: List[Record]
@@ -50,11 +51,12 @@ class VisitorResponse(BaseModel, Generic[T]):
     result: T
 
 class MultiplePatientsAbstractionRequest(BaseModel):
-    # Generation Params
+    # Fetching Params
     patients_list: List[str] = Field(..., example=[str(i) for i in range(1000, 1021)])
     concept_name: str = "AbsCI_or_RelCI_state"
     start_date: datetime = datetime(1991, 1, 1)
     end_date: datetime = datetime(1994, 12, 31)
+    use_generated_data: bool = False
     
     # Transformation Params
     interval_str: Literal['D', 'W-SUN', 'ME', 'YE'] = "ME"
@@ -70,6 +72,7 @@ class MultiplePatientsNumericAbstractionRequest(BaseModel):
     concept_name: str = "AbsCI_or_RelCI_state"
     start_date: datetime = datetime(1991, 1, 1)
     end_date: datetime = datetime(1994, 12, 31)
+    use_generated_data: bool = False
     
     # Transformation Params
     interval_str: Literal['D', 'W-SUN', 'ME', 'YE'] = "ME"

@@ -1,6 +1,6 @@
 from typing import List
 from fastapi import APIRouter
-from app.models.schemas import MultiplePatientsAbstractionRequest, VisitorResponse, GenerationRequest, Record, IntervalSummary, MultiplePatientsNumericAbstractionRequest
+from app.models.schemas import MultiplePatientsAbstractionRequest, VisitorResponse, DataRequest, Record, IntervalSummary, MultiplePatientsNumericAbstractionRequest
 from app.services.visitors_queries import VisitorsQueriesService
 
 router = APIRouter()
@@ -22,14 +22,14 @@ def abstract_multiple_patients_numeric(request: MultiplePatientsNumericAbstracti
     return VisitorsQueriesService.create_multiple_patients_numeric_abstraction(request)
 
 @router.post("/abstraction", response_model=VisitorResponse[List[Record]])
-def generate_abstraction(request: GenerationRequest):
+def generate_abstraction(request: DataRequest):
     """
     Generates synthetic patient data (Abstraction). Returns generated records.
     """
     return VisitorsQueriesService.generate_abstraction(request)
 
 @router.post("/raw-data", response_model=VisitorResponse[List[Record]])
-def generate_raw_data_abstraction(request: GenerationRequest):
+def generate_raw_data_abstraction(request: DataRequest):
     """
     Generate raw data (numeric). Returns generated records.
     """
