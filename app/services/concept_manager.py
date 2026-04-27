@@ -144,6 +144,18 @@ class ConceptManager:
             else:
                 tak_obj.context = list(set(contexts_by_inducer.get(tak_name, [])))
 
+            # "mapping_abstractions": parse mapping functions using resolved names
+            raw_data = self.raw_xml_by_name.get(tak_name)
+            if raw_data:
+                from app.models.concept import parse_mapping_abstractions
+                
+                def id_to_name(c_id):
+                    return self.tak_name_by_id.get(str(c_id), str(c_id))
+                    
+                abstractions = parse_mapping_abstractions(raw_data, id_to_name)
+                if abstractions:
+                    tak_obj.mapping_abstractions = abstractions
+
     def get_entity_by_name(self, tak_name: str) -> TAKEntity:
         return self.tak_by_name.get(tak_name)
 
