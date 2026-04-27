@@ -1,6 +1,18 @@
-from pydantic import model_validator
-from pydantic import BaseModel, Field, ConfigDict, field_validator
 from typing import Optional, List, Any
+from pydantic import BaseModel, Field, ConfigDict, field_validator, model_validator
+
+class ConditionMapping(BaseModel):
+    abstracted_from_concept: str
+    values_accepted: str
+
+class CategoryMapping(BaseModel):
+    order: int
+    category: str
+    logical_operation: Optional[str] = None
+    conditions: List[ConditionMapping]
+
+class MappingAbstractions(BaseModel):
+    category_mappings: List[CategoryMapping]
 
 # ==========================================
 # Root Entity
@@ -25,6 +37,7 @@ class TAKEntity(BaseModel):
     derived_into: List[str] = Field(default_factory=list)
     siblings: List[str] = Field(default_factory=list)
     context: List[str] = Field(default_factory=list)
+    mapping_abstractions: Optional[MappingAbstractions] = None
 
     @field_validator("derived_from", mode="before")
     @classmethod
@@ -225,3 +238,107 @@ def extract_values(obj: dict, parameter: str, parameter2: str) -> dict:
         obj["values"] = values
     
     return obj
+
+def parse_mapping_abstractions(raw_data: dict, id_to_name_fn) -> Optional[MappingAbstractions]:
+    mf = raw_data.get("mapping-function")
+    if not isinstance(mf, dict):
+        return None
+        
+    mfts = mf.get("mapping-functions-to-values", {})
+    mf2vs = mfts.get("mapping-function-2-value", [])
+    if isinstance(mf2vs, dict):
+        mf2vs = [mf2vs]
+        
+    category_mappings = []
+    
+    for item in mf2vs:
+        val = item.get("@value")
+        if not val:
+            continue
+            
+        tree = item.get("evaluation-tree", {})
+        
+        conditions = []
+        logical_op = None
+        
+        def parse_node(node):
+            nonlocal logical_op
+            if not node:
+                return
+            if "logical-function" in node:
+                lf = node["logical-function"]
+                op = lf.get("@logical-operator", "and")
+                if logical_op is None:
+                    logical_op = op
+                
+                operands = lf.get("operands", {}).get("operand", [])
+                if isinstance(operands, dict):
+                    operands = [operands]
+                for operand in operands:
+                    parse_node(operand)
+            elif "comparison-function" in node:
+                cf = node["comparison-function"]
+                op = cf.get("@comparison-operator", "")
+                
+                ops_map = {
+                    "bigger": ">",
+                    "smaller": "<",
+                    "bigger-equal": ">=",
+                    "smaller-equal": "<=",
+                    "equal": "==",
+                }
+                symbol = ops_map.get(op, op)
+                
+                left_node = cf.get("left", {})
+                concept_id = left_node.get("concept-id-allowed-values", {}).get("@id")
+                concept_name = id_to_name_fn(concept_id) if concept_id else "Unknown"
+                
+                right_node = cf.get("right", {})
+                right_val = ""
+                if "double" in right_node:
+                    right_val = right_node.get("double")
+                elif "integer" in right_node:
+                    right_val = right_node.get("integer")
+                elif "string" in right_node:
+                    right_val = right_node.get("string")
+                    
+                conditions.append(ConditionMapping(
+                    abstracted_from_concept=concept_name,
+                    values_accepted=f"{symbol}{right_val}"
+                ))
+
+        parse_node(tree)
+        
+        compressed_conditions = []
+        # If it's an AND operation or single condition, we can combine bounds for the same concept
+        if logical_op == "and" or logical_op is None:
+            concept_to_bounds = {}
+            for c in conditions:
+                concept_to_bounds.setdefault(c.abstracted_from_concept, []).append(c.values_accepted)
+            
+            for concept, bounds in concept_to_bounds.items():
+                if len(bounds) > 1:
+                    compressed_conditions.append(ConditionMapping(
+                        abstracted_from_concept=concept,
+                        values_accepted=" and ".join(bounds)
+                    ))
+                else:
+                    compressed_conditions.append(ConditionMapping(
+                        abstracted_from_concept=concept,
+                        values_accepted=bounds[0]
+                    ))
+        else:
+             compressed_conditions = conditions
+        order_str = item.get("@order")
+        order_val = int(order_str) if order_str is not None else 0
+             
+        category_mappings.append(CategoryMapping(
+            order=order_val,
+            category=val,
+            logical_operation=logical_op if len(compressed_conditions) > 1 else None,
+            conditions=compressed_conditions
+        ))
+        
+    if category_mappings:
+        return MappingAbstractions(category_mappings=category_mappings)
+    return None
