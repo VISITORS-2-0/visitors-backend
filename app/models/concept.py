@@ -21,9 +21,10 @@ class TAKEntity(BaseModel):
     values: Optional[List[str]] = None
 
     # We define the type as a List of strings, and map it to the JSON key "derived-from"
-    derived_from: List[str] = Field(default_factory=list, alias="derived-from")
+    derived_from: List[str] = Field(default_factory=list, validation_alias="derived-from")
     derived_into: List[str] = Field(default_factory=list)
     siblings: List[str] = Field(default_factory=list)
+    context: List[str] = Field(default_factory=list)
 
     @field_validator("derived_from", mode="before")
     @classmethod

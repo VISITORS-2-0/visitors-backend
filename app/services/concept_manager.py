@@ -90,22 +90,59 @@ class ConceptManager:
                     print(f"Error instantiating {filename}: {str(e)}")
 
 
-        derivied_into_dict = defaultdict(list)
-
+        # Map each conceptual component to its parents (abstracted-into)
+        derived_into_dict = defaultdict(list)
         for tak_name, tak_obj in self.tak_by_name.items():
-
             if tak_obj.derived_from:
                 derived_from_names = []
-
                 for derived_from_id in tak_obj.derived_from:
-                    derivied_into_dict[self.tak_name_by_id[derived_from_id]].append(tak_obj.name)
-                    derived_from_names.append(self.tak_name_by_id[derived_from_id])
-
+                    parent_name = tak_obj.name
+                    child_name = self.tak_name_by_id.get(derived_from_id)
+                    if child_name:
+                        derived_into_dict[child_name].append(parent_name)
+                        derived_from_names.append(child_name)
                 tak_obj.derived_from = derived_from_names
 
+        # Parse context graphs
+        contexts_by_inducer = defaultdict(list)
+        inducers_by_context = defaultdict(list)
+        
+        for name, root_data in self.raw_xml_by_name.items():
+            if root_data.get('@concept-type') == 'context':
+                context_id = root_data.get('@id')
+                inducers_element = root_data.get('inducer-entities', {})
+                if inducers_element:
+                    inducers = inducers_element.get('inducer-entity', [])
+                    if isinstance(inducers, dict):
+                        inducers = [inducers]
+                    for ind in inducers:
+                        ind_id = ind.get('@id')
+                        ind_name = self.tak_name_by_id.get(ind_id)
+                        if ind_name:
+                            contexts_by_inducer[ind_name].append(name)
+                            inducers_by_context[name].append(ind_name)
+
+        # Assign final relations to entities
         for tak_name, tak_obj in self.tak_by_name.items():
-            tak_obj.derived_into = derivied_into_dict.get(tak_obj.name, [])
-            tak_obj.siblings = list({sibling for parent in tak_obj.derived_from for sibling in derivied_into_dict.get(parent, []) if sibling != tak_name})
+            # "meta-parents": relation such as abstracted-into
+            tak_obj.derived_into = derived_into_dict.get(tak_name, [])
+            
+            # "meta-siblings": relation such as other components on the pattern into which the current entity is abstracted
+            # Therefore siblings are other concepts sharing the same meta-parents
+            siblings_set = set()
+            for parent_name in tak_obj.derived_into:
+                parent_obj = self.tak_by_name.get(parent_name)
+                if parent_obj:
+                    for sibling in parent_obj.derived_from:
+                        if sibling != tak_name:
+                            siblings_set.add(sibling)
+            tak_obj.siblings = list(siblings_set)
+            
+            # "context relation": generated-context relation or generated-from relation for contexts themselves
+            if tak_obj.concept_type == 'context':
+                tak_obj.context = list(set(inducers_by_context.get(tak_name, [])))
+            else:
+                tak_obj.context = list(set(contexts_by_inducer.get(tak_name, [])))
 
     def get_entity_by_name(self, tak_name: str) -> TAKEntity:
         return self.tak_by_name.get(tak_name)
