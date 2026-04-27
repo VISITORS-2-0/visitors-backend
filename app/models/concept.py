@@ -24,6 +24,7 @@ class TAKEntity(BaseModel):
     derived_from: List[str] = Field(default_factory=list, alias="derived-from")
     derived_into: List[str] = Field(default_factory=list)
     siblings: List[str] = Field(default_factory=list)
+    context: List[str] = Field(default_factory=list)
 
     @field_validator("derived_from", mode="before")
     @classmethod
