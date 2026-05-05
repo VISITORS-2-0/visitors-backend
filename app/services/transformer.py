@@ -1,11 +1,12 @@
 import pandas as pd
 import numpy as np
-from typing import List, Dict
+from typing import List, Dict, Optional
+from datetime import datetime
 from app.models.schemas import Record, TransformationRequest
 
 class IntervalTransformationService:
     @staticmethod
-    def transform_to_intervals(events: List[Record], interval_str: str = 'ME', method: str = 'most_time_spent') -> List[Record]:
+    def transform_to_intervals(events: List[Record], start_date: Optional[datetime] = None, end_date: Optional[datetime] = None, interval_str: str = 'ME', method: str = 'most_time_spent') -> List[Record]:
         
         if not events:
             return []
@@ -19,19 +20,26 @@ class IntervalTransformationService:
         df['EndTime'] = pd.to_datetime(df['EndTime'], utc=True)
         
         # 2. Define Global Time Grid
-        global_min = df['StartTime'].min().floor('D') 
-        global_max = df['EndTime'].max().ceil('D')
+        if start_date and end_date:
+            global_min = pd.to_datetime(start_date, utc=True)
+            global_max = pd.to_datetime(end_date, utc=True)
+        else:
+            global_min = df['StartTime'].min().floor('D') 
+            global_max = df['EndTime'].max().ceil('D')
         
         # Create the buckets (intervals)
-        buckets = pd.date_range(start=global_min, end=global_max, freq=interval_str)
+        buckets_index = pd.date_range(start=global_min, end=global_max, freq=interval_str)
+        buckets = list(buckets_index)
         
+        # Ensure the first bucket covers the start of the data
+        if not buckets or buckets[0] > global_min:
+            buckets.insert(0, global_min)
+            
         # Ensure the last bucket covers the end of the data
-        if not buckets.empty and buckets[-1] < global_max:
-             # Use the same frequency to add one more bucket
-            buckets = buckets.union(pd.DatetimeIndex([buckets[-1] + pd.tseries.frequencies.to_offset(interval_str)]))
-        elif buckets.empty and global_min < global_max:
-             # Fallback if range is too small for freq? or just create start/end
-             buckets = pd.DatetimeIndex([global_min, global_max])
+        if buckets[-1] < global_max:
+            buckets.append(global_max)
+            
+        buckets = pd.DatetimeIndex(buckets)
 
         new_rows = []
         

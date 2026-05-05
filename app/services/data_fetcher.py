@@ -34,10 +34,8 @@ class MongoDataFetcher(DataFetcher):
         query = {
             "ConceptName": request.concept_name,
             "PatientID": {"$in": patient_ids},
-            "StartTime": {
-                "$gte": request.start_date,
-                "$lte": request.end_date
-            }
+            "StartTime": {"$lt": request.end_date},
+            "EndTime": {"$gt": request.start_date}
         }
 
         # Fetch and map to Record objects

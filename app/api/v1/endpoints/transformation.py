@@ -12,6 +12,8 @@ def transform_data(request: TransformationRequest):
     """
     return IntervalTransformationService.transform_to_intervals(
         events=request.data,
+        start_date=request.start_date,
+        end_date=request.end_date,
         interval_str=request.interval_str,
         method=request.method
     )

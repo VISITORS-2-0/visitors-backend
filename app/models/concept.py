@@ -341,4 +341,4 @@ def parse_mapping_abstractions(raw_data: dict, id_to_name_fn) -> Optional[Mappin
         
     if category_mappings:
         return MappingAbstractions(category_mappings=category_mappings)
-    return None
+    return None
