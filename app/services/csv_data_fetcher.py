@@ -47,7 +47,7 @@ class CSVDataFetcher:
                     except Exception as e:
                         continue
                         
-                    if request.start_date and start_time < request.start_date:
+                    if request.start_date and end_time < request.start_date:
                         continue
                     if request.end_date and start_time > request.end_date:
                         continue
