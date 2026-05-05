@@ -31,6 +31,8 @@ class DataRequest(BaseModel):
 
 class TransformationRequest(BaseModel):
     data: List[Record]
+    start_date: Optional[datetime] = None
+    end_date: Optional[datetime] = None
     interval_str: Literal['D', 'W-SUN', 'ME', 'YE'] = "ME"
     method: Literal['most_time_spent'] = "most_time_spent"
 
