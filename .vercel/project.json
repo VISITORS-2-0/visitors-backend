@@ -1,0 +1,17 @@
+{
+    "projectId": "prj_6cr4iCkK75JY3c5kz2m7l5nPH3zC",
+    "orgId": "team_8cA1rVM53p6KDoulZUEsI0P2",
+    "projectName": "visitors-web-backend",
+    "builds": [
+        {
+            "src": "app/main.py",
+            "use": "@vercel/python"
+        }
+    ],
+    "routes": [
+        {
+            "src": "/(.*)",
+            "dest": "app/main.py"
+        }
+    ]
+}
