@@ -20,14 +20,28 @@ class Record(BaseModel):
             datetime: lambda v: v.isoformat()
         }
 
+# --- Shared Models ---
+
+class RelativeTimeDelta(BaseModel):
+    value: int
+    unit: Literal['h', 'd', 'w', 'm', 'y']
+
+class RelativeTimeConfig(BaseModel):
+    reference_concept: str
+    reference_value: Optional[str] = None
+    occurrence_index: int = -1
+    start_delta: RelativeTimeDelta
+    end_delta: RelativeTimeDelta
+
 # --- Request/Response Models for Services ---
 
 class DataRequest(BaseModel):
     patients_list: List[str] = Field(..., example=[str(i) for i in range(1000, 1021)])
     concept_name: str = "AbsCI_or_RelCI_state"
-    start_date: datetime = datetime(1991, 1, 1)
-    end_date: datetime = datetime(1994, 12, 31)
+    start_date: Optional[datetime] = None
+    end_date: Optional[datetime] = None
     use_generated_data: bool = False
+    relative_time: Optional[RelativeTimeConfig] = None
 
 class TransformationRequest(BaseModel):
     data: List[Record]
@@ -46,8 +60,6 @@ class IntervalSummary(BaseModel):
     Value_Dict: Dict[str, int]
     TotalPatientsWithData: int
 
-
-
 class VisitorResponse(BaseModel, Generic[T]):
     concept_data: Optional[Dict[str, Any]] = None
     result: T
@@ -56,9 +68,10 @@ class MultiplePatientsAbstractionRequest(BaseModel):
     # Fetching Params
     patients_list: List[str] = Field(..., example=[str(i) for i in range(1000, 1021)])
     concept_name: str = "AbsCI_or_RelCI_state"
-    start_date: datetime = datetime(1991, 1, 1)
-    end_date: datetime = datetime(1994, 12, 31)
+    start_date: Optional[datetime] = None
+    end_date: Optional[datetime] = None
     use_generated_data: bool = False
+    relative_time: Optional[RelativeTimeConfig] = None
     
     # Transformation Params
     interval_str: Literal['D', 'W-SUN', 'ME', 'YE'] = "ME"
@@ -72,9 +85,10 @@ class MultiplePatientsNumericAbstractionRequest(BaseModel):
     # Generation Params
     patients_list: List[str] = Field(..., example=[str(i) for i in range(1000, 1021)])
     concept_name: str = "AbsCI_or_RelCI_state"
-    start_date: datetime = datetime(1991, 1, 1)
-    end_date: datetime = datetime(1994, 12, 31)
+    start_date: Optional[datetime] = None
+    end_date: Optional[datetime] = None
     use_generated_data: bool = False
+    relative_time: Optional[RelativeTimeConfig] = None
     
     # Transformation Params
     interval_str: Literal['D', 'W-SUN', 'ME', 'YE'] = "ME"
