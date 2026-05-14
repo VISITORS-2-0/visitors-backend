@@ -48,6 +48,11 @@ class DataGeneratorService:
     def _generate_cached(patients_list: tuple, start_date: datetime, end_date: datetime, values: tuple, concept_name: str, min_value: float = 0.0, max_value: float = 100.0, allow_numeric: bool = False) -> List[Record]:
         new_data = []
 
+        if start_date is None:
+            start_date = datetime(2010, 1, 1)
+        if end_date is None:
+            end_date = datetime(2020, 1, 1)
+
         total_seconds = int((end_date - start_date).total_seconds())
         if total_seconds <= 0:
             return []

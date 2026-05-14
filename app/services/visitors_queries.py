@@ -8,6 +8,7 @@ from app.services.summer import SummaryService
 from app.core.cache_utils import db_cache
 from app.services.concept_manager import concept_manager_instance
 from app.models.concept import TAKEntity
+from app.services.relative_time_service import RelativeTimeService
 
 class VisitorsQueriesService:
     @staticmethod
@@ -107,6 +108,11 @@ class VisitorsQueriesService:
             patient_events = csv_fetcher.fetch_data(gen_request, abstract=False)
         patient_events = VisitorsQueriesService._assign_ranges_to_records(patient_events, ranges)
         
+        if getattr(request, 'relative_time', None):
+            patient_events, request.start_date, request.end_date = RelativeTimeService.align_records_to_anchor(
+                patient_events, request.relative_time, request.patients_list, request.use_generated_data, request.start_date, request.end_date
+            )
+        
         intervals = IntervalTransformationService.transform_to_intervals(
             events=patient_events,
             start_date=request.start_date,
@@ -139,6 +145,11 @@ class VisitorsQueriesService:
             patient_events = DataGeneratorService.generate_data(gen_request)
         else:
             patient_events = csv_fetcher.fetch_data(gen_request, abstract=True)
+            
+        if getattr(request, 'relative_time', None):
+            patient_events, request.start_date, request.end_date = RelativeTimeService.align_records_to_anchor(
+                patient_events, request.relative_time, request.patients_list, request.use_generated_data, request.start_date, request.end_date
+            )
         
         # 2. Transform Data
         intervals = IntervalTransformationService.transform_to_intervals(
@@ -161,6 +172,12 @@ class VisitorsQueriesService:
             patient_events = DataGeneratorService.generate_data(request)
         else:
             patient_events = csv_fetcher.fetch_data(request, abstract=True)
+            
+        if getattr(request, 'relative_time', None):
+            patient_events, request.start_date, request.end_date = RelativeTimeService.align_records_to_anchor(
+                patient_events, request.relative_time, request.patients_list, request.use_generated_data, request.start_date, request.end_date
+            )
+            
         return VisitorsQueriesService._build_visitor_response(patient_events, request.concept_name)
 
     @staticmethod
@@ -170,4 +187,10 @@ class VisitorsQueriesService:
             patient_events = DataGeneratorService.generate_numeric_data(request)
         else:
             patient_events = csv_fetcher.fetch_data(request, abstract=False)
+            
+        if getattr(request, 'relative_time', None):
+            patient_events, request.start_date, request.end_date = RelativeTimeService.align_records_to_anchor(
+                patient_events, request.relative_time, request.patients_list, request.use_generated_data, request.start_date, request.end_date
+            )
+            
         return VisitorsQueriesService._build_visitor_response(patient_events, request.concept_name)

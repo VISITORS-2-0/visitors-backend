@@ -47,10 +47,11 @@ class CSVDataFetcher:
                     except Exception as e:
                         continue
                         
-                    if request.start_date and end_time < request.start_date:
-                        continue
-                    if request.end_date and start_time > request.end_date:
-                        continue
+                    if not getattr(request, 'relative_time', None):
+                        if request.start_date and end_time < request.start_date:
+                            continue
+                        if request.end_date and start_time > request.end_date:
+                            continue
                         
                     results.append(Record(
                         StartTime=start_time,
