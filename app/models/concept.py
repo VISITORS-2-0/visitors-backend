@@ -113,7 +113,7 @@ class TAKEntity(BaseModel):
 
 class Event(TAKEntity):
     """Event class"""
-    values: Optional[List[str]] = Field(default=["True"])
+    values: Optional[List[str]] = Field(default=["TRUE"])
 
 class Context(TAKEntity):
     """Context class"""
