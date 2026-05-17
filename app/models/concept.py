@@ -180,12 +180,7 @@ class State(AbstractConcept):
         return obj
 
 class Trend(AbstractConcept):
-    """Trend abstraction concept"""
-    
-    @model_validator(mode="before")
-    @classmethod
-    def _extract_values(cls, obj: any):
-        return extract_values(obj, "gradient-trend-allowed-values", "ordinal-allowed-value")
+    values: Optional[List[str]] = Field(default=["Inc", "Same", "Dec"])
 
 class Pattern(AbstractConcept):
     """Pattern concept"""

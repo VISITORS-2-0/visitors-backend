@@ -41,7 +41,7 @@ class ConceptManager:
 
         parsed_files = []
         for filename in os.listdir(self.tak_entities_dir):
-            if not filename.endswith('.xml'):
+            if not filename.lower().endswith('.xml'):
                 continue
                 
             file_path = os.path.join(self.tak_entities_dir, filename)
