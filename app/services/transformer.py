@@ -53,11 +53,14 @@ class IntervalTransformationService:
                 bucket_start = buckets[i]
                 bucket_end = buckets[i+1]
                 
-                # Filter rows that physically overlap with the current bucket
-                relevant_rows = group[
-                    (group['StartTime'] < bucket_end) & 
-                    (group['EndTime'] > bucket_start)
-                ].copy()
+                # Interval overlaps if:
+                # 1. It has duration (StartTime < EndTime) and overlaps with (bucket_start, bucket_end)
+                # 2. It is a point event (StartTime == EndTime) and falls in [bucket_start, bucket_end)
+                is_point = group['StartTime'] == group['EndTime']
+                overlaps_interval = (group['StartTime'] < bucket_end) & (group['EndTime'] > bucket_start)
+                is_point_in_bucket = is_point & (group['StartTime'] >= bucket_start) & (group['StartTime'] < bucket_end)
+                
+                relevant_rows = group[overlaps_interval | is_point_in_bucket].copy()
                 
                 representative_value = 'No Value'
                 
@@ -72,8 +75,14 @@ class IntervalTransformationService:
                     durations = relevant_rows.groupby('Value')['duration'].sum()
                     
                     if method == 'most_time_spent':
-                        if not durations.empty and durations.max() > 0:
-                            representative_value = durations.idxmax()
+                        if not durations.empty:
+                            if durations.max() > 0:
+                                representative_value = durations.idxmax()
+                            else:
+                                # They are point events (duration == 0). Pick the most frequent value.
+                                value_counts = relevant_rows['Value'].value_counts()
+                                if not value_counts.empty:
+                                    representative_value = value_counts.idxmax()
                 
                 new_rows.append(Record(
                     StartTime=bucket_start,
