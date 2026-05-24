@@ -95,7 +95,10 @@ class TAKEntity(BaseModel):
             self.duration_type = "point"
         else:
             self.duration_type = "interval"
-            
+        
+        if self.values == ["Normal", "High", "Low"]:
+            self.values = ["Low", "Normal", "High"]
+        
         # 2. Determine output_type
         # If there are values, it's categorial, even if it has min/max
         if self.values:
