@@ -33,6 +33,29 @@ def get_menu():
         # In production we might want to log this or return a 500, but for now getting the error detail is helpful if it persists.
         raise e
 
+@router.get("/concept-values")
+def get_concept_values():
+    """
+    Get a dictionary where the key is the concept name and the value is a dictionary
+    containing 'values' if output_type is 'categorial', or 'min' and 'max' if output_type is 'range'.
+    """
+    try:
+        all_entities = concept_manager_instance.get_all_entities()
+        result = {}
+        for name, entity in all_entities.items():
+            if entity.output_type == "range":
+                result[name] = {
+                    "min": entity.min,
+                    "max": entity.max
+                }
+            else:
+                result[name] = {
+                    "values": entity.values if entity.values is not None else []
+                }
+        return result
+    except Exception as e:
+        raise e
+
 @router.get("/{concept_name}/knowledge-exploration")
 def get_tak_object_by_name(concept_name: str):
     """
