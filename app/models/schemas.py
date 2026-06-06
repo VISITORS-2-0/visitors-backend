@@ -1,4 +1,4 @@
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, field_validator
 from typing import List, Dict, Optional, Any, Literal, TypeVar, Generic
 
 T = TypeVar("T")
@@ -26,12 +26,23 @@ class RelativeTimeDelta(BaseModel):
     value: int
     unit: Literal['h', 'd', 'w', 'm', 'y']
 
+class ReferenceConcept(BaseModel):
+    concept_name: str
+    concept_value: Optional[str] = None
+
 class RelativeTimeConfig(BaseModel):
-    reference_concept: str
-    reference_value: Optional[str] = None
+    reference_concepts: List[ReferenceConcept]
     occurrence_index: int = -1
     start_delta: RelativeTimeDelta
     end_delta: RelativeTimeDelta
+
+    @field_validator('reference_concepts')
+    @classmethod
+    def check_non_empty(cls, v: List[ReferenceConcept]) -> List[ReferenceConcept]:
+        if not v:
+            raise ValueError("reference_concepts list must not be empty.")
+        return v
+
 
 # --- Request/Response Models for Services ---
 
