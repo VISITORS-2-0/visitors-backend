@@ -56,6 +56,26 @@ def get_concept_values():
     except Exception as e:
         raise e
 
+@router.get("/all-concept-variation-sample")
+def get_all_concept_variation_sample():
+    """
+    Get one sample concept name for each unique variation (concept_type_output_type_duration_type).
+    """
+    try:
+        all_entities = concept_manager_instance.get_all_entities()
+        variences = {}
+        for name, entity in all_entities.items():
+            concept_type = entity.concept_type
+            output_type = entity.output_type
+            duration_type = entity.duration_type
+            
+            varience_key = f"{concept_type}_{output_type}_{duration_type}"
+            if varience_key not in variences:
+                variences[varience_key] = entity.name
+        return variences
+    except Exception as e:
+        raise e
+
 @router.get("/{concept_name}/knowledge-exploration")
 def get_tak_object_by_name(concept_name: str):
     """

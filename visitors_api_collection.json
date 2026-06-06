@@ -1,0 +1,400 @@
+{
+  "info": {
+    "_postman_id": "visitors-api-collection-v1",
+    "name": "Visitors API Collection",
+    "description": "Collection of all API endpoints for the Visitors backend, including Concepts, Normalization, and Visitors Queries.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Concepts",
+      "description": "Endpoints relating to TAK entities, concept schemas, and variation samples.",
+      "item": [
+        {
+          "name": "Get Menu",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/concept/menu",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "concept",
+                "menu"
+              ]
+            },
+            "description": "Get menu containing all TAK entities with specific basic fields (name, concept_type, output_type, duration_type)."
+          },
+          "response": []
+        },
+        {
+          "name": "Get Concept Values",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/concept/concept-values",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "concept",
+                "concept-values"
+              ]
+            },
+            "description": "Get a dictionary where the key is the concept name and the value is a dictionary containing 'values' if output_type is 'categorial', or 'min' and 'max' if output_type is 'range'."
+          },
+          "response": []
+        },
+        {
+          "name": "Get All Concept Variation Samples",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/concept/all-concept-variation-sample",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "concept",
+                "all-concept-variation-sample"
+              ]
+            },
+            "description": "Get one sample concept name for each unique variation (concept_type_output_type_duration_type)."
+          },
+          "response": []
+        },
+        {
+          "name": "Get Concept Knowledge Exploration",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/concept/:concept_name/knowledge-exploration",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "concept",
+                ":concept_name",
+                "knowledge-exploration"
+              ],
+              "variable": [
+                {
+                  "key": "concept_name",
+                  "value": "{{defaultConceptName}}",
+                  "description": "The name of the TAK concept to retrieve full definition"
+                }
+              ]
+            },
+            "description": "Get full TAK concept definition by name. Returns all defined fields on the specific subclass including XML data if available."
+          },
+          "response": []
+        },
+        {
+          "name": "Get Concept Basic",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/concept/:concept_name",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "concept",
+                ":concept_name"
+              ],
+              "variable": [
+                {
+                  "key": "concept_name",
+                  "value": "{{defaultConceptName}}",
+                  "description": "The name of the TAK concept to retrieve basic definition"
+                }
+              ]
+            },
+            "description": "Get basic TAK concept definition by name. Only returns TAKEntity fields, plus conditionally min/max or values."
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Normalization",
+      "description": "Endpoints for normalizing and transforming raw event data into fixed intervals.",
+      "item": [
+        {
+          "name": "Transform Data to Intervals",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"data\": [\n    {\n      \"StartTime\": \"2020-01-01T12:00:00\",\n      \"EndTime\": \"2020-01-01T14:00:00\",\n      \"Value\": \"high\",\n      \"PatientID\": 1000,\n      \"ConceptName\": \"{{state_categorial_interval}}\"\n    },\n    {\n      \"StartTime\": \"2020-01-01T14:00:00\",\n      \"EndTime\": \"2020-01-01T16:00:00\",\n      \"Value\": \"normal\",\n      \"PatientID\": 1000,\n      \"ConceptName\": \"{{state_categorial_interval}}\"\n    }\n  ],\n  \"start_date\": \"2020-01-01T00:00:00\",\n  \"end_date\": \"2020-01-02T00:00:00\",\n  \"interval_str\": \"ME\",\n  \"method\": \"most_time_spent\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/states-normalization/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "states-normalization",
+                ""
+              ]
+            },
+            "description": "Transform raw patient events into fixed intervals (e.g. Daily, Weekly, Monthly, Yearly) based on specified method (most_time_spent)."
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Visitors Queries",
+      "description": "Endpoints for high-level visitor queries, abstractions, synthetic generation, and raw data requests.",
+      "item": [
+        {
+          "name": "Multiple Patients Abstraction",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"patients_list\": [\"1000\", \"1001\", \"1002\"],\n  \"concept_name\": \"{{state_categorial_interval}}\",\n  \"start_date\": \"2020-01-01T00:00:00\",\n  \"end_date\": \"2021-12-31T23:59:59\",\n  \"use_generated_data\": false,\n  \"interval_str\": \"ME\",\n  \"method\": \"most_time_spent\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/visitors-queries/multiple-patients-abstraction",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "visitors-queries",
+                "multiple-patients-abstraction"
+              ]
+            },
+            "description": "Abstract multiple patients data flow: Generate -> Transform -> Summarize. Returns the summary intervals."
+          },
+          "response": []
+        },
+        {
+          "name": "Multiple Patients Numeric Abstraction",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"patients_list\": [\"1000\", \"1001\", \"1002\"],\n  \"concept_name\": \"{{raw-numeric_range_point}}\",\n  \"start_date\": \"2020-01-01T00:00:00\",\n  \"end_date\": \"2021-12-31T23:59:59\",\n  \"use_generated_data\": false,\n  \"interval_str\": \"ME\",\n  \"method\": \"most_time_spent\",\n  \"ranges\": [\n    {\n      \"min\": 0.0,\n      \"max\": 50.0\n    },\n    {\n      \"min\": 50.0,\n      \"max\": 10000.0\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/visitors-queries/multiple-patients-numeric-abstraction",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "visitors-queries",
+                "multiple-patients-numeric-abstraction"
+              ]
+            },
+            "description": "Abstract multiple patients data flow for numeric continuous values. Divides the numeric range into specified/default bins before abstracting and returning the summary intervals."
+          },
+          "response": []
+        },
+        {
+          "name": "Generate Abstraction Data",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"patients_list\": [\"1000\", \"1001\", \"1002\"],\n  \"concept_name\": \"{{defaultConceptName}}\",\n  \"start_date\": \"2020-01-01T00:00:00\",\n  \"end_date\": \"2021-12-31T23:59:59\",\n  \"use_generated_data\": false\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/visitors-queries/abstraction",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "visitors-queries",
+                "abstraction"
+              ]
+            },
+            "description": "Generates synthetic patient data (Abstraction). Returns generated records."
+          },
+          "response": []
+        },
+        {
+          "name": "Generate Raw Data",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"patients_list\": [\"1000\", \"1001\", \"1002\"],\n  \"concept_name\": \"{{raw-numeric_range_point}}\",\n  \"start_date\": \"2020-01-01T00:00:00\",\n  \"end_date\": \"2021-12-31T23:59:59\",\n  \"use_generated_data\": false\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/visitors-queries/raw-data",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "visitors-queries",
+                "raw-data"
+              ]
+            },
+            "description": "Generate raw data (numeric). Returns generated records."
+          },
+          "response": []
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://visitors-web-backend.vercel.app/api/v1",
+      "type": "string"
+    },
+    {
+      "key": "defaultConceptName",
+      "value": "AbsCI_or_RelCI_state",
+      "type": "string"
+    },
+    {
+      "key": "raw-numeric_range_point",
+      "value": "ALP",
+      "type": "string"
+    },
+    {
+      "key": "state_categorial_interval",
+      "value": "ALP_Level_State",
+      "type": "string"
+    },
+    {
+      "key": "trend_categorial_interval",
+      "value": "ALP_TREND",
+      "type": "string"
+    },
+    {
+      "key": "raw-nominal_categorial_interval",
+      "value": "Alcohol_Use",
+      "type": "string"
+    },
+    {
+      "key": "event_categorial_interval",
+      "value": "Anti_Platelets_Drugs",
+      "type": "string"
+    },
+    {
+      "key": "context_categorial_interval",
+      "value": "Apixaban_HighDose_ctxt",
+      "type": "string"
+    },
+    {
+      "key": "pattern_categorial_interval",
+      "value": "Absolute_Contra_Indication_count_pattern",
+      "type": "string"
+    },
+    {
+      "key": "pattern_range_interval",
+      "value": "Age_in_Visit_pattern",
+      "type": "string"
+    }
+  ]
+}
