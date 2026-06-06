@@ -1,7 +1,7 @@
 import pandas as pd
 from typing import List, Tuple
 from datetime import datetime, timezone
-from app.models.schemas import Record, RelativeTimeConfig, DataRequest, RelativeTimeDelta
+from app.models.schemas import Record, RelativeTimeConfig, DataRequest, RelativeTimeDelta, ReferenceConcept
 from app.services.csv_data_fetcher import csv_fetcher
 from app.services.generator import DataGeneratorService
 
@@ -34,47 +34,56 @@ class RelativeTimeService:
         end_date: datetime = None
     ) -> Tuple[List[Record], datetime, datetime]:
         """
-        Calculates patient-specific t_zero based on the reference concept, 
+        Calculates patient-specific t_zero based on the reference concepts list, 
         shifts all primary records to align exactly onto the ANCHOR_DATE,
         and filters shifted records by the global relative bounds.
         """
-        # 1. Fetch reference data
-        ref_request = DataRequest(
-            patients_list=patients_list,
-            concept_name=config.reference_concept,
-            start_date=start_date,
-            end_date=end_date,
-            use_generated_data=use_generated_data
-        )
-        
-        if use_generated_data:
-            ref_records = DataGeneratorService.generate_data(ref_request)
-        else:
-            # Try Abstract first (events, categorical abstractions).
-            # If nothing is found, fall back to Raw (e.g. Anti_Platelets_Drugs, Visit, etc.)
-            ref_records = csv_fetcher.fetch_data(ref_request, abstract=True)
-            if not ref_records:
-                ref_records = csv_fetcher.fetch_data(ref_request, abstract=False)
-            
         # Group by patient
         patient_ref_events = {}
-        for r in ref_records:
-            # Match value if provided
-            if config.reference_value and r.Value != config.reference_value:
-                continue
-            if r.PatientID not in patient_ref_events:
-                patient_ref_events[r.PatientID] = []
-            patient_ref_events[r.PatientID].append(r)
 
-        # Fallback for generated data: if no events matched the value, just use all events of that concept
-        if use_generated_data:
-            for pid in patients_list:
-                pid_int = int(pid)
-                if pid_int not in patient_ref_events:
-                    # Collect all generated events for this patient regardless of value
-                    fallbacks = [r for r in ref_records if r.PatientID == pid_int]
-                    if fallbacks:
-                        patient_ref_events[pid_int] = fallbacks
+        # 1. Fetch reference data for each concept in the list
+        for ref_c in config.reference_concepts:
+            ref_request = DataRequest(
+                patients_list=patients_list,
+                concept_name=ref_c.concept_name,
+                start_date=start_date,
+                end_date=end_date,
+                use_generated_data=use_generated_data
+            )
+            
+            if use_generated_data:
+                ref_records = DataGeneratorService.generate_data(ref_request)
+            else:
+                # Try Abstract first (events, categorical abstractions).
+                # If nothing is found, fall back to Raw (e.g. Anti_Platelets_Drugs, Visit, etc.)
+                ref_records = csv_fetcher.fetch_data(ref_request, abstract=True)
+                if not ref_records:
+                    ref_records = csv_fetcher.fetch_data(ref_request, abstract=False)
+
+            # Filter records per concept
+            concept_patient_events = {}
+            for r in ref_records:
+                if ref_c.concept_value and r.Value != ref_c.concept_value:
+                    continue
+                if r.PatientID not in concept_patient_events:
+                    concept_patient_events[r.PatientID] = []
+                concept_patient_events[r.PatientID].append(r)
+
+            # Fallback for generated data: if no events matched the value, just use all events of that concept
+            if use_generated_data and ref_c.concept_value:
+                for pid in patients_list:
+                    pid_int = int(pid)
+                    if pid_int not in concept_patient_events:
+                        # Collect all generated events for this patient regardless of value
+                        fallbacks = [r for r in ref_records if r.PatientID == pid_int]
+                        if fallbacks:
+                            concept_patient_events[pid_int] = fallbacks
+
+            # Add these events to the accumulated list for each patient
+            for pid, evs in concept_patient_events.items():
+                if pid not in patient_ref_events:
+                    patient_ref_events[pid] = []
+                patient_ref_events[pid].extend(evs)
             
         # Calculate t_zero for each patient
         t_zeros = {}
