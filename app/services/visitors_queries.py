@@ -110,7 +110,7 @@ class VisitorsQueriesService:
         
         if getattr(request, 'relative_time', None):
             patient_events, request.start_date, request.end_date = RelativeTimeService.align_records_to_anchor(
-                patient_events, request.relative_time, request.patients_list, request.use_generated_data, request.start_date, request.end_date
+                patient_events, request.relative_time, request.patients_list, request.use_generated_data, request.start_date, request.end_date, request.interval_str
             )
         
         intervals = IntervalTransformationService.transform_to_intervals(
@@ -148,7 +148,7 @@ class VisitorsQueriesService:
             
         if getattr(request, 'relative_time', None):
             patient_events, request.start_date, request.end_date = RelativeTimeService.align_records_to_anchor(
-                patient_events, request.relative_time, request.patients_list, request.use_generated_data, request.start_date, request.end_date
+                patient_events, request.relative_time, request.patients_list, request.use_generated_data, request.start_date, request.end_date, request.interval_str
             )
         
         # 2. Transform Data
@@ -175,7 +175,7 @@ class VisitorsQueriesService:
             
         if getattr(request, 'relative_time', None):
             patient_events, request.start_date, request.end_date = RelativeTimeService.align_records_to_anchor(
-                patient_events, request.relative_time, request.patients_list, request.use_generated_data, request.start_date, request.end_date
+                patient_events, request.relative_time, request.patients_list, request.use_generated_data, request.start_date, request.end_date, request.interval_str
             )
             
         return VisitorsQueriesService._build_visitor_response(patient_events, request.concept_name)
@@ -190,7 +190,7 @@ class VisitorsQueriesService:
             
         if getattr(request, 'relative_time', None):
             patient_events, request.start_date, request.end_date = RelativeTimeService.align_records_to_anchor(
-                patient_events, request.relative_time, request.patients_list, request.use_generated_data, request.start_date, request.end_date
+                patient_events, request.relative_time, request.patients_list, request.use_generated_data, request.start_date, request.end_date, request.interval_str
             )
             
         return VisitorsQueriesService._build_visitor_response(patient_events, request.concept_name)

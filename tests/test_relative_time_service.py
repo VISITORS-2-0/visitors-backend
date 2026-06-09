@@ -1,7 +1,7 @@
 import unittest
 from unittest.mock import patch
 from datetime import datetime, timezone
-from app.models.schemas import Record, RelativeTimeConfig, RelativeTimeDelta, ReferenceConcept
+from app.models.schemas import Record, RelativeTimeConfig, ReferenceConcept
 from app.services.relative_time_service import RelativeTimeService
 
 class RelativeTimeServiceTests(unittest.TestCase):
@@ -72,8 +72,8 @@ class RelativeTimeServiceTests(unittest.TestCase):
                 ReferenceConcept(concept_name="ConceptC", concept_value="ValC")
             ],
             occurrence_index=0,
-            start_delta=RelativeTimeDelta(value=-1, unit="d"),
-            end_delta=RelativeTimeDelta(value=2, unit="d")
+            start_delta=-1,
+            end_delta=2
         )
         
         # Primary records to shift:
@@ -106,7 +106,8 @@ class RelativeTimeServiceTests(unittest.TestCase):
             records=primary_records,
             config=config,
             patients_list=["1"],
-            use_generated_data=False
+            use_generated_data=False,
+            interval_str="D"
         )
         
         # Verify:
@@ -157,8 +158,8 @@ class RelativeTimeServiceTests(unittest.TestCase):
                 ReferenceConcept(concept_name="ConceptB")
             ],
             occurrence_index=-1,
-            start_delta=RelativeTimeDelta(value=-1, unit="d"),
-            end_delta=RelativeTimeDelta(value=2, unit="d")
+            start_delta=-1,
+            end_delta=2
         )
         
         primary_records = [
@@ -183,7 +184,8 @@ class RelativeTimeServiceTests(unittest.TestCase):
             records=primary_records,
             config=config,
             patients_list=["1"],
-            use_generated_data=False
+            use_generated_data=False,
+            interval_str="D"
         )
         
         self.assertEqual(len(shifted), 0)

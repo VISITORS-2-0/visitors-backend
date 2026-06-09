@@ -33,11 +33,11 @@ class QueriesEndpointTests(unittest.TestCase):
         
         mock_fetch.side_effect = side_effect
 
-        # Payload:
         payload = {
             "patients_list": ["1"],
             "concept_name": "Sex",
             "use_generated_data": False,
+            "interval_str": "D",
             "relative_time": {
                 "reference_concepts": [
                     {
@@ -46,8 +46,8 @@ class QueriesEndpointTests(unittest.TestCase):
                     }
                 ],
                 "occurrence_index": 0,
-                "start_delta": { "value": -24, "unit": "h" },
-                "end_delta": { "value": 48, "unit": "h" }
+                "start_delta": -1,
+                "end_delta": 2
             }
         }
 
@@ -69,11 +69,12 @@ class QueriesEndpointTests(unittest.TestCase):
             "patients_list": ["1"],
             "concept_name": "Sex",
             "use_generated_data": False,
+            "interval_str": "D",
             "relative_time": {
                 "reference_concepts": [],
                 "occurrence_index": 0,
-                "start_delta": { "value": -24, "unit": "h" },
-                "end_delta": { "value": 48, "unit": "h" }
+                "start_delta": -1,
+                "end_delta": 2
             }
         }
         response = self.client.post("/api/v1/visitors-queries/abstraction", json=payload)

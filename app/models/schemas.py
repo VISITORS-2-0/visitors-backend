@@ -22,10 +22,6 @@ class Record(BaseModel):
 
 # --- Shared Models ---
 
-class RelativeTimeDelta(BaseModel):
-    value: int
-    unit: Literal['h', 'd', 'w', 'm', 'y']
-
 class ReferenceConcept(BaseModel):
     concept_name: str
     concept_value: Optional[str] = None
@@ -33,8 +29,8 @@ class ReferenceConcept(BaseModel):
 class RelativeTimeConfig(BaseModel):
     reference_concepts: List[ReferenceConcept]
     occurrence_index: int = -1
-    start_delta: RelativeTimeDelta
-    end_delta: RelativeTimeDelta
+    start_delta: int
+    end_delta: int
 
     @field_validator('reference_concepts')
     @classmethod
@@ -53,6 +49,7 @@ class DataRequest(BaseModel):
     end_date: Optional[datetime] = None
     use_generated_data: bool = False
     relative_time: Optional[RelativeTimeConfig] = None
+    interval_str: Literal['D', 'W-SUN', 'ME', 'YE'] = "ME"
 
 class TransformationRequest(BaseModel):
     data: List[Record]

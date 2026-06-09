@@ -1,7 +1,7 @@
 import pandas as pd
 from typing import List, Tuple
 from datetime import datetime, timezone
-from app.models.schemas import Record, RelativeTimeConfig, DataRequest, RelativeTimeDelta, ReferenceConcept
+from app.models.schemas import Record, RelativeTimeConfig, DataRequest, ReferenceConcept
 from app.services.csv_data_fetcher import csv_fetcher
 from app.services.generator import DataGeneratorService
 
@@ -9,9 +9,7 @@ class RelativeTimeService:
     ANCHOR_DATE = datetime(1970, 1, 1, tzinfo=timezone.utc)
 
     @staticmethod
-    def _apply_delta(dt: datetime, delta: RelativeTimeDelta) -> datetime:
-        val = delta.value
-        unit = delta.unit
+    def _apply_delta(dt: datetime, val: int, unit: str) -> datetime:
         if unit == 'h':
             return dt + pd.DateOffset(hours=val)
         elif unit == 'd':
@@ -31,7 +29,8 @@ class RelativeTimeService:
         patients_list: List[str], 
         use_generated_data: bool = False,
         start_date: datetime = None,
-        end_date: datetime = None
+        end_date: datetime = None,
+        interval_str: str = "ME"
     ) -> Tuple[List[Record], datetime, datetime]:
         """
         Calculates patient-specific t_zero based on the reference concepts list, 
@@ -123,8 +122,16 @@ class RelativeTimeService:
             ))
             
         # 3. Filter bounds based on start_delta and end_delta around ANCHOR_DATE
-        global_start = RelativeTimeService._apply_delta(RelativeTimeService.ANCHOR_DATE, config.start_delta)
-        global_end = RelativeTimeService._apply_delta(RelativeTimeService.ANCHOR_DATE, config.end_delta)
+        unit_map = {
+            'D': 'd',
+            'W-SUN': 'w',
+            'ME': 'm',
+            'YE': 'y'
+        }
+        unit = unit_map.get(interval_str, 'm')
+
+        global_start = RelativeTimeService._apply_delta(RelativeTimeService.ANCHOR_DATE, config.start_delta, unit)
+        global_end = RelativeTimeService._apply_delta(RelativeTimeService.ANCHOR_DATE, config.end_delta, unit)
         
         # Ensure correct temporal ordering for Pandas
         global_start_pd = pd.to_datetime(global_start, utc=True)
