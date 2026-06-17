@@ -74,6 +74,36 @@ class IntervalTransformationServiceTests(unittest.TestCase):
         self.assertEqual(grouped[(2, "C1")], "B")
         self.assertEqual(grouped[(1, "C2")], "C")
 
+    def test_monthly_interval_alignment_and_last_day_inclusion(self):
+        events = [
+            record("2015-01-31T12:00:00", "2015-01-31T15:00:00", "A"),
+        ]
+        result = IntervalTransformationService.transform_to_intervals(
+            events,
+            start_date=datetime(2015, 1, 15),
+            end_date=datetime(2015, 1, 31),
+            interval_str="ME",
+        )
+        self.assertEqual(len(result), 1)
+        self.assertEqual(result[0].StartTime.isoformat(), "2015-01-01T00:00:00+00:00")
+        self.assertEqual(result[0].EndTime.isoformat(), "2015-02-01T00:00:00+00:00")
+        self.assertEqual(result[0].Value, "A")
+
+    def test_yearly_interval_alignment_and_last_day_inclusion(self):
+        events = [
+            record("2015-12-31T12:00:00", "2015-12-31T15:00:00", "A"),
+        ]
+        result = IntervalTransformationService.transform_to_intervals(
+            events,
+            start_date=datetime(2015, 6, 1),
+            end_date=datetime(2015, 12, 31),
+            interval_str="YE",
+        )
+        self.assertEqual(len(result), 1)
+        self.assertEqual(result[0].StartTime.isoformat(), "2015-01-01T00:00:00+00:00")
+        self.assertEqual(result[0].EndTime.isoformat(), "2016-01-01T00:00:00+00:00")
+        self.assertEqual(result[0].Value, "A")
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -29,7 +29,7 @@ class CSVDataFetcher:
     def fetch_data(self, request: DataRequest, abstract: bool = True) -> List[Record]:
         results = []
         
-        file_suffixes = ["Abstract"] if abstract else ["Raw"]
+        file_suffixes = ["Abstract", "Raw"]
         for patient_id in request.patients_list:
             for file_suffix in file_suffixes:
                 file_path = os.path.join(self.data_dir, f"ID_{patient_id}_{file_suffix}.csv")

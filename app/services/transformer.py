@@ -27,8 +27,29 @@ class IntervalTransformationService:
             global_min = df['StartTime'].min().floor('D') 
             global_max = df['EndTime'].max().ceil('D')
         
+        freq = interval_str
+        if interval_str == 'ME':
+            freq = 'MS'
+            # Align global_min to the start of the month
+            global_min = global_min.replace(day=1, hour=0, minute=0, second=0, microsecond=0)
+            # Align global_max to the start of the next month if not already a month start
+            is_month_start = (global_max.day == 1 and global_max.hour == 0 and global_max.minute == 0 and global_max.second == 0 and global_max.microsecond == 0)
+            if not is_month_start:
+                if global_max.month == 12:
+                    global_max = global_max.replace(year=global_max.year + 1, month=1, day=1, hour=0, minute=0, second=0, microsecond=0)
+                else:
+                    global_max = global_max.replace(month=global_max.month + 1, day=1, hour=0, minute=0, second=0, microsecond=0)
+        elif interval_str == 'YE':
+            freq = 'YS'
+            # Align global_min to the start of the year
+            global_min = global_min.replace(month=1, day=1, hour=0, minute=0, second=0, microsecond=0)
+            # Align global_max to the start of the next year if not already a year start
+            is_year_start = (global_max.month == 1 and global_max.day == 1 and global_max.hour == 0 and global_max.minute == 0 and global_max.second == 0 and global_max.microsecond == 0)
+            if not is_year_start:
+                global_max = global_max.replace(year=global_max.year + 1, month=1, day=1, hour=0, minute=0, second=0, microsecond=0)
+
         # Create the buckets (intervals)
-        buckets_index = pd.date_range(start=global_min, end=global_max, freq=interval_str)
+        buckets_index = pd.date_range(start=global_min, end=global_max, freq=freq)
         buckets = list(buckets_index)
         
         # Ensure the first bucket covers the start of the data

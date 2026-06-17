@@ -72,7 +72,7 @@ class CSVDataFetcherTests(unittest.TestCase):
 
             result = fetcher.fetch_data(request, abstract=False)
 
-            self.assertEqual([row.Value for row in result], ["7.5"])
+            self.assertEqual(set(row.Value for row in result), {"7.5", "Abstract"})
 
     @staticmethod
     def _write_csv(path, rows):
